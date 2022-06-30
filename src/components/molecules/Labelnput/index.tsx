@@ -5,15 +5,15 @@ import { StyledLabelInput } from "./LabelnputStyled";
 
 export interface LabelInputProps {
   register: UseFormRegisterReturn;
-  InputType?: InputType;
+  type?: InputType;
   width?: string;
   labelText: string;
-  placeholder: string;
+  placeholder?: string;
 }
 
 export default function Labelnput({
   register,
-  InputType,
+  type,
   width,
   labelText,
   placeholder,
@@ -24,7 +24,7 @@ export default function Labelnput({
       <Input
         width={width}
         register={register}
-        type={InputType}
+        type={type}
         placeholder={placeholder}
       />
     </StyledLabelInput>

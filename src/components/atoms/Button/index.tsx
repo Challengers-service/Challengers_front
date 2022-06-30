@@ -8,14 +8,14 @@ export interface ButtonProps {
   size: "large" | "medium" | "small";
   children?: ReactNode;
   fullWidth?: boolean;
-  type: ButtonType;
+  type?: ButtonType;
 }
 
 export default function Button({
   onClick,
   size,
   fullWidth = false,
-  type,
+  type = "button",
   children,
 }: ButtonProps) {
   return (

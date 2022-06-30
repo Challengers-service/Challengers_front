@@ -42,10 +42,12 @@ const sizeStyles = css<{ typography?: TypographyType }>`
     `}
 `;
 
-export const StyledText = styled.div<TextProps>`
+export const StyledText = styled.span<TextProps>`
   ${sizeStyles}
-  ${props =>
-    css`
-      color: ${props.color} || ${props.theme.textColor};
-    `}
+  ${props => {
+    const color = props.color ? props.color : props.theme.textColor;
+    return css`
+      color: ${color};
+    `;
+  }}
 `;
