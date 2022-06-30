@@ -1,13 +1,16 @@
 import Button from "@atoms/Button";
 import Text from "@atoms/Text";
 import Labelnput from "@molecules/Labelnput";
-import Auth, { JoinParams } from "apis/auth";
+import Auth from "apis/auth";
+import { JoinParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
+import { useInternalRouter } from "utils/routing";
 import { StyledJoinForm } from "./JoinFormStyled";
 
 export interface JoinFormProps {}
 
 export default function JoinForm() {
+  const router = useInternalRouter();
   const {
     register,
     handleSubmit,
@@ -18,7 +21,7 @@ export default function JoinForm() {
   const onSubmit = (data: JoinParams) => {
     console.log(data);
     Auth.join(data)
-      .then(response => console.log(response.data))
+      .then(() => router.push("/auth/login"))
       .catch(error => console.log(error.response.data));
   };
   return (

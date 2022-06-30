@@ -1,5 +1,6 @@
 import axios from "axios";
 import JoinPage from "pages/Auth/JoinPage";
+import LoginPage from "pages/Auth/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="auth">
           <Route path="join" element={<JoinPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
