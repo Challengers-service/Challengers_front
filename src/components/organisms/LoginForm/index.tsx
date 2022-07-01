@@ -1,16 +1,19 @@
 import Button from "@atoms/Button";
 import Text from "@atoms/Text";
 import Labelnput from "@molecules/Labelnput";
-import Auth from "apis/auth";
+import Auth, { TOKEN_KEY } from "apis/auth";
 import { LoginParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
+import { isLoggedAtom, tokenAtom } from "stores/auth";
 import { useInternalRouter } from "utils/routing";
 import { StyledLoginForm } from "./LoginFormStyled";
 
 export interface LoginFormProps {}
 
 export default function LoginForm() {
-  const router = useInternalRouter();
+  const setIsLogged = useSetRecoilState(isLoggedAtom);
+  const setToken = useSetRecoilState(tokenAtom);
   const {
     register,
     handleSubmit,
@@ -19,7 +22,11 @@ export default function LoginForm() {
 
   const onSubmit = (data: LoginParams) => {
     Auth.login(data)
-      .then(response => console.log(response.data))
+      .then(response => {
+        localStorage.setItem(TOKEN_KEY, response.data.token);
+        setIsLogged(true);
+        setToken(response.data.token);
+      })
       .catch(error => console.log(error.response.data));
   };
   return (
