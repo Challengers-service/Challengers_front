@@ -6,7 +6,7 @@ const sizeStyles = css<{ typography?: TypographyType }>`
     props.typography === "h1" &&
     css`
       /*  font-size 30px */
-      font-size: 1.875rem;
+      font-size: 40px;
       font-weight: 700;
     `}
 

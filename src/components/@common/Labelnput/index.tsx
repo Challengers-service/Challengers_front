@@ -1,4 +1,4 @@
-import Input, { InputProps, InputType } from "components/@common/Input";
+import Input, { InputProps } from "components/@common/Input";
 import { forwardRef } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { StyledLabelInput } from "./LabelnputStyled";
