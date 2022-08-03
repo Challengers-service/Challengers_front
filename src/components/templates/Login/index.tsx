@@ -1,4 +1,4 @@
-import Text from "@atoms/Text";
+import Text from "components/@common/Text";
 import LoginForm from "@organisms/LoginForm";
 import { StyledLogin } from "./LoginStyled";
 

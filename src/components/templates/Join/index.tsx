@@ -1,4 +1,4 @@
-import Text from "@atoms/Text";
+import Text from "components/@common/Text";
 import JoinForm from "@organisms/JoinForm";
 import { StyledJoin } from "./JoinStyled";
 

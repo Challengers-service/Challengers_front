@@ -1,6 +1,6 @@
-import Button from "@atoms/Button";
-import Text from "@atoms/Text";
-import Labelnput from "@molecules/Labelnput";
+import Button from "components/@common/Button";
+import Text from "components/@common/Text";
+import Labelnput from "components/@common/Labelnput";
 import Auth from "apis/auth";
 import { JoinParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
@@ -28,11 +28,9 @@ export default function JoinForm() {
     <StyledJoinForm onSubmit={handleSubmit(onSubmit)}>
       <div className="joinFormInput">
         <Labelnput
-          register={{
-            ...register("email", { required: "이메일을 입력해주세요" }),
-          }}
+          {...register("email", { required: "이메일을 입력해주세요" })}
           labelText="email"
-          type="email"
+          type={"email"}
         />
         <Text color="red" typography="h5">
           {errors.email?.message}
@@ -40,9 +38,7 @@ export default function JoinForm() {
       </div>
       <div className="joinFormInput">
         <Labelnput
-          register={{
-            ...register("name", { required: "이름을 입력해주세요" }),
-          }}
+          {...register("name", { required: "이름을 입력해주세요" })}
           labelText="name"
         />
         <Text color="red" typography="h5">
@@ -51,11 +47,9 @@ export default function JoinForm() {
       </div>
       <div className="joinFormInput">
         <Labelnput
-          register={{
-            ...register("password", { required: "비밀번호를 입력해주세요" }),
-          }}
+          {...register("password", { required: "비밀번호를 입력해주세요" })}
           labelText="password"
-          type="password"
+          type={"password"}
         />
         <Text color="red" typography="h5">
           {errors.password?.message}
@@ -63,17 +57,15 @@ export default function JoinForm() {
       </div>
       <div className="joinFormInput">
         <Labelnput
-          register={{
-            ...register("passwordConfirm", {
-              required: "비밀번호확인을 입력해주세요",
-              validate: value =>
-                value !== watch("password")
-                  ? "비밀번호가 일치하지 않습니다."
-                  : true,
-            }),
-          }}
+          {...register("passwordConfirm", {
+            required: "비밀번호확인을 입력해주세요",
+            validate: value =>
+              value !== watch("password")
+                ? "비밀번호가 일치하지 않습니다."
+                : true,
+          })}
           labelText="passwordConfirm"
-          type="password"
+          type={"password"}
         />
         <Text color="red" typography="h5">
           {errors.passwordConfirm?.message}

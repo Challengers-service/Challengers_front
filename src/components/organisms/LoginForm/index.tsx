@@ -1,6 +1,6 @@
-import Button from "@atoms/Button";
-import Text from "@atoms/Text";
-import Labelnput from "@molecules/Labelnput";
+import Button from "components/@common/Button";
+import Text from "components/@common/Text";
+import Labelnput from "components/@common/Labelnput";
 import Auth, { TOKEN_KEY } from "apis/auth";
 import { LoginParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<LoginParams>({ mode: "onChange" });
 
@@ -29,15 +30,14 @@ export default function LoginForm() {
       })
       .catch(error => console.log(error.response.data));
   };
+  console.log(watch("email"));
   return (
     <StyledLoginForm onSubmit={handleSubmit(onSubmit)}>
       <div className="loginFormInput">
         <Labelnput
-          register={{
-            ...register("email", { required: "이메일을 입력해주세요" }),
-          }}
+          {...register("email", { required: "이메일을 입력해주세요" })}
           labelText="email"
-          type="email"
+          type={"email"}
         />
         <Text color="red" typography="h5">
           {errors.email?.message}
@@ -45,11 +45,9 @@ export default function LoginForm() {
       </div>
       <div className="loginFormInput">
         <Labelnput
-          register={{
-            ...register("password", { required: "비밀번호를 입력해주세요" }),
-          }}
+          {...register("password", { required: "비밀번호를 입력해주세요" })}
           labelText="password"
-          type="password"
+          type={"password"}
         />
         <Text color="red" typography="h5">
           {errors.password?.message}

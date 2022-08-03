@@ -1,23 +1,21 @@
 import { Meta, Story } from "@storybook/react";
-import Label, { LabelProps } from "./";
+import Input, { InputProps } from ".";
 
 export default {
-  title: "Atoms/Label",
-  component: Label,
+  title: "Atoms/Input",
+  component: Input,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<LabelProps> = args => (
+const Template: Story<InputProps> = args => (
   <>
     <div>
-      <Label {...args} />
+      <Input {...args} />
     </div>
   </>
 );
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {
-  text: "label",
-};
+Default.args = {};
