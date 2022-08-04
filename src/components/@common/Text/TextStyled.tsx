@@ -36,8 +36,8 @@ const sizeStyles = css<{ typography?: TypographyType }>`
   ${props =>
     props.typography === "h5" &&
     css`
-      /*  font-size 14px */
-      font-size: 0.875rem;
+      /*  font-size 15px */
+      font-size: 15px;
       font-weight: 400;
     `}
 `;
