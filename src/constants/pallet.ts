@@ -1,5 +1,5 @@
 export const pallet = {
-  purple0: "6563FF",
+  purple0: "#6563FF",
   gray0: "#ECECEC",
   gray1: "#F9F9F9",
   gray2: "#D7D7D7",

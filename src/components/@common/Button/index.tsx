@@ -1,26 +1,23 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { StyledButton } from "./ButtonStyled";
 
-export type ButtonType = "button" | "submit";
-
-export interface ButtonProps {
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: "large" | "medium" | "small";
   children?: ReactNode;
   fullWidth?: boolean;
-  type?: ButtonType;
+  mode?: "default" | "social";
 }
 
 export default function Button({
   onClick,
   size,
   fullWidth = false,
-  type = "button",
   children,
+  mode = "default",
 }: ButtonProps) {
   return (
     <StyledButton
-      type={type}
+      mode={mode}
       fullWidth={fullWidth}
       size={size}
       onClick={onClick}

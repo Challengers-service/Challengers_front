@@ -1,10 +1,10 @@
-import Login from "components/templates/Login";
+import LoginForm from "components/auth/LoginForm";
 import { StyledLoginPage } from "./LoginPageStyled";
 
 export default function LoginPage() {
   return (
     <StyledLoginPage>
-      <Login />
+      <LoginForm />
     </StyledLoginPage>
   );
 }

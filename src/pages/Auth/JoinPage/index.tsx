@@ -1,10 +1,10 @@
-import Join from "components/templates/Join";
+import JoinForm from "components/auth/JoinForm";
 import { StyledJoinPage } from "./JoinPageStyled";
 
 export default function JoinPage() {
   return (
     <StyledJoinPage>
-      <Join />
+      <JoinForm />
     </StyledJoinPage>
   );
 }
