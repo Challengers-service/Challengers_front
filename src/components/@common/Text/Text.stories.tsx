@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import Text, { TextProps } from ".";
 
 export default {
-  title: "Atoms/Text",
+  title: "Common/Text",
   component: Text,
   parameters: {},
   argTypes: {},

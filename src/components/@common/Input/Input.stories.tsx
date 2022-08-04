@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import Input, { InputProps } from ".";
 
 export default {
-  title: "Atoms/Input",
+  title: "Common/Input",
   component: Input,
   parameters: {},
   argTypes: {},

@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react";
-import LoginForm, { LoginFormProps } from "./";
+import LoginForm, { LoginFormProps } from ".";
 
 export default {
-  title: "Organisms/LoginForm",
+  title: "Auth/LoginForm",
   component: LoginForm,
   parameters: {},
   argTypes: {},

@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import LabelInput, { LabelInputProps } from ".";
 
 export default {
-  title: "Molecules/LabelInput",
+  title: "Common/LabelInput",
   component: LabelInput,
   parameters: {},
   argTypes: {},

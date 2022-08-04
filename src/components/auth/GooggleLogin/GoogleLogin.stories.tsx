@@ -1,17 +1,17 @@
 import { Meta, Story } from "@storybook/react";
-import JoinForm, { JoinFormProps } from ".";
+import GoogleLogin from ".";
 
 export default {
-  title: "Auth/JoinForm",
-  component: JoinForm,
+  title: "Auth/GoogleLogin",
+  component: GoogleLogin,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<JoinFormProps> = args => (
+const Template: Story = args => (
   <>
     <div>
-      <JoinForm {...args} />
+      <GoogleLogin {...args} />
     </div>
   </>
 );
