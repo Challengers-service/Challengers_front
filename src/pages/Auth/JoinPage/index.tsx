@@ -1,3 +1,4 @@
+import Anchor from "components/@common/Anchor";
 import JoinForm from "components/auth/JoinForm";
 import { StyledJoinPage } from "./JoinPageStyled";
 

@@ -9,19 +9,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({
-  onClick,
   size,
   fullWidth = false,
   children,
   mode = "default",
+  ...rest
 }: ButtonProps) {
   return (
-    <StyledButton
-      mode={mode}
-      fullWidth={fullWidth}
-      size={size}
-      onClick={onClick}
-    >
+    <StyledButton mode={mode} fullWidth={fullWidth} size={size} {...rest}>
       {children}
     </StyledButton>
   );
