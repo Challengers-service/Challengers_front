@@ -1,22 +1,9 @@
 import Anchor from "components/@common/Anchor";
-import Text from "components/@common/Text";
 import GooggleLogin from "components/auth/GooggleLogin";
 import LoginForm from "components/auth/LoginForm";
-import { pallet } from "constants/pallet";
 import * as Styled from "./LoginPageStyled";
 import RocketPng from "assets/png/rocket.png";
-
-const Contor = () => {
-  return (
-    <Styled.Contour>
-      <Styled.Line />
-      <Text color={pallet.baseColor.subText} typography="h5">
-        OR
-      </Text>
-      <Styled.Line />
-    </Styled.Contour>
-  );
-};
+import Contor from "components/auth/Contor";
 
 const Login = () => {
   return (
