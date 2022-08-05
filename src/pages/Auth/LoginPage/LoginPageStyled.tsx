@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
 export const StyledLoginPage = styled.div`
-  display: grid;
-  grid-template-columns: 672px 1fr;
-  align-items: center;
+  height: 100%;
+  @media (max-width: 1130px) {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+  @media (min-width: 1130px) {
+    display: grid;
+    grid-template-columns: 672px 1fr;
+    align-items: center;
+  }
 `;
 
 export const StyledLogin = styled.div`
-  width: 452px;
+  /* width: 452px; */
+  /* max-width: 452px; */
   margin: 0 auto;
 `;
 
@@ -27,7 +36,7 @@ export const Gap = styled.div<{ gap: string }>`
 `;
 
 export const RocketBG = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: #f3f5fa;
   position: relative;
   max-width: 672px;

@@ -4,6 +4,8 @@ import LoginForm from "components/auth/LoginForm";
 import * as Styled from "./LoginPageStyled";
 import RocketPng from "assets/png/rocket.png";
 import Contor from "components/auth/Contor";
+import { useEffect, useState } from "react";
+import { createGlobalStyle } from "styled-components";
 
 const Login = () => {
   return (
@@ -38,10 +40,20 @@ const RocketImg = () => {
   );
 };
 
+const ENDPOINT = 1130;
+
 export default function LoginPage() {
+  const [windowInnerWith, setWindowInnerWidth] = useState<number>(
+    window.innerWidth
+  );
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWindowInnerWidth(window.innerWidth);
+    });
+  }, [windowInnerWith]);
   return (
     <Styled.StyledLoginPage>
-      <RocketImg />
+      {windowInnerWith >= ENDPOINT && <RocketImg />}
       <Login />
     </Styled.StyledLoginPage>
   );

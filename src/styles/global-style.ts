@@ -26,6 +26,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html, body, #root {
+  height: 100%
+}
 body {
 	line-height: 1;
 }
