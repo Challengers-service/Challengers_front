@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="auth">
+        <Route path="/">
           <Route path="join" element={<JoinPage />} />
           <Route path="login" element={<LoginPage />} />
         </Route>

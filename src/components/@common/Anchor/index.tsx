@@ -9,7 +9,7 @@ export interface AnchorProps extends LinkProps {
 const Anchor = ({ text, ...rest }: AnchorProps) => {
   return (
     <Link {...rest}>
-      <Text color={pallet.gray0} typography="h5">
+      <Text color={pallet.baseColor.subText} typography="h5">
         {text}
       </Text>
     </Link>

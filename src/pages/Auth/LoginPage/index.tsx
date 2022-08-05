@@ -10,7 +10,7 @@ const Contor = () => {
   return (
     <Styled.Contour>
       <Styled.Line />
-      <Text color={pallet.gray0} typography="h5">
+      <Text color={pallet.baseColor.subText} typography="h5">
         OR
       </Text>
       <Styled.Line />

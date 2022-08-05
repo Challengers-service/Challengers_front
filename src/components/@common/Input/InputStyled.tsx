@@ -14,7 +14,7 @@ export const StyledInput = styled.input<InputProps>`
     outline: none;
   }
   &::placeholder {
-    color: ${pallet.gray0};
+    color: ${pallet.baseColor.subText};
     font-weight: 400;
     font-size: 15px;
   }

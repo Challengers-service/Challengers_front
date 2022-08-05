@@ -41,7 +41,7 @@ const modeStyles = css<{ mode?: "default" | "social" }>`
   ${props =>
     props.mode === "default" &&
     css`
-      background-color: ${pallet.purple0};
+      background-color: ${pallet.mainColor};
       border: none;
       color: white;
     `}
