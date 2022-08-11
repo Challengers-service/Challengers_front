@@ -1,10 +1,10 @@
 import Button from "components/@common/Button";
 import Text from "components/@common/Text";
-import Auth, { TOKEN_KEY } from "apis/auth";
+import Auth from "apis/auth";
 import { LoginParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { isLoggedAtom, tokenAtom } from "stores/auth";
+import { ACCESS_TOKEN_KEY, isLoggedAtom, tokenAtom } from "stores/auth";
 import { InputGroup, StyledLoginForm } from "./LoginFormStyled";
 import Input from "components/@common/Input";
 
@@ -22,7 +22,7 @@ export default function LoginForm() {
   const onSubmit = (data: LoginParams) => {
     Auth.login(data)
       .then(response => {
-        localStorage.setItem(TOKEN_KEY, response.data.token);
+        localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
         setIsLogged(true);
         setToken(response.data.token);
       })
