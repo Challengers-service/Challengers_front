@@ -43,9 +43,7 @@ const RocketImg = () => {
 const ENDPOINT = 1130;
 
 export default function LoginPage() {
-  const [windowInnerWith, setWindowInnerWidth] = useState<number>(
-    window.innerWidth
-  );
+  const [windowInnerWith, setWindowInnerWidth] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener("resize", () => {
       setWindowInnerWidth(window.innerWidth);

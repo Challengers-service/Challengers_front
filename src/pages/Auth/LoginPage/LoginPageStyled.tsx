@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const StyledLoginPage = styled.div`
   height: 100%;
+  @media (max-width: 450px) {
+    padding: 0 20px;
+  }
   @media (max-width: 1130px) {
     display: flex;
     align-items: center;
-    margin: 0 auto;
   }
   @media (min-width: 1130px) {
     display: grid;
@@ -15,8 +17,8 @@ export const StyledLoginPage = styled.div`
 `;
 
 export const StyledLogin = styled.div`
-  /* width: 452px; */
-  /* max-width: 452px; */
+  max-width: 452px;
+  width: 100%;
   margin: 0 auto;
 `;
 
