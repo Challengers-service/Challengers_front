@@ -1,6 +1,7 @@
 import axios from "axios";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
+import HomePage from "pages/Home/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { tokenAtom } from "stores/auth";
@@ -22,10 +23,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="auth">
-          <Route path="join" element={<JoinPage />} />
-          <Route path="login" element={<LoginPage />} />
-        </Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/join" element={<JoinPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
