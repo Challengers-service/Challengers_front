@@ -4,15 +4,26 @@ import Auth from "apis/auth";
 import { LoginParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { ACCESS_TOKEN_KEY, isLoggedAtom, tokenAtom } from "stores/auth";
+import {
+  ACCESS_TOKEN_KEY,
+  isLoggedAtom,
+  REFRESH_TOKEN_KEY,
+  accessTokenAtom,
+  refreshTokenAtom,
+} from "stores/auth";
 import { InputGroup, StyledLoginForm } from "./LoginFormStyled";
 import Input from "components/@common/Input";
+import { useInternalRouter } from "utils/routing";
 
 export interface LoginFormProps {}
 
 export default function LoginForm() {
   const setIsLogged = useSetRecoilState(isLoggedAtom);
-  const setToken = useSetRecoilState(tokenAtom);
+  const setAccessToken = useSetRecoilState(accessTokenAtom);
+  const setRefreshToken = useSetRecoilState(refreshTokenAtom);
+
+  const router = useInternalRouter();
+
   const {
     register,
     handleSubmit,
@@ -23,8 +34,11 @@ export default function LoginForm() {
     Auth.login(data)
       .then(response => {
         localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
+        localStorage.setItem(REFRESH_TOKEN_KEY, response.data.refreshToken);
         setIsLogged(true);
-        setToken(response.data.token);
+        setAccessToken(response.data.accessToken);
+        setRefreshToken(response.data.refreshToken);
+        router.push("/");
       })
       .catch(error => console.log(error.response.data));
   };

@@ -21,7 +21,7 @@ export default function JoinForm() {
   const onSubmit = (data: JoinParams) => {
     console.log(data);
     Auth.join(data)
-      .then(() => router.push("/auth/login"))
+      .then(() => router.push("/login"))
       .catch(error => console.log(error.response.data));
   };
   return (

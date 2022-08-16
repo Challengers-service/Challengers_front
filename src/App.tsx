@@ -4,10 +4,10 @@ import LoginPage from "pages/Auth/LoginPage";
 import HomePage from "pages/Home/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { tokenAtom } from "stores/auth";
+import { accessTokenAtom } from "stores/auth";
 
 function App() {
-  const getToken = useRecoilValue(tokenAtom);
+  const getToken = useRecoilValue(accessTokenAtom);
   console.log(getToken);
   axios.defaults.baseURL = "https://serverus.net";
   axios.defaults.headers.common["Authorization"] = getToken;
