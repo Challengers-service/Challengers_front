@@ -13,6 +13,16 @@ export const StyledInput = styled.input<InputProps>`
   &:focus {
     outline: none;
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px ${pallet.gray1} inset;
+    box-shadow: 0 0 0px 1000px ${pallet.gray1} inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   &::placeholder {
     color: ${pallet.baseColor.subText};
     font-weight: 400;

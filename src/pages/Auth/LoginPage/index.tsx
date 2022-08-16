@@ -12,7 +12,7 @@ const Login = () => {
     <Styled.StyledLogin>
       <LoginForm />
       <Styled.ExtraGroup>
-        <Anchor text="계정이 없으신가요?" to="/" />
+        <Anchor text="계정이 없으신가요?" to="/join" />
         <Contor />
         <Styled.Gap gap="20px">
           <GooggleLogin />
