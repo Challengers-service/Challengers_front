@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   position: relative;
   background-color: #f3f5fa;
   border-radius: 13px;
-  width: 263px;
+  width: 210px;
   height: 346px;
   padding: 15px;
   display: flex;
@@ -13,9 +13,9 @@ export const Wrapper = styled.div`
 
 export const Rocket = styled.div`
   position: absolute;
-  width: 100%;
+  width: 263px;
   height: 204.46px;
-  left: -20px;
+  left: -30px;
   top: -60px;
   img {
     width: 100%;

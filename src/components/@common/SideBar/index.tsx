@@ -5,11 +5,13 @@ import { ReactComponent as ProfileIcon } from "assets/vectors/ProfileIcon.svg";
 import { ReactComponent as AboutUsIcon } from "assets/vectors/AboutUsIcon.svg";
 import { ReactComponent as LogOutIcon } from "assets/vectors/LogOutIcon.svg";
 import { Link } from "react-router-dom";
+import CreateChallengBox from "../CreateChallengBox.tsx";
+import { useState } from "react";
 
 const SideBar = () => {
   return (
     <Styled.Wrapper>
-      <Styled.Nav className="main.Nav">
+      <Styled.Nav>
         <Styled.Title>LOGO</Styled.Title>
         <Styled.Menu_ul>
           <Styled.Menu_li className="menu_li">
@@ -19,24 +21,33 @@ const SideBar = () => {
             </Link>
           </Styled.Menu_li>
           <Styled.Menu_li className="menu_li">
-            <Link to="/">
+            <Link to="/feed">
               <FeedIcon />
               <span>Feed</span>
             </Link>
           </Styled.Menu_li>
           <Styled.Menu_li className="menu_li">
-            <Link to="/">
+            <Link to="/profile">
               <ProfileIcon />
               <span>Profile</span>
             </Link>
           </Styled.Menu_li>
           <Styled.Menu_li className="menu_li">
-            <Link to="/">
+            <Link to="/about">
               <AboutUsIcon />
               <span>About us</span>
             </Link>
           </Styled.Menu_li>
         </Styled.Menu_ul>
+        <Styled.CreateChallengBoxWrapper className="createChallengeBox">
+          <CreateChallengBox />
+        </Styled.CreateChallengBoxWrapper>
+        <Styled.LogOutWrapper className="logOutWrapper">
+          <Link to="/login">
+            <LogOutIcon />
+            <span>Sign Out</span>
+          </Link>
+        </Styled.LogOutWrapper>
       </Styled.Nav>
     </Styled.Wrapper>
   );

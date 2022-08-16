@@ -9,7 +9,7 @@ const CreateChallengBox = () => {
   return (
     <Styled.Wrapper>
       <Styled.Rocket>
-        <img src={RocketPng} alt="" />
+        <img src={RocketPng} alt="rocket" />
         <RocketShadow />
       </Styled.Rocket>
       <Styled.TextWrapper>
@@ -26,6 +26,7 @@ const CreateChallengBox = () => {
           borderRadius: "13px",
           display: "flex",
           gap: "5px",
+          fontSize: "16px",
         }}
       >
         <WriteIcon />
