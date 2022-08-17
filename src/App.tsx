@@ -1,4 +1,5 @@
 import axios from "axios";
+import CreateChallengeLayout from "components/layouts/CreateChallengeLayout";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
 import HomePage from "pages/Home/HomePage";
@@ -7,10 +8,9 @@ import { useRecoilValue } from "recoil";
 import { accessTokenAtom } from "stores/auth";
 
 function App() {
-  const getToken = useRecoilValue(accessTokenAtom);
-  console.log(getToken);
+  const accessToken = useRecoilValue(accessTokenAtom);
   axios.defaults.baseURL = "https://serverus.net";
-  axios.defaults.headers.common["Authorization"] = getToken;
+  axios.defaults.headers.common["Authorization"] = accessToken;
   axios.defaults.withCredentials = true;
   axios.interceptors.response.use(
     response => {
@@ -26,6 +26,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/create-challenge"
+          element={<CreateChallengeLayout />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
