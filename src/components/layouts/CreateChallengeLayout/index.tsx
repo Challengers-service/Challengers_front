@@ -3,7 +3,9 @@ import ChallengeStep from "components/createChallenge/ChallengeStep";
 import { Outlet } from "react-router";
 import { useRecoilValue } from "recoil";
 import { challengeStepAtom } from "stores/challenge";
+import { ReactComponent as CancelIcon } from "assets/vectors/CancelIcon.svg";
 import * as Styled from "./CreateChallengeLayoutStyled";
+import { useInternalRouter } from "utils/routing";
 
 const step = {
   "1": {
@@ -25,6 +27,7 @@ const step = {
 };
 
 const CreateChallengeLayout = () => {
+  const router = useInternalRouter();
   const challengeStep = useRecoilValue(challengeStepAtom);
   return (
     <Styled.Wrapper>
@@ -51,6 +54,10 @@ const CreateChallengeLayout = () => {
         </Styled.TextGroup>
         <Outlet />
       </Styled.StepWrapper>
+      <CancelIcon
+        onClick={router.goBack}
+        className="createChallengeLayout_cancelIcon"
+      />
     </Styled.Wrapper>
   );
 };

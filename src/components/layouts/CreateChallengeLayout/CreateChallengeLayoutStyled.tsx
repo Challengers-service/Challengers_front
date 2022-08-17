@@ -13,6 +13,14 @@ export const Wrapper = styled.div`
   grid-template-areas:
     "SideBarWrapper ChallengeStepWrapper ChallengeStepWrapper"
     "SideBarWrapper . stepWrapper";
+  .createChallengeLayout_cancelIcon {
+    position: absolute;
+    left: 95.42%;
+    right: 3.47%;
+    top: 4.88%;
+    bottom: 93.55%;
+    cursor: pointer;
+  }
 `;
 
 export const ChallengeStepWrapper = styled.div`
