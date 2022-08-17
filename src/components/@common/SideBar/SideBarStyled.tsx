@@ -1,9 +1,7 @@
 import { pallet } from "constants/pallet";
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
-export const Nav = styled.nav`
+export const Wrapper = styled.nav`
   background-color: #ffffff;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20,7 +18,8 @@ export const Nav = styled.nav`
   left: 0;
   width: 85px;
   border-radius: 40px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
@@ -35,7 +34,7 @@ export const Nav = styled.nav`
       }
     }
     .createChallengeBox {
-      display: block;
+      visibility: visible;
     }
     .logOutWrapper {
       padding: 0 74px;
@@ -71,7 +70,7 @@ export const Menu_ul = styled.ul`
 export const Menu_li = styled.li`
   height: 53px;
   border-radius: 13px;
-  padding: 17px 24px;
+  padding: 17px 14px;
   &:hover {
     background-color: #f3f5fa;
     cursor: pointer;
@@ -98,7 +97,8 @@ export const Menu_li = styled.li`
 `;
 
 export const CreateChallengBoxWrapper = styled.div`
-  display: none;
+  transition: all 0.2s ease-in;
+  visibility: hidden;
   padding: 217px 15px 28px;
 `;
 

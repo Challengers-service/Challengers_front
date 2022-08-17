@@ -1,16 +1,16 @@
 import { Meta, Story } from "@storybook/react";
-import SideBar from ".";
+import CreateChallengeLayout from ".";
 
 export default {
-  title: "Common/SideBar",
-  component: SideBar,
+  title: "Layout/CreateChallengeLayout",
+  component: CreateChallengeLayout,
   parameters: {},
   argTypes: {},
 } as Meta;
 
 const Template: Story<any> = args => (
   <>
-    <SideBar {...args} />
+    <CreateChallengeLayout {...args} />
   </>
 );
 
