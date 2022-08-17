@@ -5,7 +5,6 @@ import * as Styled from "./LoginPageStyled";
 import RocketPng from "assets/png/rocket.png";
 import Contor from "components/auth/Contor";
 import { useEffect, useState } from "react";
-import { createGlobalStyle } from "styled-components";
 
 const Login = () => {
   return (
