@@ -36,6 +36,7 @@ export const Wrapper = styled.div<{ isSelect: boolean }>`
   padding: 72px 39px 49px;
   justify-content: space-between;
   box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   ${CardStyles}
   img {
     width: 100%;

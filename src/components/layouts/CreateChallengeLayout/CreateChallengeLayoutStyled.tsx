@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   position: relative;
   overflow-y: scroll;
   display: grid;
-  grid-template-columns: 130px 30px 1fr;
+  grid-template-columns: 130px minmax(30px, 50px) 1fr;
   grid-template-rows: 230px 1fr;
   grid-template-areas:
     "SideBarWrapper ChallengeStepWrapper ChallengeStepWrapper"

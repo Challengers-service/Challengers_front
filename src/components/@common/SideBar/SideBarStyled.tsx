@@ -18,8 +18,7 @@ export const Wrapper = styled.nav`
   left: 0;
   width: 85px;
   border-radius: 40px;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
 
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
