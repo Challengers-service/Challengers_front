@@ -6,6 +6,7 @@ export const Wrapper = styled.label`
   color: #333333;
   font-weight: 600;
   font-size: 18px;
+  white-space: nowrap;
   span {
     display: block;
     margin-top: 3px;

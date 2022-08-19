@@ -30,7 +30,7 @@ const sizeStyles = css<{ typography?: TypographyType }>`
     css`
       /*  font-size 16px */
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 400;
     `}
 
   ${props =>
@@ -51,6 +51,7 @@ const sizeStyles = css<{ typography?: TypographyType }>`
 `;
 
 export const StyledText = styled.span<TextProps>`
+  white-space: nowrap;
   ${props => {
     const color = props.color ? props.color : props.theme.textColor;
     return css`

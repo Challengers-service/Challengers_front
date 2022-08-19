@@ -1,6 +1,6 @@
 import Input, { InputProps } from "components/@common/Input";
 import { forwardRef } from "react";
-import Label, { Props as LabelProps } from "../Label";
+import Label, { Props as LabelProps } from "components/@common/Label";
 import { StyledLabelInput } from "./LabelnputStyled";
 
 export interface LabelInputProps extends InputProps, LabelProps {}

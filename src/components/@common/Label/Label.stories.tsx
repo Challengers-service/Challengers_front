@@ -18,4 +18,7 @@ const Template: Story<Props> = args => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  labelText: "챌린지명",
+  isRequiredIcon: true,
+};
