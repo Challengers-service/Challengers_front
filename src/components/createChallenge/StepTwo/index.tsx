@@ -1,9 +1,12 @@
 import Input from "components/@common/Input";
 import Label from "components/@common/Label";
 import Labelnput from "components/@common/Labelnput";
+import MenuItem from "components/@common/MenuItem";
 import Select from "components/@common/Select";
 import Text from "components/@common/Text";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ReactComponent as ArrowIcon } from "assets/vectors/ArrowIcon.svg";
 import * as Styled from "./StepTwoStyled";
 
 interface IForm {
@@ -23,6 +26,8 @@ const StepTwo = () => {
       ? `${watch(field)} (${getDate(watch(field))})`
       : `${new Date().toISOString().slice(0, 10)} (${getDate(new Date())})`;
   };
+  const options = ["1", "2", "3"];
+  const [select, change] = useState("1");
   return (
     <Styled.Wrapper>
       <Styled.Stack
@@ -31,14 +36,14 @@ const StepTwo = () => {
         }}
       >
         <Labelnput
-          {...register("name")}
+          {...register("name", {
+            required: true,
+          })}
           labelText="챌린지명"
           isRequiredIcon
           isBorder
           placeholder="챌린지명을 입력하세요."
-          style={{
-            width: "430px",
-          }}
+          width="430px"
         />
         <Styled.LabelSelect>
           <Styled.LabelMessageGroup>
@@ -48,10 +53,17 @@ const StepTwo = () => {
             </Styled.RequiredMessage>
           </Styled.LabelMessageGroup>
           <Select
+            Trigger={
+              <Styled.Select>
+                <label>
+                  <span>{select}</span>
+                  <ArrowIcon />
+                </label>
+              </Styled.Select>
+            }
             defaultValue="선택"
-            style={{
-              width: "196px",
-            }}
+            onChange={change}
+            options={options}
           />
         </Styled.LabelSelect>
       </Styled.Stack>
@@ -67,7 +79,9 @@ const StepTwo = () => {
           <Styled.TextInput>
             <Text color="#333333">시작일</Text>
             <Input
-              {...register("startDate")}
+              {...register("startDate", {
+                required: true,
+              })}
               type={"date"}
               dataPlaceHolder={getDatePlaceholder("startDate")}
               isBorder
@@ -78,7 +92,9 @@ const StepTwo = () => {
           <Styled.TextInput>
             <Text color="#333333">종료일</Text>
             <Input
-              {...register("endDate")}
+              {...register("endDate", {
+                required: true,
+              })}
               type={"date"}
               dataPlaceHolder={getDatePlaceholder("endDate")}
               isBorder

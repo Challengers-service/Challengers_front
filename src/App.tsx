@@ -1,4 +1,5 @@
 import axios from "axios";
+import StepTwo from "components/createChallenge/StepTwo";
 import CreateChallengeLayout from "components/layouts/CreateChallengeLayout";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-challenge" element={<CreateChallengeLayout />}>
           <Route path="one" element={<StepOnePage />} />
+          <Route path="two" element={<StepTwo />} />
         </Route>
       </Routes>
     </BrowserRouter>
