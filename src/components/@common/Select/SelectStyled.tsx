@@ -30,7 +30,7 @@ export const MenuWrapper = styled.div`
   width: 100%;
   height: fit-content;
   max-height: 403px;
-  background: #f9f9f9;
+  background: #fff;
   border: 1px solid #e1e1e1;
   border-radius: 25px;
   padding: 30px;

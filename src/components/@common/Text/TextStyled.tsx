@@ -50,6 +50,14 @@ const sizeStyles = css<{ typography?: TypographyType }>`
     `}
 `;
 
+const TextFontSize = css<TextProps>`
+  ${props =>
+    props.fontSize &&
+    css`
+      font-size: ${props.fontSize};
+    `}
+`;
+
 export const StyledText = styled.span<TextProps>`
   white-space: nowrap;
   ${props => {
@@ -58,5 +66,6 @@ export const StyledText = styled.span<TextProps>`
       color: ${color};
     `;
   }}
-  ${sizeStyles}
+  ${sizeStyles};
+  ${TextFontSize};
 `;

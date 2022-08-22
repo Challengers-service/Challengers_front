@@ -19,7 +19,7 @@ const TriggerOpenStyle = css<{ isOpen?: boolean }>`
   ${props =>
     props.isOpen === true &&
     css`
-      background: #f9f9f9;
+      background: #fff;
       border: 1px solid ${pallet.mainColor};
       svg {
         transform: rotate(0.5turn);

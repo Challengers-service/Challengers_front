@@ -24,8 +24,10 @@ const StepTwo = () => {
   const getDatePlaceholder = (field: "startDate" | "endDate") => {
     return watch(field)
       ? `${watch(field)} (${getDate(watch(field))})`
-      : `${new Date().toISOString().slice(0, 10)} (${getDate(new Date())})`;
+      : `${getDatToISOString(new Date())} (${getDate(new Date())})`;
   };
+  const getDatToISOString = (date: Date) =>
+    new Date().toISOString().slice(0, 10);
   const [select, setSelect] = useState("선택");
   return (
     <Styled.Wrapper>
@@ -101,6 +103,16 @@ const StepTwo = () => {
             />
           </Styled.TextInput>
         </Styled.TextInputGroup>
+        <Text typography="subTitle" fontSize="15px">
+          💡 챌린지가 열리고 닫히는 기간입니다. 챌린지 시작일 이후 챌린지 내용을
+          수정할 수 없습니다.
+        </Text>
+        <Text color="#FF0000" fontSize="15px">
+          *시작일 기본 고정 : 오늘 날짜
+        </Text>
+      </Styled.Stack>
+      <Styled.Stack style={{ gap: "17px", marginTop: "27px" }}>
+        <Label labelText="챌린지 설명" isRequiredIcon />
       </Styled.Stack>
     </Styled.Wrapper>
   );
