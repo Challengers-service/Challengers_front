@@ -29,7 +29,7 @@ const TriggerOpenStyle = css<{ isOpen?: boolean }>`
 
 const TriggerStyled = styled.div<{ isOpen?: boolean }>`
   cursor: pointer;
-  & > * {
+  & > div {
     ${TriggerOpenStyle}
   }
 `;

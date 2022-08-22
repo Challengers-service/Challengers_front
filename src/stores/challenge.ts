@@ -3,6 +3,14 @@ import { atom } from "recoil";
 
 export type ChallengeStepType = 1 | 2 | 3 | 4;
 
+export type ChallengeStepTwo = {
+  name: string;
+  userCountLimit: number;
+  startDate: string;
+  endDate: string;
+  introduction: string;
+} | null;
+
 export const challengeStepAtom = atom<ChallengeStepType>({
   key: "challengeStepState",
   default: 1,
@@ -11,4 +19,9 @@ export const challengeStepAtom = atom<ChallengeStepType>({
 export const selectCategoryAtom = atom<CategoryType>({
   key: "selectCategoryState",
   default: "LIFE",
+});
+
+export const challengeStepTwoAtom = atom<ChallengeStepTwo>({
+  key: "challengeStepTwoState",
+  default: null,
 });

@@ -2,7 +2,7 @@ import Button from "components/@common/Button";
 import { categories, categoryCards, CategoryType } from "constants/category";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { challengeStepAtom, selectCategoryAtom } from "stores/challenge";
-import { useInternalRouter } from "utils/routing";
+import { useInternalRouter } from "hooks/useInternalRouter";
 import CategoryCard from "../CategoryCard";
 import * as Styled from "./StepOneStyled";
 
@@ -39,10 +39,8 @@ const StepOne = () => {
       </Styled.CateogryGroup>
       <Button
         style={{
-          width: "130px",
-          height: "48px",
-          borderRadius: "10px",
           alignSelf: "flex-end",
+          width: "130px",
         }}
         size="medium"
         onClick={onClickNextButton}

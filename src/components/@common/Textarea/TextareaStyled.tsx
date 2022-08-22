@@ -1,3 +1,4 @@
+import { pallet } from "constants/pallet";
 import styled from "styled-components";
 import { Props } from ".";
 
@@ -22,7 +23,8 @@ export const TextareaStyled = styled.textarea<Props>`
     line-height: 19px;
     font-weight: 400;
     font-size: 15px;
-    color: #898d9f;
+    color: ${pallet.baseColor.subText};
     font-family: inherit;
+    letter-spacing: -0.005em;
   }
 `;

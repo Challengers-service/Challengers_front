@@ -4,7 +4,7 @@ import { ReactComponent as RocketShadow } from "assets/vectors/RocketShadow.svg"
 import { ReactComponent as WriteIcon } from "assets/vectors/WriteIcon.svg";
 import Text from "../Text";
 import Button from "../Button";
-import { useInternalRouter } from "utils/routing";
+import { useInternalRouter } from "hooks/useInternalRouter";
 
 const CreateChallengBox = () => {
   const router = useInternalRouter();

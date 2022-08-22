@@ -1,11 +1,9 @@
 import { forwardRef, PropsWithChildren, TextareaHTMLAttributes } from "react";
 import * as Styled from "./TextareaStyled";
 
-export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  placeholder_color?: string;
-}
+export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-const TextArea = forwardRef<HTMLTextAreaElement, PropsWithChildren<Props>>(
+const Textarea = forwardRef<HTMLTextAreaElement, PropsWithChildren<Props>>(
   (props, ref) => {
     return (
       <Styled.TextareaStyled ref={ref} {...props}>
@@ -15,4 +13,4 @@ const TextArea = forwardRef<HTMLTextAreaElement, PropsWithChildren<Props>>(
   }
 );
 
-export default TextArea;
+export default Textarea;

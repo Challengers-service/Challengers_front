@@ -13,7 +13,7 @@ import {
 } from "stores/auth";
 import { InputGroup, StyledLoginForm } from "./LoginFormStyled";
 import Input from "components/@common/Input";
-import { useInternalRouter } from "utils/routing";
+import { useInternalRouter } from "hooks/useInternalRouter";
 
 export interface LoginFormProps {}
 

@@ -1,7 +1,11 @@
 import { pallet } from "constants/pallet";
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.form`
+  padding-top: 80px;
+  padding-bottom: 62px;
+  padding-right: 171px;
+`;
 
 export const Stack = styled.div<{ mb?: string }>`
   width: 100%;
@@ -27,7 +31,7 @@ export const RequiredMessage = styled.span`
   white-space: nowrap;
   strong {
     font-weight: 700;
-    color: #6563ff;
+    color: ${pallet.mainColor};
   }
 `;
 
@@ -63,5 +67,19 @@ export const Select = styled.div`
     font-weight: 400;
     font-size: 15px;
     color: ${pallet.baseColor.subText};
+  }
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 15px;
+  .save_button {
+    background: ${pallet.secondary.red};
+  }
+  .prev_button {
+    background: ${pallet.baseColor.gray};
+  }
+  & > button {
+    width: 130px;
   }
 `;

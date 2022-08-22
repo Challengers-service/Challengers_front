@@ -6,6 +6,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   fullWidth?: boolean;
   mode?: "default" | "social";
+  className?: string;
 }
 
 export default function Button({
@@ -13,10 +14,17 @@ export default function Button({
   fullWidth = false,
   children,
   mode = "default",
+  className,
   ...rest
 }: ButtonProps) {
   return (
-    <StyledButton mode={mode} fullWidth={fullWidth} size={size} {...rest}>
+    <StyledButton
+      className={className}
+      mode={mode}
+      fullWidth={fullWidth}
+      size={size}
+      {...rest}
+    >
       {children}
     </StyledButton>
   );

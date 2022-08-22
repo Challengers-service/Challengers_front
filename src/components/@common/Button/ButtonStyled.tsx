@@ -15,9 +15,9 @@ const sizeStyles = css<{ size: string }>`
   ${props =>
     props.size === "medium" &&
     css`
-      height: 2.375rem;
+      height: 48px;
       font-size: 1rem;
-      border-radius: 13px;
+      border-radius: 10px;
     `}
 
   ${props =>

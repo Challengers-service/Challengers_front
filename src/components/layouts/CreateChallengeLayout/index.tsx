@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { challengeStepAtom } from "stores/challenge";
 import { ReactComponent as CancelIcon } from "assets/vectors/CancelIcon.svg";
 import * as Styled from "./CreateChallengeLayoutStyled";
-import { useInternalRouter } from "utils/routing";
+import { useInternalRouter } from "hooks/useInternalRouter";
 
 const step = {
   "1": {

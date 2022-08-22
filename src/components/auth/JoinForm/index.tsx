@@ -4,7 +4,7 @@ import Labelnput from "components/@common/Labelnput";
 import Auth from "apis/auth";
 import { JoinParams } from "apis/auth/params.interface";
 import { useForm } from "react-hook-form";
-import { useInternalRouter } from "utils/routing";
+import { useInternalRouter } from "hooks/useInternalRouter";
 import { StyledJoinForm } from "./JoinFormStyled";
 
 export interface JoinFormProps {}
