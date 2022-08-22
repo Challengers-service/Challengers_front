@@ -64,6 +64,7 @@ export const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   padding-left: 2.125rem;
   padding-right: 2.125rem;
+  min-width: max-content;
   /* 크기 */
   ${sizeStyles}
   ${fullWidthStyle}

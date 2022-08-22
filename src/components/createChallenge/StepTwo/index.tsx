@@ -13,6 +13,8 @@ import Button from "components/@common/Button";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { useSetRecoilState } from "recoil";
 import { challengeStepTwoAtom } from "stores/challenge";
+import Stack from "components/@common/Stack";
+import DefaultTrigger from "components/@common/DefaultTrigger";
 
 interface IForm {
   name: string;
@@ -58,7 +60,7 @@ const StepTwo = () => {
 
   return (
     <Styled.Wrapper onSubmit={handleSubmit(onSubmit)}>
-      <Styled.Stack
+      <Stack
         style={{
           gap: "60px",
         }}
@@ -81,21 +83,14 @@ const StepTwo = () => {
             </Styled.RequiredMessage>
           </Styled.LabelMessageGroup>
           <Select
-            trigger={
-              <Styled.Select>
-                <label>
-                  <span>{select}</span>
-                  <ArrowIcon />
-                </label>
-              </Styled.Select>
-            }
+            trigger={<DefaultTrigger value={select} />}
             defaultValue="선택"
             onChange={setSelect}
             options={options}
           />
         </Styled.LabelSelect>
-      </Styled.Stack>
-      <Styled.Stack
+      </Stack>
+      <Stack
         style={{
           marginTop: "60px",
           flexDirection: "column",
@@ -137,8 +132,8 @@ const StepTwo = () => {
         <Text color="#FF0000" fontSize="15px">
           *시작일 기본 고정 : 오늘 날짜
         </Text>
-      </Styled.Stack>
-      <Styled.Stack
+      </Stack>
+      <Stack
         style={{ flexDirection: "column", gap: "17px", marginTop: "27px" }}
       >
         <Label labelText="챌린지 설명" isRequiredIcon />
@@ -148,8 +143,8 @@ const StepTwo = () => {
           })}
           placeholder={CHALLENGE_DESCRIPTION}
         />
-      </Styled.Stack>
-      <Styled.Stack style={{ marginTop: "101px" }}>
+      </Stack>
+      <Stack style={{ marginTop: "101px" }}>
         <Styled.ButtonGroup style={{ flex: 1 }}>
           <Button
             onClick={router.goBack}
@@ -168,7 +163,7 @@ const StepTwo = () => {
             다음
           </Button>
         </Styled.ButtonGroup>
-      </Styled.Stack>
+      </Stack>
     </Styled.Wrapper>
   );
 };

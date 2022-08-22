@@ -7,11 +7,17 @@ export interface LabelInputProps extends InputProps, LabelProps {}
 
 const Labelnput = forwardRef<HTMLInputElement, LabelInputProps>(
   (
-    { width, labelText, isRequiredIcon = false, ...rest }: LabelInputProps,
+    {
+      width,
+      labelText,
+      isRequiredIcon = false,
+      style,
+      ...rest
+    }: LabelInputProps,
     ref
   ) => {
     return (
-      <StyledLabelInput>
+      <StyledLabelInput style={style}>
         <Label labelText={labelText} isRequiredIcon />
         <Input width={width} {...rest} ref={ref} />
       </StyledLabelInput>

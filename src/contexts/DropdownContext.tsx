@@ -68,7 +68,7 @@ export function Dropdown({
         ref={ref}
         style={{
           position: "relative",
-          width: "196px",
+          width: "fit-content",
         }}
       >
         {children}

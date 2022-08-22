@@ -7,12 +7,6 @@ export const Wrapper = styled.form`
   padding-right: 171px;
 `;
 
-export const Stack = styled.div<{ mb?: string }>`
-  width: 100%;
-  display: flex;
-  margin-bottom: ${props => props.mb};
-`;
-
 export const LabelSelect = styled.div`
   width: 100%;
 `;
