@@ -7,10 +7,8 @@ interface Props {}
 const Menu = ({ children }: PropsWithChildren<Props>) => {
   const { isOpen } = useDropdownContext();
 
-  if (!isOpen) return null;
-
   return (
-    <Styled.MenuWrapper>
+    <Styled.MenuWrapper style={{ display: isOpen ? "block" : "none" }}>
       <Styled.Lists>{children}</Styled.Lists>
     </Styled.MenuWrapper>
   );

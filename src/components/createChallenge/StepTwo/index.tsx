@@ -16,6 +16,7 @@ interface IForm {
 }
 
 const week = ["일", "월", "화", "수", "목", "금", "토"];
+const options = new Array(1000).fill(0).map((_, index) => `${index + 1}`);
 
 const StepTwo = () => {
   const { register, watch } = useForm<IForm>();
@@ -25,7 +26,6 @@ const StepTwo = () => {
       ? `${watch(field)} (${getDate(watch(field))})`
       : `${new Date().toISOString().slice(0, 10)} (${getDate(new Date())})`;
   };
-  const options = ["1", "2", "3"];
   const [select, setSelect] = useState("선택");
   return (
     <Styled.Wrapper>
