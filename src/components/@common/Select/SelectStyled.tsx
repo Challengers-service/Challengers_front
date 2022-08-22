@@ -62,7 +62,7 @@ export const ItemWrapper = styled.li<{ isSelect?: boolean }>`
     color: ${pallet.mainColor};
   }
 
-  /* ${selectItemStyle} */
+  ${selectItemStyle}
 `;
 
 export const Option = styled.div``;

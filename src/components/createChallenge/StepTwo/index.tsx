@@ -26,7 +26,7 @@ const StepTwo = () => {
       : `${new Date().toISOString().slice(0, 10)} (${getDate(new Date())})`;
   };
   const options = ["1", "2", "3"];
-  const [select, change] = useState("선택");
+  const [select, setSelect] = useState("선택");
   return (
     <Styled.Wrapper>
       <Styled.Stack
@@ -61,7 +61,7 @@ const StepTwo = () => {
               </Styled.Select>
             }
             defaultValue="선택"
-            onChange={change}
+            onChange={setSelect}
             options={options}
           />
         </Styled.LabelSelect>
