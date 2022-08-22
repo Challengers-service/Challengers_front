@@ -1,7 +1,6 @@
 import Input from "components/@common/Input";
 import Label from "components/@common/Label";
 import Labelnput from "components/@common/Labelnput";
-import MenuItem from "components/@common/MenuItem";
 import Select from "components/@common/Select";
 import Text from "components/@common/Text";
 import { useState } from "react";
@@ -27,7 +26,7 @@ const StepTwo = () => {
       : `${new Date().toISOString().slice(0, 10)} (${getDate(new Date())})`;
   };
   const options = ["1", "2", "3"];
-  const [select, change] = useState("1");
+  const [select, change] = useState("선택");
   return (
     <Styled.Wrapper>
       <Styled.Stack
@@ -53,7 +52,7 @@ const StepTwo = () => {
             </Styled.RequiredMessage>
           </Styled.LabelMessageGroup>
           <Select
-            Trigger={
+            trigger={
               <Styled.Select>
                 <label>
                   <span>{select}</span>

@@ -27,7 +27,7 @@ export const MenuWrapper = styled.div`
   position: absolute;
   top: 61px;
   left: 0;
-  width: 196px;
+  width: 100%;
   height: fit-content;
   max-height: 403px;
   background: #f9f9f9;

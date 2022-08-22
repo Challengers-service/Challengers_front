@@ -46,7 +46,7 @@ export const TextInput = styled.div`
 
 export const Select = styled.div`
   position: relative;
-  width: 100%;
+  width: 196px;
   background: #f9f9f9;
   border: 1px solid #e1e1e1;
   border-radius: 90px;

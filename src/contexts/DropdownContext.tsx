@@ -1,9 +1,11 @@
 import Item from "components/@common/Select/Item";
 import Menu from "components/@common/Select/Menu";
 import Trigger from "components/@common/Select/Trigger";
+import useOutsideClick from "hooks/useOutSideClick";
 import {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -30,10 +32,14 @@ export function Dropdown({
   children,
   onChange,
 }: PropsWithChildren<Props>) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const [select, setSelect] = useState(value);
 
   const firstMounded = useRef(true);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(ref, setOpen);
+
   useEffect(() => {
     if (!firstMounded.current) {
       onChange && onChange(select);
@@ -41,24 +47,28 @@ export function Dropdown({
     firstMounded.current = false;
   }, [select]);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
 
-  const handleClose = (item?: string) => {
-    setIsOpen(false);
-  };
-  const handleSelctAndClose = (item: string) => {
-    handleClose();
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  const handleSelctAndClose = useCallback((item: string) => {
     setSelect(item);
-  };
+    handleClose();
+  }, []);
+
   return (
     <DropdownContext.Provider
       value={{ isOpen, select, handleOpen, handleClose, handleSelctAndClose }}
     >
       <div
+        ref={ref}
         style={{
           position: "relative",
+          width: "196px",
         }}
       >
         {children}
