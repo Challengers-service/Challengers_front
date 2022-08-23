@@ -1,9 +1,10 @@
 import axios from "axios";
-import StepTwo from "components/createChallenge/StepTwo";
 import CreateChallengeLayout from "components/layouts/CreateChallengeLayout";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
 import StepOnePage from "pages/CreateChallenge/StepOnePage";
+import StepThreePage from "pages/CreateChallenge/StepThreePage";
+import StepTwoPage from "pages/CreateChallenge/StepTwoPage";
 import HomePage from "pages/Home/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -30,7 +31,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-challenge" element={<CreateChallengeLayout />}>
           <Route path="one" element={<StepOnePage />} />
-          <Route path="two" element={<StepTwo />} />
+          <Route path="two" element={<StepTwoPage />} />
+          <Route path="three" element={<StepThreePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

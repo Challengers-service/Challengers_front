@@ -5,11 +5,14 @@ import * as Styled from "./SelectStyled";
 interface Props {}
 
 const Menu = ({ children }: PropsWithChildren<Props>) => {
-  const { isOpen } = useDropdownContext();
+  const { isOpen, type } = useDropdownContext();
 
   return (
-    <Styled.MenuWrapper style={{ display: isOpen ? "block" : "none" }}>
-      <Styled.Lists>{children}</Styled.Lists>
+    <Styled.MenuWrapper
+      type={type}
+      style={{ display: isOpen ? "block" : "none" }}
+    >
+      <Styled.Lists type={type}>{children}</Styled.Lists>
     </Styled.MenuWrapper>
   );
 };

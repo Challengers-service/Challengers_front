@@ -23,27 +23,50 @@ export const Select = styled.div`
   }
 `;
 
-export const MenuWrapper = styled.div`
-  position: absolute;
-  top: 61px;
-  left: 0;
-  width: 100%;
-  height: fit-content;
-  max-height: 403px;
-  background: #fff;
-  border: 1px solid #e1e1e1;
-  border-radius: 25px;
-  padding: 30px;
-  padding-right: 0;
-  z-index: 1000;
+const MenuTypeStyles = css<{ type: string }>`
+  ${props =>
+    props.type === "default" &&
+    css`
+      position: absolute;
+      top: 61px;
+      left: 0;
+      width: 100%;
+      height: fit-content;
+      max-height: 403px;
+      background: #fff;
+      border: 1px solid #e1e1e1;
+      border-radius: 25px;
+      padding: 30px;
+      padding-right: 0;
+      z-index: 1000;
+    `}
 `;
 
-export const Lists = styled.ul`
-  width: 100%;
-  height: fit-content;
-  max-height: calc(403px - 60px);
-  border-radius: 0;
-  overflow: auto;
+export const MenuWrapper = styled.div<{ type: string }>`
+  ${MenuTypeStyles}
+`;
+
+const ListTypeStyles = css<{ type: string }>`
+  ${props =>
+    props.type === "default" &&
+    css`
+      width: 100%;
+      height: fit-content;
+      max-height: calc(403px - 60px);
+      border-radius: 0;
+      overflow: auto;
+    `}
+
+  ${props =>
+    props.type === "button" &&
+    css`
+      display: flex;
+      gap: 15px;
+    `}
+`;
+
+export const Lists = styled.ul<{ type: string }>`
+  ${ListTypeStyles}
 `;
 
 const selectItemStyle = css<{ isSelect?: boolean }>`
@@ -63,6 +86,35 @@ export const ItemWrapper = styled.li<{ isSelect?: boolean }>`
   }
 
   ${selectItemStyle}
+`;
+
+const ItemButtonSelect = css<{ isSelect?: boolean }>`
+  ${props =>
+    props.isSelect &&
+    css`
+      color: ${pallet.mainColor};
+      border: 1px solid ${pallet.mainColor};
+    `}
+`;
+
+export const ItemButton = styled.li<{ isSelect?: boolean }>`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  padding-left: 2.125rem;
+  padding-right: 2.125rem;
+  min-width: max-content;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 90px;
+  height: 52px;
+  font-weight: 400;
+  font-size: 15px;
+  width: fit-content;
+  color: ${pallet.baseColor.subText};
+  cursor: pointer;
+  ${ItemButtonSelect}
 `;
 
 export const Option = styled.div``;

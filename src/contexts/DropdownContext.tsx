@@ -12,12 +12,15 @@ import {
   useState,
 } from "react";
 
+export type DropdownContextType = "default" | "button";
+
 interface DropdownContextValue {
   isOpen: boolean;
   select: string;
   handleOpen: () => void;
   handleClose: () => void;
-  handleSelctAndClose: (item: string) => void;
+  handleSelect: (item: string) => void;
+  type: DropdownContextType;
 }
 
 const DropdownContext = createContext<DropdownContextValue | null>(null);
@@ -26,6 +29,8 @@ interface Props {
   value?: string;
   initialValue?: string;
   onChange?: (newSelect: string) => void;
+  type?: DropdownContextType;
+  isAlwaysOpen?: boolean;
 }
 
 export function Dropdown({
@@ -33,13 +38,17 @@ export function Dropdown({
   children,
   onChange,
   initialValue = "선택",
+  type = "default",
+  isAlwaysOpen = false,
 }: PropsWithChildren<Props>) {
   const [isOpen, setOpen] = useState(false);
   const [select, setSelect] = useState(initialValue);
 
-  const getSelect = () => (isControlled ? value : select);
-
+  /* value가 없으면서 onChange가 없으면 제어권 없음 */
   const isControlled = value !== undefined && !!onChange;
+
+  /* 제어권이 있을때는 제어중인 value값을 제어권이 없을때는 Context가 제어중인 select를 반환 */
+  const getSelect = () => (isControlled ? value : select);
 
   const firstMounded = useRef(true);
   const ref = useRef<HTMLDivElement>(null);
@@ -54,30 +63,30 @@ export function Dropdown({
   }, [select, isControlled, onChange]);
 
   const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
+    !isAlwaysOpen && setOpen(true);
+  }, [isAlwaysOpen]);
 
   const handleClose = useCallback(() => {
-    setOpen(false);
-  }, []);
+    !isAlwaysOpen && setOpen(false);
+  }, [isAlwaysOpen]);
 
-  const handleSelctAndClose = useCallback((item: string) => {
-    handleSelectChange(item);
-    handleClose();
-  }, []);
-
-  const handleSelectChange = (newValue: string) => {
-    isControlled ? onChange(newValue) : setSelect(newValue);
-  };
+  const handleSelect = useCallback(
+    (item: string) => {
+      isControlled ? onChange(item) : setSelect(item);
+      handleClose();
+    },
+    [isControlled, isAlwaysOpen]
+  );
 
   return (
     <DropdownContext.Provider
       value={{
-        isOpen,
+        isOpen: isAlwaysOpen ? true : isOpen,
         select: getSelect(),
         handleOpen,
         handleClose,
-        handleSelctAndClose,
+        handleSelect,
+        type,
       }}
     >
       <div

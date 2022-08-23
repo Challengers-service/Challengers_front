@@ -6,14 +6,26 @@ export interface Props {
 }
 
 const Item = ({ value }: Props) => {
-  const { handleSelctAndClose, select } = useDropdownContext();
+  const { handleSelect, select, type } = useDropdownContext();
   return (
-    <Styled.ItemWrapper
-      isSelect={select === value}
-      onClick={() => handleSelctAndClose(value)}
-    >
-      {value}
-    </Styled.ItemWrapper>
+    <>
+      {type === "default" && (
+        <Styled.ItemWrapper
+          isSelect={select === value}
+          onClick={() => handleSelect(value)}
+        >
+          {value}
+        </Styled.ItemWrapper>
+      )}
+      {type === "button" && (
+        <Styled.ItemButton
+          isSelect={select === value}
+          onClick={() => handleSelect(value)}
+        >
+          {value}
+        </Styled.ItemButton>
+      )}
+    </>
   );
 };
 
