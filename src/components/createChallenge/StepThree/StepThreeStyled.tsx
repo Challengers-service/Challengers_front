@@ -35,6 +35,7 @@ export const ButtonAndSelect = styled.div`
 
 export const SelectWrapper = styled.div<{ isOpen?: boolean }>`
   display: none;
+  margin-left: 40px;
   ${props =>
     props.isOpen &&
     css`

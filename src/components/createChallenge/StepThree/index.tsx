@@ -4,25 +4,27 @@ import Label from "components/@common/Label";
 import Labelnput from "components/@common/Labelnput";
 import Select from "components/@common/Select";
 import Stack from "components/@common/Stack";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useChallengeFrequency from "../hooks/useChallengeFrequency";
 import * as Styled from "./StepThreeStyled";
 
 interface IForm {
   depositPoint: number;
 }
-
-const options2 = ["매일", "매주", "직접입력"];
-const options = new Array(7).fill(0).map((_, index) => `${index + 1}`);
-
 const StepThree = () => {
   const { register } = useForm<IForm>();
-  const [focus, setFocus] = useState(false);
-  const [select, setSelect] = useState("매일");
-  const onChangeSelect = (newSelect: string) => {
-    console.log(newSelect);
-    setSelect(newSelect);
-  };
+  const {
+    selectFrequency,
+    onChangeFrequency,
+    frequencyOptions,
+    selectTimesPerRound,
+    onChangeTimesPerRound,
+    timesPerRoundOptions,
+    getCheckFrequencyType,
+    getCheckTimesPerRound,
+  } = useChallengeFrequency();
+
+  // console.log(getCheckFrequencyType(selectFrequency), getCheckTimesPerRound());
   return (
     <Styled.Wrapper>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>
@@ -45,40 +47,32 @@ const StepThree = () => {
         <Styled.ButtonGroup>
           <Select
             initialValue="매일"
-            value={select}
-            onChange={onChangeSelect}
-            options={options2}
+            value={selectFrequency}
+            onChange={onChangeFrequency as (select: string) => void}
+            options={frequencyOptions}
             isAlwaysOpen
             type="button"
           />
-          {/* <Button type="button" size="medium">
-            매일
-          </Button>
-          <Button type="button" size="medium">
-            매주
-          </Button> */}
-          {/* <Styled.ButtonAndSelect>
-            <Button onFocus={() => setFocus(true)} type="button" size="medium">
-              직접 입력
-            </Button>
-            <Styled.SelectWrapper isOpen={focus}>
-              <div className="first_child">
-                <Select
-                  trigger={
-                    <DefaultTrigger className="trigger" value={select} />
-                  }
-                  initialValue="0"
-                  value={select}
-                  onChange={onChangeSelect}
-                  options={options}
-                />
-                <span>회</span>
-              </div>
-              <span>
-                💡 기준: <strong>7일</strong>
-              </span>
-            </Styled.SelectWrapper>
-          </Styled.ButtonAndSelect> */}
+          <Styled.SelectWrapper isOpen={selectFrequency === "직접입력"}>
+            <div className="first_child">
+              <Select
+                trigger={
+                  <DefaultTrigger
+                    className="trigger"
+                    value={selectTimesPerRound}
+                  />
+                }
+                initialValue="0"
+                value={selectTimesPerRound}
+                onChange={onChangeTimesPerRound}
+                options={timesPerRoundOptions}
+              />
+              <span>회</span>
+            </div>
+            <span>
+              💡 기준: <strong>7일</strong>
+            </span>
+          </Styled.SelectWrapper>
         </Styled.ButtonGroup>
       </Stack>
     </Styled.Wrapper>
