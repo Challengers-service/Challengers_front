@@ -20,7 +20,7 @@ export const TextareaStyled = styled.textarea<Props>`
     outline: none;
   }
   &::placeholder {
-    line-height: 19px;
+    line-height: 24px;
     font-weight: 400;
     font-size: 15px;
     color: ${pallet.baseColor.subText};

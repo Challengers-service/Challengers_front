@@ -11,6 +11,14 @@ export type ChallengeStepTwo = {
   introduction: string;
 } | null;
 
+export type ChallengeStepThree = {
+  depositPoint: number;
+  challengeRule: string;
+  examplePhotos: FileList | null;
+  CheckFrequencyType: string;
+  CheckTimesPerRound: number;
+} | null;
+
 export const challengeStepAtom = atom<ChallengeStepType>({
   key: "challengeStepState",
   default: 1,
@@ -23,5 +31,10 @@ export const selectCategoryAtom = atom<CategoryType>({
 
 export const challengeStepTwoAtom = atom<ChallengeStepTwo>({
   key: "challengeStepTwoState",
+  default: null,
+});
+
+export const challengeStepThreeAtom = atom<ChallengeStepThree>({
+  key: "challengeStepThreeState",
   default: null,
 });

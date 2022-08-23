@@ -7,9 +7,13 @@ export const Wrapper = styled.label`
   font-weight: 600;
   font-size: 18px;
   white-space: nowrap;
-  span {
+  strong {
     display: block;
     margin-top: 3px;
     color: ${pallet.mainColor};
+  }
+  .subText {
+    margin-left: 7px;
+    color: ${pallet.baseColor.subText};
   }
 `;

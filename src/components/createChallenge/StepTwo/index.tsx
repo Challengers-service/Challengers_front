@@ -15,6 +15,7 @@ import { useSetRecoilState } from "recoil";
 import { challengeStepTwoAtom } from "stores/challenge";
 import Stack from "components/@common/Stack";
 import DefaultTrigger from "components/@common/DefaultTrigger";
+import ButtonGroupStack from "../ButtonGroupStack";
 
 interface IForm {
   name: string;
@@ -149,26 +150,7 @@ const StepTwo = () => {
           placeholder={CHALLENGE_DESCRIPTION}
         />
       </Stack>
-      <Stack style={{ marginTop: "101px" }}>
-        <Styled.ButtonGroup style={{ flex: 1 }}>
-          <Button
-            onClick={router.goBack}
-            type="button"
-            className="prev_button"
-            size="medium"
-          >
-            이전
-          </Button>
-        </Styled.ButtonGroup>
-        <Styled.ButtonGroup>
-          <Button type="button" className="save_button" size="medium">
-            임시 저장
-          </Button>
-          <Button type="submit" className="next_button" size="medium">
-            다음
-          </Button>
-        </Styled.ButtonGroup>
-      </Stack>
+      <ButtonGroupStack />
     </Styled.Wrapper>
   );
 };
