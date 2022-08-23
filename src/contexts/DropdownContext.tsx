@@ -23,17 +23,23 @@ interface DropdownContextValue {
 const DropdownContext = createContext<DropdownContextValue | null>(null);
 
 interface Props {
-  value: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
+  value?: string;
+  initialValue?: string;
+  onChange?: (newSelect: string) => void;
 }
 
 export function Dropdown({
   value,
   children,
   onChange,
+  initialValue = "선택",
 }: PropsWithChildren<Props>) {
   const [isOpen, setOpen] = useState(false);
-  const [select, setSelect] = useState(value);
+  const [select, setSelect] = useState(initialValue);
+
+  const getSelect = () => (isControlled ? value : select);
+
+  const isControlled = value !== undefined && !!onChange;
 
   const firstMounded = useRef(true);
   const ref = useRef<HTMLDivElement>(null);
@@ -41,11 +47,11 @@ export function Dropdown({
   useOutsideClick(ref, setOpen);
 
   useEffect(() => {
-    if (!firstMounded.current) {
+    if (!firstMounded.current && !isControlled) {
       onChange && onChange(select);
     }
     firstMounded.current = false;
-  }, [select]);
+  }, [select, isControlled, onChange]);
 
   const handleOpen = useCallback(() => {
     setOpen(true);
@@ -56,13 +62,23 @@ export function Dropdown({
   }, []);
 
   const handleSelctAndClose = useCallback((item: string) => {
-    setSelect(item);
+    handleSelectChange(item);
     handleClose();
   }, []);
 
+  const handleSelectChange = (newValue: string) => {
+    isControlled ? onChange(newValue) : setSelect(newValue);
+  };
+
   return (
     <DropdownContext.Provider
-      value={{ isOpen, select, handleOpen, handleClose, handleSelctAndClose }}
+      value={{
+        isOpen,
+        select: getSelect(),
+        handleOpen,
+        handleClose,
+        handleSelctAndClose,
+      }}
     >
       <div
         ref={ref}

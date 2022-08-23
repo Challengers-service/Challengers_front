@@ -48,6 +48,10 @@ const StepTwo = () => {
     return `${watch(field)} (${getDate(watch(field))})`;
   };
 
+  const onChangeSelect = (newSelect: string) => {
+    setSelect(newSelect);
+  };
+
   const onSubmit: SubmitHandler<IForm> = data => {
     if (!watch("userCountLimit")) return;
     setChallengeStepTwo(data);
@@ -84,8 +88,9 @@ const StepTwo = () => {
           </Styled.LabelMessageGroup>
           <Select
             trigger={<DefaultTrigger value={select} />}
-            defaultValue="선택"
-            onChange={setSelect}
+            initialValue="선택"
+            value={select}
+            onChange={onChangeSelect}
             options={options}
           />
         </Styled.LabelSelect>

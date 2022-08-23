@@ -2,15 +2,16 @@ import { ReactNode } from "react";
 import { Dropdown } from "contexts/DropdownContext";
 
 export interface Props {
-  defaultValue: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
+  value?: string;
+  initialValue?: string;
+  onChange?: (value: string) => void;
   trigger: ReactNode;
   options: string[];
 }
 
-const Select = ({ defaultValue, onChange, trigger, options }: Props) => {
+const Select = ({ value, initialValue, onChange, trigger, options }: Props) => {
   return (
-    <Dropdown value={defaultValue} onChange={onChange}>
+    <Dropdown value={value} initialValue={initialValue} onChange={onChange}>
       <Dropdown.Trigger>{trigger}</Dropdown.Trigger>
       <Dropdown.Menu>
         {options.map((option, index) => (

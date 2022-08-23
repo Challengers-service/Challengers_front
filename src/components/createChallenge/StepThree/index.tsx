@@ -18,6 +18,9 @@ const StepThree = () => {
   const { register } = useForm<IForm>();
   const [focus, setFocus] = useState(false);
   const [select, setSelect] = useState("0");
+  const onChangeSelect = (newSelect: string) => {
+    setSelect(newSelect);
+  };
   return (
     <Styled.Wrapper>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>
@@ -54,8 +57,9 @@ const StepThree = () => {
                   trigger={
                     <DefaultTrigger className="trigger" value={select} />
                   }
-                  defaultValue="0"
-                  onChange={setSelect}
+                  initialValue="0"
+                  value={select}
+                  onChange={onChangeSelect}
                   options={options}
                 />
                 <span>회</span>
