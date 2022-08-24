@@ -1,5 +1,5 @@
 import { CategoryType } from "constants/category";
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export type ChallengeStepType = 1 | 2 | 3 | 4;
 
@@ -37,4 +37,21 @@ export const challengeStepTwoAtom = atom<ChallengeStepTwo>({
 export const challengeStepThreeAtom = atom<ChallengeStepThree>({
   key: "challengeStepThreeState",
   default: null,
+  dangerouslyAllowMutability: true,
+});
+
+export const createChallengeSelector = selector({
+  key: "createChallengeSelectState",
+  get: ({ get }) => {
+    const category = get(selectCategoryAtom);
+    const stepTwo = get(challengeStepTwoAtom);
+    const stepThree = get(challengeStepThreeAtom);
+    if (stepTwo === null || stepThree === null) return null;
+    return {
+      category,
+      ...stepTwo,
+      ...stepThree,
+    };
+  },
+  dangerouslyAllowMutability: true,
 });

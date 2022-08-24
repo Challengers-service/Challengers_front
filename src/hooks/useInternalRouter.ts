@@ -22,4 +22,4 @@ type RoutePath =
   | "/create-challenge/one"
   | "/create-challenge/two"
   | "/create-challenge/three"
-  | "/create-challenge/four";
+  | "/create-challenge/finish";

@@ -1,3 +1,4 @@
+import { postChallege } from "apis/challenge";
 import defaultCheckImage from "assets/png/defaultCheckImage.png";
 import Button from "components/@common/Button";
 import DefaultTrigger from "components/@common/DefaultTrigger";
@@ -9,10 +10,13 @@ import Stack from "components/@common/Stack";
 import Textarea from "components/@common/Textarea";
 import { CHALLENGE_RULE } from "constants/placeholder";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import { challengeStepThreeAtom } from "stores/challenge";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  challengeStepThreeAtom,
+  createChallengeSelector,
+} from "stores/challenge";
 import ButtonGroupStack from "../ButtonGroupStack";
 import useChallengeFrequency from "../hooks/useChallengeFrequency";
 import * as Styled from "./StepThreeStyled";
@@ -24,6 +28,7 @@ interface IForm {
 }
 const StepThree = () => {
   const router = useInternalRouter();
+  const createChallenge = useRecoilValue(createChallengeSelector);
   const setChallengeStepThree = useSetRecoilState(challengeStepThreeAtom);
   const { register, watch, setValue, handleSubmit } = useForm<IForm>();
   const {
@@ -53,8 +58,16 @@ const StepThree = () => {
       CheckFrequencyType: getCheckFrequencyType(selectFrequency),
       CheckTimesPerRound: getCheckTimesPerRound(),
     });
-    router.push("/create-challenge/four");
   };
+
+  useEffect(() => {
+    if (createChallenge !== null) {
+      console.log(createChallenge);
+      postChallege(createChallenge).then(() =>
+        router.push("/create-challenge/finish")
+      );
+    }
+  }, [createChallenge]);
   return (
     <Styled.Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>
