@@ -10,7 +10,7 @@ import Stack from "components/@common/Stack";
 import Textarea from "components/@common/Textarea";
 import { CHALLENGE_RULE } from "constants/placeholder";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
@@ -20,7 +20,6 @@ import {
 } from "stores/challenge";
 import ButtonGroupStack from "../ButtonGroupStack";
 import useChallengeFrequency from "../hooks/useChallengeFrequency";
-import useResetCreateChallenge from "../hooks/useResetCreateChallenge";
 import * as Styled from "./StepThreeStyled";
 
 interface IForm {
@@ -30,11 +29,15 @@ interface IForm {
 }
 const StepThree = () => {
   const router = useInternalRouter();
-  const { reset } = useResetCreateChallenge();
+  const [isCallAPI, setIsCallAPI] = useState(false);
+
   const createChallenge = useRecoilValue(createChallengeSelector);
+
   const setChallengeStep = useSetRecoilState(challengeStepAtom);
   const setChallengeStepThree = useSetRecoilState(challengeStepThreeAtom);
+
   const { register, watch, setValue, handleSubmit } = useForm<IForm>();
+
   const {
     selectFrequency,
     onChangeFrequency,
@@ -46,9 +49,11 @@ const StepThree = () => {
     getCheckTimesPerRound,
   } = useChallengeFrequency();
   const inputRef = useRef<HTMLInputElement>(null);
+
   const onClickButton = () => {
     inputRef.current && inputRef.current.click();
   };
+
   const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       if (e.target.files.length > 3) alert("최대 3장");
@@ -61,17 +66,18 @@ const StepThree = () => {
       checkFrequencyType: getCheckFrequencyType(selectFrequency),
       checkTimesPerRound: getCheckTimesPerRound(),
     });
+    setIsCallAPI(true);
   };
 
   useEffect(() => {
-    if (createChallenge !== null) {
+    if (isCallAPI && createChallenge !== null) {
       postChallege(createChallenge).then(() => {
         setChallengeStep(4);
-        reset();
         router.push("/create-challenge/finish");
       });
     }
-  }, [createChallenge]);
+    return () => setIsCallAPI(false);
+  }, [isCallAPI, createChallenge]);
   return (
     <Styled.Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>

@@ -28,6 +28,7 @@ export const postChallege = async (params: CreateChallengeParams) => {
         break;
     }
   });
+  formData.append("photoDescription", "TEST");
   const response = await axios.post("/api/challenge", formData);
   return response.data;
 };
