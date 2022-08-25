@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   background-color: #f3f5fa;
   border-radius: 13px;
   width: 210px;
-  height: 346px;
+  height: 305px;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ export const Rocket = styled.div`
 export const TextWrapper = styled.div`
   flex: 1;
   width: 100%;
-  padding-top: 160px;
+  padding-top: 130px;
   display: flex;
   flex-direction: column;
   gap: 12px;
