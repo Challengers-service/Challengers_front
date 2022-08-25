@@ -1,5 +1,5 @@
 import Button from "components/@common/Button";
-import { categories, categoryCards, CategoryType } from "constants/category";
+import { categories, categoryDetail, CategoryType } from "constants/category";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { challengeStepAtom, selectCategoryAtom } from "stores/challenge";
 import { useInternalRouter } from "hooks/useInternalRouter";
@@ -32,7 +32,7 @@ const StepOne = () => {
           >
             <CategoryCard
               isSelect={selectCategory === category}
-              {...categoryCards[category]}
+              {...categoryDetail[category]}
             />
           </Styled.CategoryCardWrapper>
         ))}

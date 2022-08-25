@@ -38,7 +38,7 @@ const CreateChallengeLayout = () => {
         <ChallengeStep />
       </Styled.ChallengeStepWrapper>
       <Styled.StepWrapper>
-        <Styled.TextGroup>
+        <Styled.TextGroup step={challengeStep}>
           <Styled.Text
             style={{
               marginBottom: "40px",

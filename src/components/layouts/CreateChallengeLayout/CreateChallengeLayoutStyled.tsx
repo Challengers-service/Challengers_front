@@ -1,5 +1,6 @@
 import { pallet } from "constants/pallet";
-import styled from "styled-components";
+import { ChallengeStepType } from "stores/challenge";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -35,9 +36,14 @@ export const StepWrapper = styled.div`
   grid-area: stepWrapper;
 `;
 
-export const TextGroup = styled.div`
+export const TextGroup = styled.div<{ step: ChallengeStepType }>`
   display: flex;
   flex-direction: column;
+  ${props =>
+    props.step === 4 &&
+    css`
+      align-items: center;
+    `}
 `;
 
 export const Text = styled.span<{ fontSize: string }>`

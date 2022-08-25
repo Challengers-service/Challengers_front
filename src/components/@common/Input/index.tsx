@@ -31,7 +31,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...rest}
         />
         {errorMessage ? <Message>{errorMessage}</Message> : null}
-        {rest.type === "date" && <ArrowIcon />}
+        {rest.type === "date" && <ArrowIcon fill="#666666" />}
       </Wrapper>
     );
   }

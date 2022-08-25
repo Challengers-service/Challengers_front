@@ -7,6 +7,7 @@ export interface TextProps {
   typography?: TypographyType;
   color?: string;
   fontSize?: string;
+  className?: string;
 }
 
 export default function Text({
@@ -14,9 +15,15 @@ export default function Text({
   children,
   color,
   fontSize,
+  className,
 }: PropsWithChildren<TextProps>) {
   return (
-    <StyledText fontSize={fontSize} typography={typography} color={color}>
+    <StyledText
+      className={className}
+      fontSize={fontSize}
+      typography={typography}
+      color={color}
+    >
       {children}
     </StyledText>
   );

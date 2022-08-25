@@ -2,6 +2,7 @@ import axios from "axios";
 import CreateChallengeLayout from "components/layouts/CreateChallengeLayout";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
+import StepFinishPage from "pages/CreateChallenge/stepFinishPage";
 import StepOnePage from "pages/CreateChallenge/StepOnePage";
 import StepThreePage from "pages/CreateChallenge/StepThreePage";
 import StepTwoPage from "pages/CreateChallenge/StepTwoPage";
@@ -33,6 +34,7 @@ function App() {
           <Route path="one" element={<StepOnePage />} />
           <Route path="two" element={<StepTwoPage />} />
           <Route path="three" element={<StepThreePage />} />
+          <Route path="finish" element={<StepFinishPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

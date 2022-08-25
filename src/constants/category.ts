@@ -13,7 +13,7 @@ export const categories: CategoryType[] = [
   "SELF_DEVELOPMENT",
 ];
 
-export const categoryCards: Record<CategoryType, CategoryCardProps> = {
+export const categoryDetail: Record<CategoryType, CategoryCardProps> = {
   LIFE: {
     imgUrl: lifePng,
     koreaTitle: "라이프",

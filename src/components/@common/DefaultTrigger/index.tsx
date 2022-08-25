@@ -11,7 +11,7 @@ const DefaultTrigger = ({ value, className }: Props) => {
     <Styled.Select className={className}>
       <label>
         <span>{value}</span>
-        <ArrowIcon />
+        <ArrowIcon fill="#666666" />
       </label>
     </Styled.Select>
   );
