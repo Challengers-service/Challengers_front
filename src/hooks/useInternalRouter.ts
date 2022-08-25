@@ -15,4 +15,11 @@ export function useInternalRouter() {
   }, [navigate]);
 }
 
-type RoutePath = "/auth/join" | "/auth/login";
+type RoutePath =
+  | "/"
+  | "/join"
+  | "/login"
+  | "/create-challenge/one"
+  | "/create-challenge/two"
+  | "/create-challenge/three"
+  | "/create-challenge/finish";

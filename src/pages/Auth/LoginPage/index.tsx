@@ -5,14 +5,13 @@ import * as Styled from "./LoginPageStyled";
 import RocketPng from "assets/png/rocket.png";
 import Contor from "components/auth/Contor";
 import { useEffect, useState } from "react";
-import { createGlobalStyle } from "styled-components";
 
 const Login = () => {
   return (
     <Styled.StyledLogin>
       <LoginForm />
       <Styled.ExtraGroup>
-        <Anchor text="계정이 없으신가요?" to="/" />
+        <Anchor text="계정이 없으신가요?" to="/join" />
         <Contor />
         <Styled.Gap gap="20px">
           <GooggleLogin />

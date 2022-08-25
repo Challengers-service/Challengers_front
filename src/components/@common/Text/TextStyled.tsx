@@ -1,3 +1,4 @@
+import { pallet } from "constants/pallet";
 import styled, { css } from "styled-components";
 import { TextProps, TypographyType } from ".";
 
@@ -5,8 +6,7 @@ const sizeStyles = css<{ typography?: TypographyType }>`
   ${props =>
     props.typography === "h1" &&
     css`
-      /*  font-size 30px */
-      font-size: 40px;
+      font-size: 25px;
       font-weight: 700;
     `}
 
@@ -30,24 +30,42 @@ const sizeStyles = css<{ typography?: TypographyType }>`
     css`
       /*  font-size 16px */
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 400;
     `}
 
   ${props =>
     props.typography === "h5" &&
     css`
-      /*  font-size 15px */
       font-size: 15px;
       font-weight: 400;
+    `}
+
+    ${props =>
+    props.typography === "subTitle" &&
+    css`
+      font-size: 14px;
+      font-weight: 400;
+      color: ${pallet.baseColor.subText};
+      line-height: 12px;
+    `}
+`;
+
+const TextFontSize = css<TextProps>`
+  ${props =>
+    props.fontSize &&
+    css`
+      font-size: ${props.fontSize};
     `}
 `;
 
 export const StyledText = styled.span<TextProps>`
-  ${sizeStyles}
+  white-space: nowrap;
   ${props => {
     const color = props.color ? props.color : props.theme.textColor;
     return css`
       color: ${color};
     `;
   }}
+  ${sizeStyles};
+  ${TextFontSize};
 `;

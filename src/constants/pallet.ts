@@ -9,9 +9,13 @@ export const pallet = {
   baseColor: {
     black: "#333333",
     subText: "#898D9F",
-    gray: '#D7D7D7"',
+    gray: "#D7D7D7",
     line: "#EBEBED",
   },
   mainColor: "#6563FF",
-  secondary: {},
+  secondary: {
+    gray: "#F3F5FA",
+    purple: "#A2A1FF",
+    red: "#E67283",
+  },
 };

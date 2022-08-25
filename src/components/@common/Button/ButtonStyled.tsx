@@ -15,9 +15,9 @@ const sizeStyles = css<{ size: string }>`
   ${props =>
     props.size === "medium" &&
     css`
-      height: 2.375rem;
+      height: 48px;
       font-size: 1rem;
-      border-radius: 13px;
+      border-radius: 10px;
     `}
 
   ${props =>
@@ -64,6 +64,7 @@ export const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   padding-left: 2.125rem;
   padding-right: 2.125rem;
+  min-width: max-content;
   /* 크기 */
   ${sizeStyles}
   ${fullWidthStyle}
