@@ -14,9 +14,9 @@ export type ChallengeStepTwo = {
 export type ChallengeStepThree = {
   depositPoint: number;
   challengeRule: string;
-  examplePhotos: FileList | null;
-  CheckFrequencyType: string;
-  CheckTimesPerRound: number;
+  examplePhotos: FileList;
+  checkFrequencyType: string;
+  checkTimesPerRound: number;
 } | null;
 
 export const challengeStepAtom = atom<ChallengeStepType>({

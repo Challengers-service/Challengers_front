@@ -9,21 +9,25 @@ interface CreateChallengeParams {
   introduction: string;
   depositPoint: number;
   challengeRule: string;
-  examplePhotos: FileList | null;
-  CheckFrequencyType: string;
-  CheckTimesPerRound: number;
+  examplePhotos: FileList;
+  checkFrequencyType: string;
+  checkTimesPerRound: number;
   category: CategoryType;
 }
-
 export const postChallege = async (params: CreateChallengeParams) => {
-  const response = await axios.post(
-    "/api/challenge",
-    { ...params, photoDescription: "테스트" },
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+  const formData = new FormData();
+  (Object.keys(params) as (keyof typeof params)[]).forEach((key, _) => {
+    switch (key) {
+      case "examplePhotos":
+        [].forEach.call(params[key], f => {
+          formData.append("examplePhotos", f);
+        });
+        break;
+      default:
+        formData.append(`${key}`, String(params[key]));
+        break;
     }
-  );
+  });
+  const response = await axios.post("/api/challenge", formData);
   return response.data;
 };

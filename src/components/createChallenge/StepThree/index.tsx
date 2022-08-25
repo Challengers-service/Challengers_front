@@ -14,21 +14,25 @@ import { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
+  challengeStepAtom,
   challengeStepThreeAtom,
   createChallengeSelector,
 } from "stores/challenge";
 import ButtonGroupStack from "../ButtonGroupStack";
 import useChallengeFrequency from "../hooks/useChallengeFrequency";
+import useResetCreateChallenge from "../hooks/useResetCreateChallenge";
 import * as Styled from "./StepThreeStyled";
 
 interface IForm {
   depositPoint: number;
   challengeRule: string;
-  examplePhotos: FileList | null;
+  examplePhotos: FileList;
 }
 const StepThree = () => {
   const router = useInternalRouter();
+  const { reset } = useResetCreateChallenge();
   const createChallenge = useRecoilValue(createChallengeSelector);
+  const setChallengeStep = useSetRecoilState(challengeStepAtom);
   const setChallengeStepThree = useSetRecoilState(challengeStepThreeAtom);
   const { register, watch, setValue, handleSubmit } = useForm<IForm>();
   const {
@@ -41,7 +45,6 @@ const StepThree = () => {
     getCheckFrequencyType,
     getCheckTimesPerRound,
   } = useChallengeFrequency();
-
   const inputRef = useRef<HTMLInputElement>(null);
   const onClickButton = () => {
     inputRef.current && inputRef.current.click();
@@ -55,17 +58,18 @@ const StepThree = () => {
   const onSubmit: SubmitHandler<IForm> = data => {
     setChallengeStepThree({
       ...data,
-      CheckFrequencyType: getCheckFrequencyType(selectFrequency),
-      CheckTimesPerRound: getCheckTimesPerRound(),
+      checkFrequencyType: getCheckFrequencyType(selectFrequency),
+      checkTimesPerRound: getCheckTimesPerRound(),
     });
   };
 
   useEffect(() => {
     if (createChallenge !== null) {
-      console.log(createChallenge);
-      postChallege(createChallenge).then(() =>
-        router.push("/create-challenge/finish")
-      );
+      postChallege(createChallenge).then(() => {
+        setChallengeStep(4);
+        reset();
+        router.push("/create-challenge/finish");
+      });
     }
   }, [createChallenge]);
   return (
@@ -78,6 +82,7 @@ const StepThree = () => {
           isBorder
           placeholder="최대 0,000P 입력 가능"
           style={{ width: "300px" }}
+          type="number"
         />
         <Button type="button" className="depositPoint_button" size="medium">
           전액 사용

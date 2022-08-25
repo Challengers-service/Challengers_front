@@ -12,7 +12,7 @@ import { CHALLENGE_DESCRIPTION } from "constants/placeholder";
 import Button from "components/@common/Button";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { useSetRecoilState } from "recoil";
-import { challengeStepTwoAtom } from "stores/challenge";
+import { challengeStepAtom, challengeStepTwoAtom } from "stores/challenge";
 import Stack from "components/@common/Stack";
 import DefaultTrigger from "components/@common/DefaultTrigger";
 import ButtonGroupStack from "../ButtonGroupStack";
@@ -36,6 +36,7 @@ const nextDate = Date.now() - offset - new Date().getTimezoneOffset() * 160000;
 const StepTwo = () => {
   const router = useInternalRouter();
   const setChallengeStepTwo = useSetRecoilState(challengeStepTwoAtom);
+  const setChallengeStep = useSetRecoilState(challengeStepAtom);
 
   const [select, setSelect] = useState("선택");
   const { register, watch, handleSubmit, setValue } = useForm<IForm>({
@@ -55,6 +56,7 @@ const StepTwo = () => {
 
   const onSubmit: SubmitHandler<IForm> = data => {
     if (!watch("userCountLimit")) return;
+    setChallengeStep(3);
     setChallengeStepTwo(data);
     router.push("/create-challenge/three");
   };
