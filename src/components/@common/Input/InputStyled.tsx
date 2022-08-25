@@ -4,17 +4,32 @@ import { InputProps } from ".";
 
 export const Wrapper = styled.div<InputProps>`
   position: relative;
-  svg {
+  .date_icon {
     position: absolute;
     top: 21px;
     right: 20px;
     cursor: pointer;
+  }
+  .input_icon {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translate(0, -50%);
   }
   ${props => {
     return css`
       width: ${props.width};
     `;
   }}
+`;
+
+const InputWithIconStyle = css<InputProps>`
+  ${props =>
+    props.isIcon === true &&
+    css`
+      padding-left: 58px;
+      padding-right: 58px;
+    `}
 `;
 
 export const StyledInput = styled.input<InputProps>`
@@ -25,6 +40,7 @@ export const StyledInput = styled.input<InputProps>`
   border: none;
   border-radius: 90px;
   background: ${pallet.gray1};
+  ${InputWithIconStyle};
   &:focus {
     outline: none;
   }

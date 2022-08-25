@@ -7,9 +7,13 @@ import { ReactComponent as LogOutIcon } from "assets/vectors/LogOutIcon.svg";
 import { Link } from "react-router-dom";
 import CreateChallengBox from "../CreateChallengBox.tsx";
 
-const SideBar = () => {
+interface Props {
+  className?: string;
+}
+
+const SideBar = ({ className }: Props) => {
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper className={className}>
       <Styled.Nav>
         <Styled.Title>LOGO</Styled.Title>
         <Styled.Menu_ul>
