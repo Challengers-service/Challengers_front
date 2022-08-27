@@ -29,6 +29,12 @@ const InputWithIconStyle = css<InputProps>`
     css`
       padding-left: 58px;
       padding-right: 58px;
+      background: linear-gradient(
+        90.27deg,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.75) 100%
+      );
+      box-shadow: 0px 0px 20px rgba(29, 54, 152, 0.04);
     `}
 `;
 

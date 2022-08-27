@@ -1,4 +1,4 @@
-import { postChallege } from "apis/challenge";
+import { postChallege } from "lib/apis/challenge";
 import defaultCheckImage from "assets/png/defaultCheckImage.png";
 import Button from "components/@common/Button";
 import DefaultTrigger from "components/@common/DefaultTrigger";
@@ -29,7 +29,7 @@ interface IForm {
 }
 const StepThree = () => {
   const router = useInternalRouter();
-  const [isCallAPI, setIsCallAPI] = useState(false);
+  const isCallAPI = useRef(false);
 
   const createChallenge = useRecoilValue(createChallengeSelector);
 
@@ -66,18 +66,17 @@ const StepThree = () => {
       checkFrequencyType: getCheckFrequencyType(selectFrequency),
       checkTimesPerRound: getCheckTimesPerRound(),
     });
-    setIsCallAPI(true);
+    isCallAPI.current = true;
   };
 
   useEffect(() => {
-    if (isCallAPI && createChallenge !== null) {
+    if (isCallAPI.current && createChallenge !== null) {
       postChallege(createChallenge).then(() => {
         setChallengeStep(4);
         router.push("/create-challenge/finish");
       });
     }
-    return () => setIsCallAPI(false);
-  }, [isCallAPI, createChallenge]);
+  }, [createChallenge]);
   return (
     <Styled.Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>

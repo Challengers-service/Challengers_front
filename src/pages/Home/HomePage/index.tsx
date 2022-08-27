@@ -2,6 +2,7 @@ import * as Styled from "./HomePageStyled";
 import Input from "components/@common/Input";
 import SidebarLayout from "components/layouts/SidebarLayout";
 import { SearchIcon } from "components/@common/vectors";
+import Alarm from "components/@common/Alarm";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
           icon={<SearchIcon />}
         />
       </Styled.Wrapper>
+      <Alarm />
     </SidebarLayout>
   );
 };
