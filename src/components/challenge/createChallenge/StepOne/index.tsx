@@ -1,10 +1,11 @@
 import Button from "components/@common/Button";
-import { categories, categoryDetail, CategoryType } from "constants/category";
+import { categories, categoryDetail } from "constants/category";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { challengeStepAtom, selectCategoryAtom } from "stores/challenge";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import CategoryCard from "../CategoryCard";
 import * as Styled from "./StepOneStyled";
+import { CategoryType } from "lib/apis/challenge/types";
 
 const StepOne = () => {
   const router = useInternalRouter();

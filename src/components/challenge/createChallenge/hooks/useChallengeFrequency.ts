@@ -1,8 +1,9 @@
+import { CheckFrequencyType } from "lib/apis/challenge/types";
 import { useCallback, useState } from "react";
 
 type frequencyOptionType = "매일" | "매주" | "직접입력";
 const frequencyOptions: frequencyOptionType[] = ["매일", "매주", "직접입력"];
-const checkFrequencyType: Record<frequencyOptionType, string> = {
+const checkFrequencyType: Record<frequencyOptionType, CheckFrequencyType> = {
   매일: "EVERY_DAY",
   매주: "EVERY_WEEK",
   직접입력: "OTHERS",

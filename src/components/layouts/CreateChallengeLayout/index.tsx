@@ -1,5 +1,5 @@
 import SideBar from "components/@common/SideBar";
-import ChallengeStep from "components/createChallenge/ChallengeStep";
+import ChallengeStep from "components/challenge/createChallenge/ChallengeStep";
 import { Outlet } from "react-router";
 import { useRecoilValue } from "recoil";
 import { challengeStepAtom } from "stores/challenge";

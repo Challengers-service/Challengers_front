@@ -1,4 +1,4 @@
-import { CategoryType } from "constants/category";
+import { CategoryType } from "lib/apis/challenge/types";
 import { atom, selector } from "recoil";
 
 export type ChallengeStepType = 1 | 2 | 3 | 4;
