@@ -19,7 +19,7 @@ import {
   createChallengeSelector,
 } from "stores/challenge";
 import ButtonGroupStack from "../ButtonGroupStack";
-import useChallengeFrequency from "../hooks/useChallengeFrequency";
+import useChallengeFrequency from "../../hooks/useChallengeFrequency";
 import * as Styled from "./StepThreeStyled";
 
 interface IForm {

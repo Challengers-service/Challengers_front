@@ -6,7 +6,7 @@ import * as Styled from "./StepFinishStyled";
 import NextArrow from "components/@common/NextArrow";
 import Text from "components/@common/Text";
 import { pallet } from "constants/pallet";
-import useResetCreateChallenge from "../hooks/useResetCreateChallenge";
+import useResetCreateChallenge from "../../hooks/useResetCreateChallenge";
 import { useInternalRouter } from "hooks/useInternalRouter";
 
 const StepFinish = () => {
