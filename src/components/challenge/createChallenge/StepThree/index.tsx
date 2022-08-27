@@ -10,7 +10,7 @@ import Stack from "components/@common/Stack";
 import Textarea from "components/@common/Textarea";
 import { CHALLENGE_RULE } from "constants/placeholder";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
