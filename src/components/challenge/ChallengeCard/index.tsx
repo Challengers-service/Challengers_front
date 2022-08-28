@@ -3,6 +3,7 @@ import Heart from "components/@common/Heart";
 import Stack from "components/@common/Stack";
 import Tag from "components/@common/Tag";
 import Text from "components/@common/Text";
+
 import { GetChallenge } from "lib/apis/challenge/types";
 import * as Styled from "./ChallengeCardStyled";
 
@@ -49,6 +50,7 @@ const ChallengeCard = ({ challenge }: Props) => {
           {profileImgUrls.map((url, index) => (
             <Avatar key={url + "-" + index} url={url} />
           ))}
+          <Avatar />
         </Styled.Participants>
       </Stack>
     </Styled.LinkWrapper>

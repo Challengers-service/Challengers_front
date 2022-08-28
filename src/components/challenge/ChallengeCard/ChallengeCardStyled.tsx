@@ -64,14 +64,16 @@ export const Participants = styled.div`
   & > div {
     position: absolute;
   }
-  /* &:nth-child(1) {
+  & > div:nth-of-type(2) {
+    left: 23px;
+  }
+  & > div:nth-of-type(3) {
+    left: calc(23px * 2);
+  }
+`;
 
-    position: absolute;
-  }
-  &:nth-child(2) {
-    position: absolute;
-  }
-  &:nth-child(3) {
-    position: absolute;
-  } */
+export const PlusCircle = styled.div`
+  background: #f2f2f2;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
 `;
