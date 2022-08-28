@@ -1,6 +1,21 @@
+import { pallet } from "constants/pallet";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const LinkWrapper = styled(Link)`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    137.5deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    #ffffff 0.01%,
+    rgba(255, 255, 255, 0.6) 91.15%
+  );
+  border: 1px solid #ffffff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+`;
 
 export const Title = styled.div`
   font-weight: 700;
@@ -8,4 +23,55 @@ export const Title = styled.div`
   line-height: 31px;
   letter-spacing: -0.005em;
   color: #333333;
+`;
+
+export const DateAndHeart = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+`;
+
+export const Date = styled.span`
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: -0.005em;
+  color: ${pallet.baseColor.subText};
+  flex: 1;
+`;
+
+export const Category = styled.span`
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: -0.005em;
+  color: ${pallet.baseColor.subText};
+`;
+
+export const Tags = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 41px;
+`;
+
+export const Participants = styled.div`
+  position: relative;
+  display: flex;
+  height: 38px;
+  & > div {
+    position: absolute;
+  }
+  /* &:nth-child(1) {
+
+    position: absolute;
+  }
+  &:nth-child(2) {
+    position: absolute;
+  }
+  &:nth-child(3) {
+    position: absolute;
+  } */
 `;

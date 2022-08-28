@@ -1,10 +1,9 @@
 import { Meta, Story } from "@storybook/react";
-import { mock_getChallenge } from "mock/challenge";
-import ChallengeCard, { Props } from ".";
+import Heart, { Props } from ".";
 
 export default {
-  title: "Home/ChallengeCard",
-  component: ChallengeCard,
+  title: "Common/Heart",
+  component: Heart,
   parameters: {},
   argTypes: {},
 } as Meta;
@@ -12,13 +11,11 @@ export default {
 const Template: Story<Props> = args => (
   <>
     <div>
-      <ChallengeCard {...args} />
+      <Heart {...args} />
     </div>
   </>
 );
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {
-  challenge: mock_getChallenge,
-};
+Default.args = {};
