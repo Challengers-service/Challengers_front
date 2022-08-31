@@ -59,7 +59,7 @@ const modeStyles = css<{ mode?: "default" | "social" | "join" }>`
     css`
       width: 100px;
       background: #333333;
-      height: "38px";
+      height: 38px;
       color: white;
       font-size: 16px;
       font-weight: 500;
@@ -80,7 +80,7 @@ export const StyledButton = styled.button<ButtonProps>`
   /* 크기 */
   ${sizeStyles}
   ${fullWidthStyle}
-  /* default | social */
+  /* default | social | "join" */
   ${modeStyles}
 
   ${props =>

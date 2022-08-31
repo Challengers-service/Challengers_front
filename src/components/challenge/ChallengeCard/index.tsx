@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import Avatar from "components/@common/Avatar";
 import Button from "components/@common/Button";
 import Heart from "components/@common/Heart";
@@ -23,10 +24,11 @@ const ChallengeCard = ({ challenge }: Props) => {
     hasJoined,
     cart,
   } = challenge;
+  const formetDate = dayjs(createdDate).format("MMMM d, YYYY");
   return (
     <Styled.LinkWrapper to={`/challenge/${challengeId}`}>
       <Styled.DateAndHeart>
-        <Styled.Date>{createdDate}</Styled.Date>
+        <Styled.Date>{formetDate}</Styled.Date>
         <Heart isFill={cart} />
       </Styled.DateAndHeart>
       <Stack
@@ -46,7 +48,7 @@ const ChallengeCard = ({ challenge }: Props) => {
           <Tag key={name + "-" + challengeId} name={name} />
         ))}
       </Styled.Tags>
-      <Stack>
+      <Stack style={{ alignItems: "center" }}>
         <Styled.Participants>
           {profileImgUrls.map((url, index) => (
             <Avatar key={url + "-" + index} url={url} />
