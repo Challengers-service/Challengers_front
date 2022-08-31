@@ -14,7 +14,7 @@ export const LinkWrapper = styled(Link)`
     rgba(255, 255, 255, 0.6) 91.15%
   );
   border: 1px solid #ffffff;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.03);
   border-radius: 20px;
 
   width: 20rem;

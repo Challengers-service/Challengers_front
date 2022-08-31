@@ -15,7 +15,7 @@ const Avatar = ({ url }: Props) => {
   const isUrl = Boolean(url);
   const bgColor = isUrl
     ? bgColors[getRandomInt(0, bgColors.length)]
-    : "#9090b4";
+    : "#F2F2F2";
   return (
     <Styled.Avatar isUrl={isUrl} bgColor={bgColor}>
       {isUrl ? (

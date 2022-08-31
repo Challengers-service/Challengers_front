@@ -67,3 +67,12 @@ export interface GetChallenge {
 export interface GetChallengeResult extends Pagination {
   content: GetChallenge[];
 }
+
+export type Tab = "popular" | "new";
+
+export interface PaginationParams {
+  page?: number;
+  size?: number;
+  orderBy?: "desc" | "asc";
+  tab?: Tab;
+}
