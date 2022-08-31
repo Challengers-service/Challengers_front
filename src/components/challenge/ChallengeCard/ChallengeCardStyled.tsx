@@ -1,4 +1,5 @@
 import { pallet } from "constants/pallet";
+import { mediaQuery } from "lib/styles/media";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -15,6 +16,19 @@ export const LinkWrapper = styled(Link)`
   border: 1px solid #ffffff;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
+
+  width: 20rem;
+  margin: 1rem;
+  ${mediaQuery(1056)} {
+    width: calc(50% - 2rem);
+  }
+  ${mediaQuery(767)} {
+    margin: 0;
+    width: 100%;
+    & + & {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const Title = styled.div`

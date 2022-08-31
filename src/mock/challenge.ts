@@ -12,3 +12,7 @@ export const mock_getChallenge: GetChallenge = {
   hasJoined: false,
   profileImgUrls: [DefaultAvatar, DefaultAvatar],
 };
+
+export const mock_getChallenges: GetChallenge[] = new Array(10).fill(
+  mock_getChallenge
+);

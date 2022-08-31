@@ -5,7 +5,6 @@ import Heart from "components/@common/Heart";
 import Stack from "components/@common/Stack";
 import Tag from "components/@common/Tag";
 import Text from "components/@common/Text";
-
 import { GetChallenge } from "lib/apis/challenge/types";
 import * as Styled from "./ChallengeCardStyled";
 
