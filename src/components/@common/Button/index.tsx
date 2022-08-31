@@ -2,15 +2,15 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 import { StyledButton } from "./ButtonStyled";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size: "large" | "medium" | "small";
+  size?: "large" | "medium" | "small";
   children?: ReactNode;
   fullWidth?: boolean;
-  mode?: "default" | "social";
+  mode?: "default" | "social" | "join";
   className?: string;
 }
 
 export default function Button({
-  size,
+  size = "medium",
   fullWidth = false,
   children,
   mode = "default",

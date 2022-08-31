@@ -1,4 +1,5 @@
 import Avatar from "components/@common/Avatar";
+import Button from "components/@common/Button";
 import Heart from "components/@common/Heart";
 import Stack from "components/@common/Stack";
 import Tag from "components/@common/Tag";
@@ -52,6 +53,9 @@ const ChallengeCard = ({ challenge }: Props) => {
           ))}
           <Avatar />
         </Styled.Participants>
+        <Button disabled={hasJoined} type="button" mode="join">
+          Join
+        </Button>
       </Stack>
     </Styled.LinkWrapper>
   );

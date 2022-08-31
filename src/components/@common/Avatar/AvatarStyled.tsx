@@ -1,20 +1,6 @@
 import styled, { css } from "styled-components";
 
-const UrlStyled = css<{ isUrl: boolean }>`
-  ${props =>
-    props.isUrl &&
-    css`
-      background-color: #9090b4;
-    `}
-
-  ${props =>
-    !props.isUrl &&
-    css`
-      background: #f2f2f2;
-    `}
-`;
-
-export const Avatar = styled.div<{ isUrl: boolean }>`
+export const Avatar = styled.div<{ isUrl: boolean; bgColor: string }>`
   width: 38px;
   height: 38px;
   border: 1px solid #ffffff;
@@ -22,5 +8,10 @@ export const Avatar = styled.div<{ isUrl: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${UrlStyled};
+
+  ${props => {
+    return css`
+      background: ${props.bgColor};
+    `;
+  }}
 `;

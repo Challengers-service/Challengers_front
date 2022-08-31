@@ -60,6 +60,7 @@ export const Tags = styled.div`
 export const Participants = styled.div`
   position: relative;
   display: flex;
+  flex: 1;
   height: 38px;
   & > div {
     position: absolute;

@@ -2,7 +2,7 @@ import { pallet } from "constants/pallet";
 import styled, { css } from "styled-components";
 import { ButtonProps } from ".";
 
-const sizeStyles = css<{ size: string }>`
+const sizeStyles = css<{ size?: "large" | "medium" | "small" }>`
   ${props =>
     props.size === "large" &&
     css`
@@ -37,7 +37,7 @@ const fullWidthStyle = css<{ fullWidth?: boolean }>`
     `}
 `;
 
-const modeStyles = css<{ mode?: "default" | "social" }>`
+const modeStyles = css<{ mode?: "default" | "social" | "join" }>`
   ${props =>
     props.mode === "default" &&
     css`
@@ -52,6 +52,18 @@ const modeStyles = css<{ mode?: "default" | "social" }>`
       background: #ffffff;
       border: 1px solid #333333;
       color: #333333;
+    `}
+
+  ${props =>
+    props.mode === "join" &&
+    css`
+      width: 100px;
+      background: #333333;
+      height: "38px";
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
     `}
 `;
 
@@ -70,4 +82,11 @@ export const StyledButton = styled.button<ButtonProps>`
   ${fullWidthStyle}
   /* default | social */
   ${modeStyles}
+
+  ${props =>
+    props.disabled === true &&
+    css`
+      background: #d7d7d7;
+      border-radius: 10px;
+    `}
 `;

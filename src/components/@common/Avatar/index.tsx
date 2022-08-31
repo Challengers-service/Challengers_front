@@ -4,10 +4,20 @@ export interface Props {
   url?: string;
 }
 
+const bgColors = ["#607EAA", "#CFE8A9", "#EAE3D2", "#E7C2C2", "#FECD70"];
+function getRandomInt(min: number, max: number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 const Avatar = ({ url }: Props) => {
   const isUrl = Boolean(url);
+  const bgColor = isUrl
+    ? bgColors[getRandomInt(0, bgColors.length)]
+    : "#9090b4";
   return (
-    <Styled.Avatar isUrl={isUrl}>
+    <Styled.Avatar isUrl={isUrl} bgColor={bgColor}>
       {isUrl ? (
         <img src={url} alt="프로필 이미지" />
       ) : (
