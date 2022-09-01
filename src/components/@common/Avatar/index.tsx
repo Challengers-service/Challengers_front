@@ -1,3 +1,4 @@
+import { getRandomInt } from "lib/utils/getRandomInt";
 import * as Styled from "./AvatarStyled";
 
 export interface Props {
@@ -5,11 +6,6 @@ export interface Props {
 }
 
 const bgColors = ["#607EAA", "#CFE8A9", "#EAE3D2", "#E7C2C2", "#FECD70"];
-function getRandomInt(min: number, max: number) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
 
 const Avatar = ({ url }: Props) => {
   const isUrl = Boolean(url);
