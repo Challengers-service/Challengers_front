@@ -54,7 +54,7 @@ const ChallengeCard = ({ challenge }: Props) => {
           ))}
           <Avatar />
         </Styled.Participants>
-        <Button disabled={hasJoined} type="button" mode="join">
+        <Button disabled={!hasJoined} type="button" mode="join">
           Join
         </Button>
       </Stack>

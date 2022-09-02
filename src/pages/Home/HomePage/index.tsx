@@ -3,12 +3,13 @@ import Input from "components/@common/Input";
 import SidebarLayout from "components/layouts/SidebarLayout";
 import { SearchIcon } from "components/@common/vectors";
 import Alarm from "components/@common/Alarm";
-import { mock_getChallenges } from "mock/challenge";
 import ChallengeCardList from "components/challenge/ChallengeCardList";
 import Stack from "components/@common/Stack";
 import Text from "components/@common/Text";
+import useChallengeLoad from "hooks/queries/challenge/useChallengeLoad";
 
 const HomePage = () => {
+  const { data, viewElement } = useChallengeLoad("popular");
   return (
     <SidebarLayout>
       <Styled.Wrapper>
@@ -22,7 +23,8 @@ const HomePage = () => {
           <Alarm />
         </Stack>
         <Text typography="h1">Dashboard</Text>
-        <ChallengeCardList challenges={mock_getChallenges} />
+        <ChallengeCardList challengeResults={data?.pages} />
+        {viewElement}
       </Styled.Wrapper>
     </SidebarLayout>
   );

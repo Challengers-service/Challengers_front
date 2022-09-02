@@ -71,7 +71,7 @@ export interface GetChallengeResult extends Pagination {
 export type Tab = "popular" | "new";
 
 export interface PaginationParams {
-  page?: number;
+  page: number;
   size?: number;
   orderBy?: "desc" | "asc";
   tab?: Tab;

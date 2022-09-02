@@ -1,5 +1,10 @@
 import axios from "axios";
-import { CreateChallengeParams, PaginationParams, Tab } from "./types";
+import {
+  CreateChallengeParams,
+  GetChallengeResult,
+  PaginationParams,
+  Tab,
+} from "./types";
 
 export const postChallege = async (params: CreateChallengeParams) => {
   const formData = new FormData();
@@ -21,13 +26,13 @@ export const postChallege = async (params: CreateChallengeParams) => {
 };
 
 export const getChallenge = async ({
-  page = 0,
+  page,
   size = 9,
   orderBy = "desc",
   tab,
 }: PaginationParams) => {
   const sortTab = tab === "popular" ? "userCount" : "id";
-  const response = await axios.get(`/api/challenge`, {
+  const response = await axios.get<GetChallengeResult>(`/api/challenge`, {
     params: {
       page,
       size,

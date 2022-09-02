@@ -20,5 +20,34 @@ const Template: Story<Props> = args => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  challenges: mock_getChallenges,
+  challengeResults: [
+    {
+      content: mock_getChallenges,
+      pageable: {
+        sort: {
+          empty: true,
+          sorted: false,
+          unsorted: true,
+        },
+        offset: 0,
+        pageNumber: 0,
+        pageSize: 9,
+        paged: true,
+        unpaged: false,
+      },
+      last: true,
+      totalPages: 1,
+      totalElements: 5,
+      first: true,
+      sort: {
+        empty: true,
+        sorted: false,
+        unsorted: true,
+      },
+      size: 9,
+      number: 0,
+      numberOfElements: 5,
+      empty: false,
+    },
+  ],
 };

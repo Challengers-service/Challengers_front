@@ -1,17 +1,19 @@
-import { GetChallenge } from "lib/apis/challenge/types";
+import { GetChallengeResult } from "lib/apis/challenge/types";
 import ChallengeCard from "../ChallengeCard";
 import * as Styled from "./ChallengeCardListStyled";
 
 export interface Props {
-  challenges: GetChallenge[];
+  challengeResults?: GetChallengeResult[];
 }
 
-const ChallengeCardList = ({ challenges }: Props) => {
+const ChallengeCardList = ({ challengeResults }: Props) => {
   return (
     <Styled.Wrapper>
-      {challenges.map(challenge => (
-        <ChallengeCard key={challenge.challengeId} challenge={challenge} />
-      ))}
+      {challengeResults?.map(challengeResult => {
+        return challengeResult.content.map(challenge => (
+          <ChallengeCard key={challenge.challengeId} challenge={challenge} />
+        ));
+      })}
     </Styled.Wrapper>
   );
 };
