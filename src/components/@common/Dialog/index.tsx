@@ -12,7 +12,7 @@ export interface Props {
   subText?: string;
   onClose(): void;
   onConfirm(): void;
-  mode: "default" | "image";
+  onClickSubText?(): void;
 }
 
 const Dialog = ({
@@ -23,6 +23,7 @@ const Dialog = ({
   subText,
   onClose,
   onConfirm,
+  onClickSubText,
 }: Props) => {
   return (
     <Modal visible={visible}>
@@ -34,7 +35,12 @@ const Dialog = ({
           <div>{title}</div>
           <div>{content}</div>
         </Styled.Contents>
-        <Button onClick={onConfirm}>{confirmText}</Button>
+        <Button className="confirm_button" fullWidth onClick={onConfirm}>
+          {confirmText || "확인"}
+        </Button>
+        {subText !== undefined && (
+          <Styled.SubText onClick={onClickSubText}>{subText}</Styled.SubText>
+        )}
       </Styled.Wrapper>
     </Modal>
   );

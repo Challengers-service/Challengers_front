@@ -1,3 +1,4 @@
+import { DialogProvider } from "contexts/DialogContext";
 import React from "react";
 import { CookiesProvider } from "react-cookie";
 import ReactDOM from "react-dom/client";
@@ -22,7 +23,9 @@ root.render(
         <RecoilRoot>
           <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <App />
+            <DialogProvider>
+              <App />
+            </DialogProvider>
           </ThemeProvider>
           <ReactQueryDevtools initialIsOpen={true} />
         </RecoilRoot>
