@@ -1,8 +1,8 @@
 import ChallengeCardList from "components/challenge/ChallengeCardList";
 import useChallengeLoad from "hooks/queries/challenge/useChallengeLoad";
 
-const HomePage = () => {
-  const { data, viewElement } = useChallengeLoad("popular");
+const HomeNewChallengePage = () => {
+  const { data, viewElement } = useChallengeLoad("new");
   return (
     <>
       <ChallengeCardList challengeResults={data?.pages} />
@@ -11,4 +11,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomeNewChallengePage;
