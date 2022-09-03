@@ -5,10 +5,19 @@ import { ReactComponent as WriteIcon } from "assets/vectors/WriteIcon.svg";
 import Text from "../Text";
 import Button from "../Button";
 import { useInternalRouter } from "hooks/useInternalRouter";
+import { useRecoilValue } from "recoil";
+import { isLoggedAtom } from "stores/auth";
+import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
 
 const CreateChallengBox = () => {
   const router = useInternalRouter();
-  const onClick = () => router.push("/create-challenge/one");
+  const isLogin = useRecoilValue(isLoggedAtom);
+  const openLoginDialog = useOpenLoginDialog();
+  const onClick = () => {
+    if (!isLogin) {
+      openLoginDialog();
+    } else router.push("/create-challenge/one");
+  };
   return (
     <Styled.Wrapper>
       <Styled.Rocket>

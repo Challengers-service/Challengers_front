@@ -35,8 +35,8 @@ function App() {
         </Route>
         <Route path="/join" element={<JoinPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/create-challenge" element={<CreateChallengeLayout />}>
-          <Route path="one" element={<StepOnePage />} />
+        <Route path="/create-challenge/one" element={<CreateChallengeLayout />}>
+          <Route path="" element={<StepOnePage />} />
           <Route path="two" element={<StepTwoPage />} />
           <Route path="three" element={<StepThreePage />} />
           <Route path="finish" element={<StepFinishPage />} />
