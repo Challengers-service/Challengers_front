@@ -75,4 +75,5 @@ export interface PaginationParams {
   size?: number;
   orderBy?: "desc" | "asc";
   tab?: Tab;
+  challengeName?: string;
 }

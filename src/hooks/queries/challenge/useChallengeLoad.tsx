@@ -5,10 +5,15 @@ import { Tab } from "lib/apis/challenge/types";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-function useChallengeLoad(tab: Tab) {
+interface UseChallengeLoad {
+  tab: Tab;
+  challengeName?: string;
+}
+
+function useChallengeLoad({ tab, challengeName }: UseChallengeLoad) {
   const { ref, inView } = useInView();
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
-    [QUERY_KEYS.CHALLENGES, tab],
+    [QUERY_KEYS.CHALLENGES, tab, challengeName],
     ({ pageParam = 0 }) => getChallenge({ page: pageParam, tab }),
     {
       getNextPageParam: lastPage =>

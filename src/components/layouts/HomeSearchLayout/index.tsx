@@ -1,14 +1,11 @@
-import Tab from "components/home/Tab";
 import { Outlet } from "react-router";
 import HomeLayout from "../HomeLayout";
 
-const HomeWithTabLayout = () => {
+const HomeSearchLayout = () => {
   return (
     <HomeLayout>
-      <Tab />
       <Outlet />
     </HomeLayout>
   );
 };
-
-export default HomeWithTabLayout;
+export default HomeSearchLayout;

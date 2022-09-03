@@ -30,6 +30,7 @@ export const getChallenge = async ({
   size = 9,
   orderBy = "desc",
   tab,
+  challengeName,
 }: PaginationParams) => {
   const sortTab = tab === "popular" ? "userCount" : "id";
   const response = await axios.get<GetChallengeResult>(`/api/challenge`, {
@@ -37,6 +38,7 @@ export const getChallenge = async ({
       page,
       size,
       sort: `${sortTab},${orderBy}`,
+      challengeName,
     },
   });
   return response.data;
