@@ -12,7 +12,7 @@ import {
   useState,
 } from "react";
 
-export type DropdownContextType = "default" | "button";
+export type DropdownContextType = "default" | "button" | "home";
 
 interface DropdownContextValue {
   isOpen: boolean;
