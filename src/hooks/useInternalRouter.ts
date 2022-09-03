@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
 export function useInternalRouter() {
@@ -8,8 +8,13 @@ export function useInternalRouter() {
       goBack() {
         navigate(-1);
       },
-      push(path: RoutePath) {
-        navigate(path);
+      push(path: RoutePath, search?: Record<string, string>) {
+        if (!search) navigate(path);
+        else
+          navigate({
+            pathname: path,
+            search: `?${createSearchParams(search)}`,
+          });
       },
     };
   }, [navigate]);
@@ -22,4 +27,5 @@ type RoutePath =
   | "/create-challenge/one"
   | "/create-challenge/two"
   | "/create-challenge/three"
-  | "/create-challenge/finish";
+  | "/create-challenge/finish"
+  | "/search";
