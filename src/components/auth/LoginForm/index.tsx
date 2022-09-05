@@ -1,7 +1,7 @@
 import Button from "components/@common/Button";
 import Text from "components/@common/Text";
-import Auth from "apis/auth";
-import { LoginParams } from "apis/auth/params.interface";
+import Auth from "lib/apis/auth";
+import { LoginParams } from "lib/apis/auth/params.interface";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import {

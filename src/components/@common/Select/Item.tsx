@@ -9,7 +9,7 @@ const Item = ({ value }: Props) => {
   const { handleSelect, select, type } = useDropdownContext();
   return (
     <>
-      {type === "default" && (
+      {(type === "default" || type === "home") && (
         <Styled.ItemWrapper
           isSelect={select === value}
           onClick={() => handleSelect(value)}

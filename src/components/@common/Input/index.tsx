@@ -8,6 +8,9 @@ export interface InputProps
   errorMessage?: string;
   dataPlaceHolder?: string;
   isBorder?: boolean;
+  className?: string;
+  icon?: React.ReactNode;
+  isIcon?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -17,6 +20,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       errorMessage,
       isBorder = false,
       dataPlaceHolder,
+      className,
+      icon,
+      isIcon,
       ...rest
     }: InputProps,
     ref
@@ -24,6 +30,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <Wrapper style={rest.style} width={width}>
         <StyledInput
+          isIcon={isIcon}
+          className={className}
           data-placeholder={dataPlaceHolder}
           width={width}
           ref={ref}
@@ -31,7 +39,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...rest}
         />
         {errorMessage ? <Message>{errorMessage}</Message> : null}
-        {rest.type === "date" && <ArrowIcon fill="#666666" />}
+        {rest.type === "date" && (
+          <ArrowIcon className="date_icon" fill="#666666" />
+        )}
+        {icon && <div className="input_icon">{icon}</div>}
       </Wrapper>
     );
   }

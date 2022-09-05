@@ -40,6 +40,23 @@ const MenuTypeStyles = css<{ type: string }>`
       padding-right: 0;
       z-index: 1000;
     `}
+  ${props =>
+    props.type === "home" &&
+    css`
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      height: fit-content;
+      max-height: 403px;
+      background: #fff;
+      border: 1px solid #e1e1e1;
+      border-radius: 25px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: center;
+      z-index: 1000;
+    `}
 `;
 
 export const MenuWrapper = styled.div<{ type: string }>`
@@ -48,7 +65,7 @@ export const MenuWrapper = styled.div<{ type: string }>`
 
 const ListTypeStyles = css<{ type: string }>`
   ${props =>
-    props.type === "default" &&
+    (props.type === "default" || props.type === "home") &&
     css`
       width: 100%;
       height: fit-content;

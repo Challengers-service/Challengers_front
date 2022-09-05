@@ -12,8 +12,8 @@ export const Wrapper = styled.div`
   grid-template-columns: 130px minmax(30px, 50px) 1fr;
   grid-template-rows: 230px 1fr;
   grid-template-areas:
-    "SideBarWrapper ChallengeStepWrapper ChallengeStepWrapper"
-    "SideBarWrapper . stepWrapper";
+    ". ChallengeStepWrapper ChallengeStepWrapper"
+    ". . stepWrapper";
   .createChallengeLayout_cancelIcon {
     position: absolute;
     left: 95.42%;
@@ -58,11 +58,4 @@ export const Title = styled.span`
   line-height: 45px;
   color: #333333;
   margin-bottom: 20px;
-`;
-
-export const SideBarWrapper = styled.div`
-  position: relative;
-  left: 20px;
-  top: 20px;
-  grid-area: SideBarWrapper;
 `;

@@ -1,4 +1,4 @@
-import StepThree from "components/createChallenge/StepThree";
+import StepThree from "components/challenge/createChallenge/StepThree";
 
 const StepThreePage = () => {
   return <StepThree />;

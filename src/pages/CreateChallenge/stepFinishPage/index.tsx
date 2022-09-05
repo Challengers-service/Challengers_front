@@ -1,4 +1,4 @@
-import StepFinish from "components/createChallenge/StepFinish";
+import StepFinish from "components/challenge/createChallenge/StepFinish";
 
 const StepFinishPage = () => {
   return <StepFinish />;

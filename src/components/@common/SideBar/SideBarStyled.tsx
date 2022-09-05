@@ -1,39 +1,27 @@
 import { pallet } from "constants/pallet";
 import styled from "styled-components";
 
-export const Wrapper = styled.nav`
-  background-color: #ffffff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  box-shadow: 0px 0px 20px rgba(29, 54, 152, 0.04);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  min-height: 100%;
-  height: fit-content;
-  left: 0;
+export const Wrapper = styled.div`
+  position: fixed;
+  padding: 10px 0;
   width: 85px;
-  border-radius: 40px;
-  overflow: hidden;
-
+  top: 0;
+  left: 20px;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   z-index: 1000;
-
+  height: 100%;
+  max-height: fit-content;
   &:hover {
     width: 240px;
-    overflow: visible;
+    overflow: scroll;
     .menu_li {
       span {
         visibility: visible;
       }
     }
     .createChallengeBox {
-      visibility: visible;
+      display: block;
     }
     .logOutWrapper {
       padding: 0 74px;
@@ -42,6 +30,24 @@ export const Wrapper = styled.nav`
       }
     }
   }
+`;
+
+export const Nav = styled.nav`
+  background-color: #ffffff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  height: 100%;
+  overflow: scroll;
+
+  box-shadow: 0px 0px 20px rgba(29, 54, 152, 0.04);
+  border-radius: 40px;
+
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  z-index: 1000;
 
   display: flex;
   flex-direction: column;
@@ -57,7 +63,7 @@ export const Title = styled.div`
 `;
 
 export const Menu_ul = styled.ul`
-  padding-top: 53px;
+  padding-top: 49px;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
@@ -97,7 +103,7 @@ export const Menu_li = styled.li`
 
 export const CreateChallengBoxWrapper = styled.div`
   transition: all 0.2s ease-in;
-  visibility: hidden;
+  display: none;
   padding: 217px 15px 28px;
 `;
 

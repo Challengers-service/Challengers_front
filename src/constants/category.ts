@@ -1,10 +1,9 @@
-import { Props as CategoryCardProps } from "components/createChallenge/CategoryCard";
+import { Props as CategoryCardProps } from "components/challenge/createChallenge/CategoryCard";
 import lifePng from "assets/png/life.png";
 import studyPng from "assets/png/study.png";
 import workOutPng from "assets/png/workOut.png";
 import selfDevelopmentPng from "assets/png/selfDevelopment.png";
-
-export type CategoryType = "LIFE" | "STUDY" | "WORK_OUT" | "SELF_DEVELOPMENT";
+import { CategoryType } from "lib/apis/challenge/types";
 
 export const categories: CategoryType[] = [
   "LIFE",

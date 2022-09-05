@@ -1,5 +1,5 @@
+import { ArrowIcon } from "../vectors";
 import * as Styled from "./DefaultTriggerStyled";
-import { ReactComponent as ArrowIcon } from "assets/vectors/ArrowIcon.svg";
 
 export interface Props {
   className?: string;
