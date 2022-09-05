@@ -4,11 +4,14 @@ import { useInternalRouter } from "hooks/useInternalRouter";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import { useSearchParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { searchChallengeLengthAtom } from "stores/home";
 import HomeLayout from "../HomeLayout";
 import * as Styled from "./HomeSearchLayoutStyled";
 
 const HomeSearchLayout = () => {
   const router = useInternalRouter();
+  const challengeLength = useRecoilValue(searchChallengeLengthAtom);
   const [searchParams] = useSearchParams();
   const [select, setSelect] = useState("인기순");
   const [isSelect, setIsSelect] = useState(false);
@@ -34,7 +37,8 @@ const HomeSearchLayout = () => {
     <HomeLayout>
       <Styled.SearchBox>
         <Styled.Search>
-          <strong>#개발</strong> 검색결과 24개
+          <strong>#{challengeName}</strong> 검색결과 {challengeLength || "..."}
+          개
         </Styled.Search>
         <Select
           trigger={
