@@ -14,7 +14,8 @@ function useChallengeLoad({ tab, challengeName }: UseChallengeLoad) {
   const { ref, inView } = useInView();
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     [QUERY_KEYS.CHALLENGES, tab, challengeName],
-    ({ pageParam = 0 }) => getChallenge({ page: pageParam, tab }),
+    ({ pageParam = 0 }) =>
+      getChallenge({ page: pageParam, tab, challengeName }),
     {
       getNextPageParam: lastPage =>
         !lastPage.last ? lastPage.pageable.pageNumber + 1 : undefined,
@@ -23,7 +24,7 @@ function useChallengeLoad({ tab, challengeName }: UseChallengeLoad) {
   );
   useEffect(() => {
     if (inView && !hasNextPage && !isFetching) fetchNextPage();
-  }, [inView, hasNextPage, isFetching]);
+  }, [inView, hasNextPage, isFetching, fetchNextPage]);
 
   return {
     data,

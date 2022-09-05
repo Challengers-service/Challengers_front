@@ -28,4 +28,5 @@ type RoutePath =
   | "/create-challenge/two"
   | "/create-challenge/three"
   | "/create-challenge/finish"
-  | "/search";
+  | "/search"
+  | "/search/new";

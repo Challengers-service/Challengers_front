@@ -6,14 +6,16 @@ import { SearchIcon } from "components/@common/vectors";
 import useInput from "hooks/useInput";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import React, { PropsWithChildren } from "react";
+import { useSearchParams } from "react-router-dom";
 import SidebarLayout from "../SidebarLayout";
 import * as Styled from "./HomeLayout";
 
 interface Props {}
 
 const HomeLayout = ({ children }: PropsWithChildren<Props>) => {
+  const [searchParams] = useSearchParams();
   const router = useInternalRouter();
-  const { value, onChange } = useInput();
+  const { value, onChange } = useInput(searchParams.get("name")?.toString());
 
   const enterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
