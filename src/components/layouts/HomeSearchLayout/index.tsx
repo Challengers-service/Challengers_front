@@ -3,7 +3,6 @@ import Text from "components/@common/Text";
 import { ArrowIcon } from "components/@common/vectors";
 import SearchHeader from "components/home/SearchHeader";
 import useInput from "hooks/useInput";
-import { useInternalRouter } from "hooks/useInternalRouter";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import { useSearchParams } from "react-router-dom";
@@ -11,17 +10,16 @@ import SidebarLayout from "../SidebarLayout";
 import * as Styled from "./HomeSearchLayoutStyled";
 
 const HomeSearchLayout = () => {
-  const router = useInternalRouter();
-
-  const [search, setSerach] = useSearchParams();
-  const challengeName = search.get("name") as string;
+  const [searchParams, setSerachParams] = useSearchParams();
+  const challengeName = searchParams.get("name") as string;
+  const tabName = changeKoreanTabName(searchParams.get("tab") as string);
 
   const [challengeLength, setChallengeLength] = useState<number | null>(null);
 
-  const { value, onChange } = useInput(challengeName);
+  const { value: inputValue, onChange } = useInput(challengeName);
 
   const [isSelect, setIsSelect] = useState(false);
-  const [select, setSelect] = useState("인기순");
+  const [select, setSelect] = useState(tabName);
 
   const onChangeSelect = (value: string) => {
     setSelect(value);
@@ -30,26 +28,45 @@ const HomeSearchLayout = () => {
 
   const enterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setSerach({ name: value });
+      setSerachParams({ name: inputValue, tab: changeEnglishTabName(select) });
     }
   };
+
   useEffect(() => {
     if (isSelect) {
-      if (select === "인기순") {
-        router.push("/search", { name: challengeName as string });
-      }
-      if (select === "최신순") {
-        router.push("/search/new", { name: challengeName as string });
-      }
+      setSerachParams({ name: inputValue, tab: changeEnglishTabName(select) });
+      setIsSelect(false);
     }
-  }, [select, isSelect, router, challengeName]);
+  }, [select, isSelect, inputValue, challengeName, setSerachParams]);
+
+  function changeKoreanTabName(tab: string) {
+    switch (tab) {
+      case "popular":
+        return "인기순";
+      case "new":
+        return "최신순";
+      default:
+        return "인기순";
+    }
+  }
+
+  function changeEnglishTabName(tab: string) {
+    switch (tab) {
+      case "인기순":
+        return "popular";
+      case "최신순":
+        return "new";
+      default:
+        return "popular";
+    }
+  }
 
   return (
     <SidebarLayout>
       <Styled.Wrapper>
         <SearchHeader
           className="search_header"
-          value={value}
+          value={inputValue}
           onChange={onChange}
           onKeyUp={enterKey}
         />
@@ -80,6 +97,7 @@ const HomeSearchLayout = () => {
           context={{
             challengeName,
             setChallengeLength,
+            tab: changeEnglishTabName(select),
           }}
         />
       </Styled.Wrapper>

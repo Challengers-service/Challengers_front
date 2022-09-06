@@ -10,7 +10,6 @@ import StepThreePage from "pages/CreateChallenge/StepThreePage";
 import StepTwoPage from "pages/CreateChallenge/StepTwoPage";
 import HomeNewChallengePage from "pages/Home/HomeNewChallengePage";
 import HomePage from "pages/Home/HomePage";
-import HomeSearchNewChallengePage from "pages/Home/HomeSearchNewChallengePage";
 import HomeSearchPage from "pages/Home/HomeSearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -38,7 +37,6 @@ function App() {
         </Route>
         <Route path="/search" element={<HomeSearchLayout />}>
           <Route path="" element={<HomeSearchPage />} />
-          <Route path="new" element={<HomeSearchNewChallengePage />} />
         </Route>
         <Route path="/join" element={<JoinPage />} />
         <Route path="/login" element={<LoginPage />} />

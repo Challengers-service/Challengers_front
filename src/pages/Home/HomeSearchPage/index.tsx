@@ -1,17 +1,20 @@
 import ChallengeCardList from "components/challenge/ChallengeCardList";
 import useChallengeLoad from "hooks/queries/challenge/useChallengeLoad";
+import { Tab } from "lib/apis/challenge/types";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 
 type OutletProps = {
   challengeName: string;
   setChallengeLength(length: number | null): void;
+  tab: Tab;
 };
 
 const HomeSearchPage = () => {
-  const { challengeName, setChallengeLength } = useOutletContext<OutletProps>();
+  const { tab, challengeName, setChallengeLength } =
+    useOutletContext<OutletProps>();
   const { data, viewElement } = useChallengeLoad({
-    tab: "popular",
+    tab,
     challengeName,
   });
 
