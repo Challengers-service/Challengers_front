@@ -1,9 +1,21 @@
 import { pallet } from "constants/pallet";
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  padding-top: 50px;
+  padding-right: 85px;
+  .search_header {
+    margin-bottom: 40px;
+  }
+  .search-layout_title {
+    display: block;
+    margin-bottom: 60px;
+  }
+`;
+
 export const SearchBox = styled.div`
   display: flex;
-
+  margin-bottom: 30px;
   .select_trigger[data-open="open"] {
     .trigger {
       border: none;
@@ -18,6 +30,9 @@ export const Search = styled.span`
   flex: 1;
   strong {
     color: ${pallet.mainColor};
+  }
+  span {
+    color: ${pallet.baseColor.subText};
   }
 `;
 

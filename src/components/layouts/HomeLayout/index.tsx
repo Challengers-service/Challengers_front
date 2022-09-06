@@ -16,7 +16,7 @@ const HomeLayout = ({ children }: PropsWithChildren<Props>) => {
   const [searchParams] = useSearchParams();
   const router = useInternalRouter();
   const { value, onChange } = useInput(searchParams.get("name")?.toString());
-
+  console.log(searchParams.get("name"));
   const enterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       router.push("/search", { name: value });

@@ -1,21 +1,25 @@
 import ChallengeCardList from "components/challenge/ChallengeCardList";
 import useChallengeLoad from "hooks/queries/challenge/useChallengeLoad";
+import { useEffect } from "react";
 import { useOutletContext } from "react-router";
-import { useSetRecoilState } from "recoil";
-import { searchChallengeLengthAtom } from "stores/home";
 
 type OutletProps = {
   challengeName: string;
+  setChallengeLength(length: number | null): void;
 };
 
 const HomeSearchNewChallengePage = () => {
-  const setChallengeLength = useSetRecoilState(searchChallengeLengthAtom);
-  const { challengeName } = useOutletContext<OutletProps>();
+  const { challengeName, setChallengeLength } = useOutletContext<OutletProps>();
   const { data, viewElement } = useChallengeLoad({
     tab: "new",
     challengeName,
   });
-  setChallengeLength(data?.pages[0].totalElements || null);
+
+  useEffect(() => {
+    if (data) {
+      setChallengeLength(data.pages[0].numberOfElements);
+    }
+  }, [data, setChallengeLength]);
   return (
     <>
       <ChallengeCardList challengeResults={data?.pages} />
