@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import ChallengeInfoBox, { Props } from ".";
 import { rest } from "msw";
-import { mock_detailChallenge } from "mock/challenge";
+import { mock_detailChallenge } from "__mock__/challenge";
 export default {
   title: "Challenge/ChallengeInfoBox",
   component: ChallengeInfoBox,

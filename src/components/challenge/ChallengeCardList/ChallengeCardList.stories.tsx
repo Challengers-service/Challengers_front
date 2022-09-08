@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import { mock_getChallenges } from "mock/challenge";
+import { mock_getChallenges } from "__mock__/challenge";
 import ChallengeCardList, { Props } from ".";
 
 export default {
