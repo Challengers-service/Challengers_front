@@ -50,6 +50,7 @@ export interface Challenge {
   reviewCount: number;
   cart: boolean;
   expectedReward: number;
+  hasJoined: boolean;
 }
 
 export interface GetChallenge {
@@ -64,7 +65,7 @@ export interface GetChallenge {
   profileImgUrls: string[];
 }
 
-export interface GetChallengeResult extends Pagination {
+export interface GetChallengePaginationResult extends Pagination {
   content: GetChallenge[];
 }
 
