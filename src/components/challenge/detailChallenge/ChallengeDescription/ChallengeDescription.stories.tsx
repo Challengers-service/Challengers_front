@@ -1,10 +1,10 @@
 import { Meta, Story } from "@storybook/react";
-import ChallengeInfoBox, { Props } from ".";
+import ChallengeDescription, { Props } from ".";
 import { rest } from "msw";
 import { mock_detailChallenge } from "__mock__/challenge";
 export default {
-  title: "Challenge/ChallengeInfoBox",
-  component: ChallengeInfoBox,
+  title: "DetailChallenge/ChallengeDescription",
+  component: ChallengeDescription,
   parameters: {},
   argTypes: {},
 } as Meta;
@@ -12,7 +12,7 @@ export default {
 const Template: Story<Props> = args => (
   <>
     <div>
-      <ChallengeInfoBox {...args} />
+      <ChallengeDescription {...args} />
     </div>
   </>
 );

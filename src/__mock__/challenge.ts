@@ -21,8 +21,8 @@ export const mock_detailChallenge: Challenge = {
   id: 1,
   hostId: 1,
   hostProfileImageUrl: DefaultAvatar,
-  hostName: "챌린지 호스트 이름",
-  name: "챌린지 이름",
+  hostName: "라이언",
+  name: "Miracle Morning",
   challengeRule: "챌린지 규칙",
   checkFrequencyType: "EVERY_DAY",
   checkTimesPerRound: 1,
@@ -30,7 +30,8 @@ export const mock_detailChallenge: Challenge = {
   startDate: "2022-06-21",
   endDate: "2022-07-21",
   depositPoint: 1000,
-  introduction: "챌린지 소개글",
+  introduction:
+    "당신의 하루를 바꾸는 기적, 단 6분. 이른 아침, 누구의 방해도 받지 않는 시간에 온전히 당신에게 집중할 시간을 가져보세요. 미라클 모닝은 시간을 주체적으로 활용하고, 삶에 여러가지 습관을 더할 수 있게 해요 :)",
   userCountLimit: 1000,
   status: "IN_PROGRESS",
   tags: [

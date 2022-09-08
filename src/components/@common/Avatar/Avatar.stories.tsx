@@ -21,4 +21,5 @@ export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
   url: DefaultAvatar,
+  name: "이재훈",
 };
