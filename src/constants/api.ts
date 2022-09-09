@@ -18,7 +18,7 @@ apiClient.interceptors.response.use(
     return response;
   },
   async function (error) {
-    if (error.response && error.response.status === 403) {
+    if (error.response && error.response.status === 401) {
       try {
         const originalRequest = error.config;
         const data = await apiClient.post<{
