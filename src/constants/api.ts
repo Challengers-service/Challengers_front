@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "./token";
 
+export const baseURL = "https://serverus.net";
+
 export const apiClient = axios.create({
   baseURL: "https://serverus.net",
 });

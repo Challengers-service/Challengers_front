@@ -2,6 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import ChallengeInfoBox, { Props } from ".";
 import { rest } from "msw";
 import { mock_detailChallenge } from "__mock__/challenge";
+import { baseURL } from "constants/api";
 export default {
   title: "DetailChallenge/ChallengeInfoBox",
   component: ChallengeInfoBox,
@@ -21,7 +22,7 @@ export const Default = Template.bind({});
 Default.parameters = {
   msw: {
     handlers: [
-      rest.get("/api/challenge/1", (req, res, ctx) => {
+      rest.get(`${baseURL}/api/challenge/1`, (req, res, ctx) => {
         return res(
           ctx.status(200),
           ctx.json({ ...mock_detailChallenge, cart: true })
