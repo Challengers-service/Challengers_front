@@ -6,6 +6,7 @@ import SidebarLayout from "components/layouts/SidebarLayout";
 import useChallengeDetail from "hooks/queries/challenge/useChallengeDetail";
 import { useParams } from "react-router";
 import Label from "components/@common/Label";
+import Button from "components/@common/Button";
 
 const DetailChallengePage = () => {
   const { challengeId } = useParams<{ challengeId: string }>();
@@ -15,7 +16,7 @@ const DetailChallengePage = () => {
 
   if (!challenge) return <div>로딩중..</div>;
 
-  const { challengeRule, examplePhotos } = challenge;
+  const { challengeRule, examplePhotos, hasJoined } = challenge;
 
   return (
     <SidebarLayout>
@@ -39,6 +40,9 @@ const DetailChallengePage = () => {
               ))}
             </Styled.ImageGroup>
           </Styled.PhotoBox>
+          <Button disabled={!hasJoined} className="join_button">
+            참여하기
+          </Button>
         </Styled.Main>
       </Styled.Wrapper>
     </SidebarLayout>

@@ -8,9 +8,18 @@ export const Wrapper = styled.div`
   header {
     margin-bottom: 52px;
   }
+  .join_button {
+    width: 200px;
+    height: 55px;
+    border-radius: 90px;
+    align-self: center;
+  }
 `;
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const FlexBox = styled.div`
   display: flex;
@@ -44,6 +53,7 @@ export const PhotoBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 22px;
+  margin-bottom: 100px;
 `;
 
 export const ImageGroup = styled.div`
