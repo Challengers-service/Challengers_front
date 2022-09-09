@@ -1,6 +1,5 @@
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "constants/token";
 import { atom } from "recoil";
-export const ACCESS_TOKEN_KEY = "accessToken";
-export const REFRESH_TOKEN_KEY = "refreshToken";
 
 const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
 const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
