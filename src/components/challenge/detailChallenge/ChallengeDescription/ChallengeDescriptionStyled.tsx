@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 546px;
   .description_date {
     display: block;
     margin-bottom: 20px;
@@ -35,7 +36,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Description = styled.div`
-  max-height: 502px;
+  max-height: 164px;
   overflow: scroll;
   margin-bottom: 16px;
   font-size: 15px;
