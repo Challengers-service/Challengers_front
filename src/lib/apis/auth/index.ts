@@ -1,13 +1,13 @@
-import axios from "axios";
+import { apiClient } from "constants/api";
 import { JoinParams, LoginParams } from "./params.interface";
 
 class Auth {
   join = async (joinParams: JoinParams) => {
-    return axios.post("/api/signup", { ...joinParams });
+    return apiClient.post("/api/signup", { ...joinParams });
   };
 
   login = async (loginParams: LoginParams) => {
-    return axios.post("/api/signin", { ...loginParams });
+    return apiClient.post("/api/signin", { ...loginParams });
   };
 }
 

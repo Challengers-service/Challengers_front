@@ -1,4 +1,4 @@
-import axios from "axios";
+import { apiClient } from "constants/api";
 import {
   Challenge,
   CreateChallengeParams,
@@ -21,7 +21,7 @@ export const postChallege = async (params: CreateChallengeParams) => {
     }
   });
   formData.append("photoDescription", "TEST");
-  const response = await axios.post("/api/challenge", formData);
+  const response = await apiClient.post("/api/challenge", formData);
   return response.data;
 };
 
@@ -33,7 +33,7 @@ export const getChallenges = async ({
   challengeName,
 }: PaginationParams) => {
   const sortTab = tab === "popular" ? "userCount" : "id";
-  const response = await axios.get<GetChallengePaginationResult>(
+  const response = await apiClient.get<GetChallengePaginationResult>(
     `/api/challenge`,
     {
       params: {
@@ -48,6 +48,8 @@ export const getChallenges = async ({
 };
 
 export const getChallengeWithId = async (challengeId: number) => {
-  const response = await axios.get<Challenge>(`/api/challenge/${challengeId}`);
+  const response = await apiClient.get<Challenge>(
+    `/api/challenge/${challengeId}`
+  );
   return response.data;
 };

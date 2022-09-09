@@ -4,16 +4,11 @@ import Auth from "lib/apis/auth";
 import { LoginParams } from "lib/apis/auth/params.interface";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import {
-  ACCESS_TOKEN_KEY,
-  isLoggedAtom,
-  REFRESH_TOKEN_KEY,
-  accessTokenAtom,
-  refreshTokenAtom,
-} from "stores/auth";
+import { isLoggedAtom, accessTokenAtom, refreshTokenAtom } from "stores/auth";
 import { InputGroup, StyledLoginForm } from "./LoginFormStyled";
 import Input from "components/@common/Input";
 import { useInternalRouter } from "hooks/useInternalRouter";
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "constants/token";
 
 export interface LoginFormProps {}
 
