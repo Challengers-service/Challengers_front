@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const Avatar = styled.div<{ isUrl: boolean; bgColor: string }>`
   width: 38px;
   height: 38px;
@@ -19,4 +24,11 @@ export const Avatar = styled.div<{ isUrl: boolean; bgColor: string }>`
       background: ${props.bgColor};
     `;
   }}
+`;
+
+export const Name = styled.span`
+  margin-left: 11px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333333;
 `;

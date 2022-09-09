@@ -1,9 +1,9 @@
-import { GetChallengeResult } from "lib/apis/challenge/types";
+import { GetChallengePaginationResult } from "lib/apis/challenge/types";
 import ChallengeCard from "../ChallengeCard";
 import * as Styled from "./ChallengeCardListStyled";
 
 export interface Props {
-  challengeResults?: GetChallengeResult[];
+  challengeResults?: GetChallengePaginationResult[];
 }
 
 const ChallengeCardList = ({ challengeResults }: Props) => {

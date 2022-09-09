@@ -20,7 +20,7 @@ export function useInternalRouter() {
   }, [navigate]);
 }
 
-type RoutePath =
+export type RoutePath =
   | "/"
   | "/join"
   | "/login"

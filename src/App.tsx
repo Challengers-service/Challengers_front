@@ -4,10 +4,11 @@ import HomeSearchLayout from "components/layouts/HomeSearchLayout";
 import HomeWithTabLayout from "components/layouts/HomeWithTabLayout";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
-import StepFinishPage from "pages/CreateChallenge/stepFinishPage";
-import StepOnePage from "pages/CreateChallenge/StepOnePage";
-import StepThreePage from "pages/CreateChallenge/StepThreePage";
-import StepTwoPage from "pages/CreateChallenge/StepTwoPage";
+import StepFinishPage from "pages/Challenge/CreateChallenge/StepFinishPage";
+import StepOnePage from "pages/Challenge/CreateChallenge/StepOnePage";
+import StepThreePage from "pages/Challenge/CreateChallenge/StepThreePage";
+import StepTwoPage from "pages/Challenge/CreateChallenge/StepTwoPage";
+import DetailChallengePage from "pages/Challenge/DetailChallengePage";
 import HomeNewChallengePage from "pages/Home/HomeNewChallengePage";
 import HomePage from "pages/Home/HomePage";
 import HomeSearchPage from "pages/Home/HomeSearchPage";
@@ -45,6 +46,9 @@ function App() {
           <Route path="two" element={<StepTwoPage />} />
           <Route path="three" element={<StepThreePage />} />
           <Route path="finish" element={<StepFinishPage />} />
+        </Route>
+        <Route path="/challenge">
+          <Route path=":challengeId" element={<DetailChallengePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

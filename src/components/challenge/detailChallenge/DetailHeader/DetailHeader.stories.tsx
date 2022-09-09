@@ -1,10 +1,8 @@
 import { Meta, Story } from "@storybook/react";
-import Avatar, { Props } from ".";
-import DefaultAvatar from "assets/png/DefaultAvatar.png";
-
+import DetailHeader, { Props } from ".";
 export default {
-  title: "Common/Avatar",
-  component: Avatar,
+  title: "DetailChallenge/DetailHeader",
+  component: DetailHeader,
   parameters: {},
   argTypes: {},
 } as Meta;
@@ -12,14 +10,11 @@ export default {
 const Template: Story<Props> = args => (
   <>
     <div>
-      <Avatar {...args} />
+      <DetailHeader {...args} />
     </div>
   </>
 );
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {
-  url: DefaultAvatar,
-  name: "이재훈",
-};
+Default.args = {};

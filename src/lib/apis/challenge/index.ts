@@ -1,9 +1,9 @@
 import axios from "axios";
 import {
+  Challenge,
   CreateChallengeParams,
-  GetChallengeResult,
+  GetChallengePaginationResult,
   PaginationParams,
-  Tab,
 } from "./types";
 
 export const postChallege = async (params: CreateChallengeParams) => {
@@ -25,7 +25,7 @@ export const postChallege = async (params: CreateChallengeParams) => {
   return response.data;
 };
 
-export const getChallenge = async ({
+export const getChallenges = async ({
   page,
   size = 9,
   orderBy = "desc",
@@ -33,13 +33,21 @@ export const getChallenge = async ({
   challengeName,
 }: PaginationParams) => {
   const sortTab = tab === "popular" ? "userCount" : "id";
-  const response = await axios.get<GetChallengeResult>(`/api/challenge`, {
-    params: {
-      page,
-      size,
-      sort: `${sortTab},${orderBy}`,
-      challengeName,
-    },
-  });
+  const response = await axios.get<GetChallengePaginationResult>(
+    `/api/challenge`,
+    {
+      params: {
+        page,
+        size,
+        sort: `${sortTab},${orderBy}`,
+        challengeName,
+      },
+    }
+  );
+  return response.data;
+};
+
+export const getChallengeWithId = async (challengeId: number) => {
+  const response = await axios.get<Challenge>(`/api/challenge/${challengeId}`);
   return response.data;
 };

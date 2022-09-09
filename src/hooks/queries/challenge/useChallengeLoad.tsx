@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import QUERY_KEYS from "constants/queryKeys";
-import { getChallenge } from "lib/apis/challenge";
+import { getChallenges } from "lib/apis/challenge";
 import { Tab } from "lib/apis/challenge/types";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -15,7 +15,7 @@ function useChallengeLoad({ tab, challengeName }: UseChallengeLoad) {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     [QUERY_KEYS.CHALLENGES, tab, challengeName],
     ({ pageParam = 0 }) =>
-      getChallenge({ page: pageParam, tab, challengeName }),
+      getChallenges({ page: pageParam, tab, challengeName }),
     {
       getNextPageParam: lastPage =>
         !lastPage.last ? lastPage.pageable.pageNumber + 1 : undefined,

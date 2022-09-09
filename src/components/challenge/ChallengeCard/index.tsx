@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import Avatar from "components/@common/Avatar";
 import Button from "components/@common/Button";
 import Heart from "components/@common/Heart";
@@ -7,6 +6,7 @@ import Tag from "components/@common/Tag";
 import Text from "components/@common/Text";
 import { GetChallenge } from "lib/apis/challenge/types";
 import * as Styled from "./ChallengeCardStyled";
+import { getEnglishDate } from "lib/utils/getEnglishDate";
 
 export interface Props {
   challenge: GetChallenge;
@@ -23,11 +23,11 @@ const ChallengeCard = ({ challenge }: Props) => {
     hasJoined,
     cart,
   } = challenge;
-  const formetDate = dayjs(createdDate).format("MMMM d, YYYY");
+
   return (
     <Styled.LinkWrapper to={`/challenge/${challengeId}`}>
       <Styled.DateAndHeart>
-        <Styled.Date>{formetDate}</Styled.Date>
+        <Styled.Date>{getEnglishDate(createdDate)}</Styled.Date>
         <Heart isFill={cart} />
       </Styled.DateAndHeart>
       <Stack
