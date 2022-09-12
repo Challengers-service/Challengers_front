@@ -5,17 +5,17 @@ import Select from "components/@common/Select";
 import Text from "components/@common/Text";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ReactComponent as ArrowIcon } from "assets/vectors/ArrowIcon.svg";
 import * as Styled from "./StepTwoStyled";
 import Textarea from "components/@common/Textarea";
 import { CHALLENGE_DESCRIPTION } from "constants/placeholder";
-import Button from "components/@common/Button";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { useSetRecoilState } from "recoil";
 import { challengeStepAtom, challengeStepTwoAtom } from "stores/challenge";
 import Stack from "components/@common/Stack";
 import DefaultTrigger from "components/@common/DefaultTrigger";
 import ButtonGroupStack from "../ButtonGroupStack";
+import Tag from "components/@common/Tag";
+import useInput from "hooks/useInput";
 
 interface IForm {
   name: string;
@@ -46,6 +46,29 @@ const StepTwo = () => {
     },
   });
 
+  const {
+    value: tagInputvalue,
+    setValue: setTagInputvalue,
+    onChange,
+  } = useInput();
+  const [tags, setTags] = useState<string[]>([]);
+  const onTagInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      const trimtagName = tagInputvalue.trim();
+      if (trimtagName === "" || tags.length >= 10 || tags.includes(trimtagName))
+        return;
+      e.preventDefault();
+      setTags(prev => [...prev, trimtagName]);
+      setTagInputvalue("");
+    } else if (e.code === "Backspace") {
+      if (tags.length !== 0 && tagInputvalue.trim() === "") {
+        setTags(tags => {
+          return tags.filter((_, index) => index < tags.length - 1);
+        });
+      }
+    }
+  };
+
   const getDatePlaceholder = (field: "startDate" | "endDate") => {
     return `${watch(field)} (${getDate(watch(field))})`;
   };
@@ -57,7 +80,11 @@ const StepTwo = () => {
   const onSubmit: SubmitHandler<IForm> = data => {
     if (!watch("userCountLimit")) return;
     setChallengeStep(3);
-    setChallengeStepTwo(data);
+    if (tags.length > 0) {
+      setChallengeStepTwo({ ...data, tags: tags.join(",") });
+    } else {
+      setChallengeStepTwo(data);
+    }
     router.push("/create-challenge/three");
   };
 
@@ -142,7 +169,12 @@ const StepTwo = () => {
         </Text>
       </Stack>
       <Stack
-        style={{ flexDirection: "column", gap: "17px", marginTop: "27px" }}
+        style={{
+          flexDirection: "column",
+          gap: "17px",
+          marginTop: "27px",
+          marginBottom: "65px",
+        }}
       >
         <Label labelText="챌린지 설명" isRequiredIcon />
         <Textarea
@@ -151,6 +183,28 @@ const StepTwo = () => {
           })}
           placeholder={CHALLENGE_DESCRIPTION}
         />
+      </Stack>
+      <Stack style={{ flexDirection: "column", gap: "17px" }}>
+        <Label
+          labelText="태그"
+          subText={
+            <Styled.SubText>
+              💡 태그는 최대 <strong>10개</strong>까지 입력이 가능합니다.
+            </Styled.SubText>
+          }
+        />
+        <Styled.TagInputWrpper>
+          {tags.map((tag, index) => (
+            <Tag key={index} name={tag} />
+          ))}
+          <input
+            value={tagInputvalue}
+            onChange={onChange}
+            onKeyDown={onTagInputKeyDown}
+            className="tag_input"
+            type="text"
+          />
+        </Styled.TagInputWrpper>
       </Stack>
       <ButtonGroupStack />
     </Styled.Wrapper>

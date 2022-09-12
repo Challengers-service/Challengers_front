@@ -9,6 +9,7 @@ export type ChallengeStepTwo = {
   startDate: string;
   endDate: string;
   introduction: string;
+  tags?: string;
 } | null;
 
 export type ChallengeStepThree = {

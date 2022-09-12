@@ -5,7 +5,12 @@ export interface Props {
 }
 
 const Tag = ({ name }: Props) => {
-  return <Styled.Tag>#{name}</Styled.Tag>;
+  return (
+    <Styled.Tag>
+      <span>#</span>
+      <span>{name}</span>
+    </Styled.Tag>
+  );
 };
 
 export default Tag;
