@@ -41,6 +41,11 @@ export const challengeStepThreeAtom = atom<ChallengeStepThree>({
   dangerouslyAllowMutability: true,
 });
 
+export const challengeTagsAtom = atom<string[]>({
+  key: "challengeTagsAtomState",
+  default: [],
+});
+
 export const createChallengeSelector = selector({
   key: "createChallengeSelectState",
   get: ({ get }) => {

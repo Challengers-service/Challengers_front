@@ -9,13 +9,16 @@ import * as Styled from "./StepTwoStyled";
 import Textarea from "components/@common/Textarea";
 import { CHALLENGE_DESCRIPTION } from "constants/placeholder";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { useSetRecoilState } from "recoil";
-import { challengeStepAtom, challengeStepTwoAtom } from "stores/challenge";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  challengeStepAtom,
+  challengeStepTwoAtom,
+  challengeTagsAtom,
+} from "stores/challenge";
 import Stack from "components/@common/Stack";
 import DefaultTrigger from "components/@common/DefaultTrigger";
 import ButtonGroupStack from "../ButtonGroupStack";
-import Tag from "components/@common/Tag";
-import useInput from "hooks/useInput";
+import TagInput from "../TagInput";
 
 interface IForm {
   name: string;
@@ -37,6 +40,7 @@ const StepTwo = () => {
   const router = useInternalRouter();
   const setChallengeStepTwo = useSetRecoilState(challengeStepTwoAtom);
   const setChallengeStep = useSetRecoilState(challengeStepAtom);
+  const tags = useRecoilValue(challengeTagsAtom);
 
   const [select, setSelect] = useState("선택");
   const { register, watch, handleSubmit, setValue } = useForm<IForm>({
@@ -45,29 +49,6 @@ const StepTwo = () => {
       endDate: getDatToISOString(new Date(nextDate)),
     },
   });
-
-  const {
-    value: tagInputvalue,
-    setValue: setTagInputvalue,
-    onChange,
-  } = useInput();
-  const [tags, setTags] = useState<string[]>([]);
-  const onTagInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Space" || e.code === "Enter") {
-      const trimtagName = tagInputvalue.trim();
-      if (trimtagName === "" || tags.length >= 10 || tags.includes(trimtagName))
-        return;
-      e.preventDefault();
-      setTags(prev => [...prev, trimtagName]);
-      setTagInputvalue("");
-    } else if (e.code === "Backspace") {
-      if (tags.length !== 0 && tagInputvalue.trim() === "") {
-        setTags(tags => {
-          return tags.filter((_, index) => index < tags.length - 1);
-        });
-      }
-    }
-  };
 
   const getDatePlaceholder = (field: "startDate" | "endDate") => {
     return `${watch(field)} (${getDate(watch(field))})`;
@@ -193,18 +174,7 @@ const StepTwo = () => {
             </Styled.SubText>
           }
         />
-        <Styled.TagInputWrpper>
-          {tags.map((tag, index) => (
-            <Tag key={index} name={tag} />
-          ))}
-          <input
-            value={tagInputvalue}
-            onChange={onChange}
-            onKeyDown={onTagInputKeyDown}
-            className="tag_input"
-            type="text"
-          />
-        </Styled.TagInputWrpper>
+        <TagInput />
       </Stack>
       <ButtonGroupStack />
     </Styled.Wrapper>
