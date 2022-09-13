@@ -71,12 +71,17 @@ const StepThree = () => {
 
   useEffect(() => {
     if (isCallAPI.current && createChallenge !== null) {
-      postChallege(createChallenge).then(() => {
-        setChallengeStep(4);
-        router.push("/create-challenge/finish");
-      });
+      console.log(createChallenge);
+      postChallege(createChallenge)
+        .then(() => {
+          setChallengeStep(4);
+          router.push("/create-challenge/finish");
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
-  }, [createChallenge]);
+  }, [createChallenge, router, setChallengeStep]);
   return (
     <Styled.Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Stack style={{ alignItems: "flex-end", gap: "10px" }}>

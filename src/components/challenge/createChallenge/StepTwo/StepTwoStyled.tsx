@@ -64,6 +64,31 @@ export const Select = styled.div`
   }
 `;
 
+export const TagInputWrpper = styled.div`
+  display: flex;
+  gap: 6px;
+  padding: 11px 30px;
+  background: #f9f9f9;
+  border: 1px solid #e1e1e1;
+  border-radius: 90px;
+  .tag_input {
+    width: 100%;
+    background: inherit;
+    border: none;
+    outline: none;
+  }
+`;
+
+export const SubText = styled.span`
+  font-weight: 400;
+  font-size: 15px;
+  color: ${pallet.baseColor.subText};
+  margin-left: 7px;
+  strong {
+    color: ${pallet.mainColor};
+  }
+`;
+
 export const ButtonGroup = styled.div`
   display: flex;
   gap: 15px;

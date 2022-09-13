@@ -9,6 +9,7 @@ export type ChallengeStepTwo = {
   startDate: string;
   endDate: string;
   introduction: string;
+  tags?: string;
 } | null;
 
 export type ChallengeStepThree = {
@@ -38,6 +39,11 @@ export const challengeStepThreeAtom = atom<ChallengeStepThree>({
   key: "challengeStepThreeState",
   default: null,
   dangerouslyAllowMutability: true,
+});
+
+export const challengeTagsAtom = atom<string[]>({
+  key: "challengeTagsAtomState",
+  default: [],
 });
 
 export const createChallengeSelector = selector({

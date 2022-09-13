@@ -12,6 +12,7 @@ export interface CreateChallengeParams {
   checkFrequencyType: string;
   checkTimesPerRound: number;
   category: CategoryType;
+  tags?: string;
 }
 
 export type CheckFrequencyType = "EVERY_DAY" | "EVERY_WEEK" | "OTHERS";

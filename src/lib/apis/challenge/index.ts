@@ -9,6 +9,7 @@ import {
 export const postChallege = async (params: CreateChallengeParams) => {
   const formData = new FormData();
   (Object.keys(params) as (keyof typeof params)[]).forEach((key, _) => {
+    if (params[key] === undefined) return;
     switch (key) {
       case "examplePhotos":
         [].forEach.call(params[key], f => {

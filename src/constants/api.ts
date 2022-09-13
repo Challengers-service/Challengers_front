@@ -27,7 +27,7 @@ apiClient.interceptors.response.use(
           accessToken: string;
           refreshToken: string;
         }>("/api/refresh", {
-          accessToken: localStorage.getItem(ACCESS_TOKEN_KEY),
+          accessToken: localStorage.getItem(ACCESS_TOKEN_KEY)?.slice(7),
           refreshToken: localStorage.getItem(REFRESH_TOKEN_KEY),
         });
         if (data) {
@@ -50,3 +50,7 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// 401 -> accessToken 만료 또는 없을떄 즉 로그인 안도ㅒㅆ을때
+// 404 -> accessToken을 찾지 못했을때??
+// 400 -> refreshToken 공백??
