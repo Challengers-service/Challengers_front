@@ -1,4 +1,5 @@
 import axios from "axios";
+import auth from "lib/apis/auth";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "./token";
 
 export const baseURL = "https://serverus.net";
@@ -23,13 +24,7 @@ apiClient.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       try {
         const originalRequest = error.config;
-        const data = await apiClient.post<{
-          accessToken: string;
-          refreshToken: string;
-        }>("/api/refresh", {
-          accessToken: localStorage.getItem(ACCESS_TOKEN_KEY)?.slice(7),
-          refreshToken: localStorage.getItem(REFRESH_TOKEN_KEY),
-        });
+        const data = await auth.refreshedAccessToken();
         if (data) {
           const { accessToken, refreshToken } = data.data;
           localStorage.removeItem(ACCESS_TOKEN_KEY);

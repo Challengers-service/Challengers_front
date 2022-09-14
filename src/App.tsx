@@ -1,6 +1,7 @@
 import CreateChallengeLayout from "components/layouts/CreateChallengeLayout";
 import HomeSearchLayout from "components/layouts/HomeSearchLayout";
 import HomeWithTabLayout from "components/layouts/HomeWithTabLayout";
+import useAuth from "hooks/useAuth";
 import JoinPage from "pages/Auth/JoinPage";
 import LoginPage from "pages/Auth/LoginPage";
 import StepFinishPage from "pages/Challenge/CreateChallenge/stepFinishPage";
@@ -14,6 +15,7 @@ import HomeSearchPage from "pages/Home/HomeSearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  useAuth();
   return (
     <BrowserRouter>
       <Routes>

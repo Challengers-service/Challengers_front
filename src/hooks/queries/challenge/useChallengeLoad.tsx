@@ -19,7 +19,6 @@ function useChallengeLoad({ tab, challengeName }: UseChallengeLoad) {
     {
       getNextPageParam: lastPage =>
         !lastPage.last ? lastPage.pageable.pageNumber + 1 : undefined,
-      refetchOnWindowFocus: false,
     }
   );
   useEffect(() => {

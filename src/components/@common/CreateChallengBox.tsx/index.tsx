@@ -5,13 +5,12 @@ import { ReactComponent as WriteIcon } from "assets/vectors/WriteIcon.svg";
 import Text from "../Text";
 import Button from "../Button";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { useRecoilValue } from "recoil";
-import { isLoggedAtom } from "stores/auth";
 import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
+import useAuth from "hooks/useAuth";
 
 const CreateChallengBox = () => {
   const router = useInternalRouter();
-  const isLogin = useRecoilValue(isLoggedAtom);
+  const { isLogin } = useAuth();
   const openLoginDialog = useOpenLoginDialog();
   const onClick = () => {
     if (!isLogin) {

@@ -2,7 +2,7 @@ import Button from "components/@common/Button";
 import Text from "components/@common/Text";
 import Labelnput from "components/@common/Labelnput";
 import Auth from "lib/apis/auth";
-import { JoinParams } from "lib/apis/auth/params.interface";
+import { JoinParams } from "lib/apis/auth/types";
 import { useForm } from "react-hook-form";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { StyledJoinForm } from "./JoinFormStyled";

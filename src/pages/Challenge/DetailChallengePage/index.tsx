@@ -10,9 +10,7 @@ import Button from "components/@common/Button";
 
 const DetailChallengePage = () => {
   const { challengeId } = useParams<{ challengeId: string }>();
-  const { data: challenge } = useChallengeDetail(Number(challengeId), {
-    staleTime: 1000 * 20,
-  });
+  const { data: challenge } = useChallengeDetail(Number(challengeId));
 
   if (!challenge) return <div>로딩중..</div>;
 

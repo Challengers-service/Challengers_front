@@ -9,9 +9,7 @@ export interface Props {
 }
 
 const ChallengeDescription = ({ challengeId }: Props) => {
-  const { data: challenge } = useChallengeDetail(challengeId, {
-    staleTime: 1000 * 20,
-  });
+  const { data: challenge } = useChallengeDetail(challengeId);
 
   if (!challenge) return null;
 

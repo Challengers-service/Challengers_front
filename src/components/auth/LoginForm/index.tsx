@@ -1,7 +1,7 @@
 import Button from "components/@common/Button";
 import Text from "components/@common/Text";
 import Auth from "lib/apis/auth";
-import { LoginParams } from "lib/apis/auth/params.interface";
+import { LoginParams } from "lib/apis/auth/types";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { isLoggedAtom, accessTokenAtom, refreshTokenAtom } from "stores/auth";
