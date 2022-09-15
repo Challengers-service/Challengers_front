@@ -1,5 +1,5 @@
 import { HeartFillIcon, HeartNotFillIcon } from "components/@common/vectors";
-import useLikeManager from "components/challenge/hooks/useLikeManager";
+import useLikeManager from "hooks/useLikeManager";
 import useChallengeDetail from "hooks/queries/challenge/useChallengeDetail";
 import useAuth from "hooks/useAuth";
 import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
