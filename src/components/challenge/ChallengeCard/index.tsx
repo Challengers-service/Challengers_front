@@ -7,6 +7,11 @@ import Text from "components/@common/Text";
 import { GetChallenge } from "lib/apis/challenge/types";
 import * as Styled from "./ChallengeCardStyled";
 import { getEnglishDate } from "lib/utils/getEnglishDate";
+import useAuth from "hooks/useAuth";
+import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
+import useLikeManager from "hooks/useLikeManager";
+import React from "react";
+import { useNavigate } from "react-router";
 
 export interface Props {
   challenge: GetChallenge;
@@ -23,12 +28,29 @@ const ChallengeCard = ({ challenge }: Props) => {
     hasJoined,
     cart,
   } = challenge;
+  const navigate = useNavigate();
+  const { isLogin } = useAuth();
+  const openLoginDialog = useOpenLoginDialog();
+  const { like, unLike } = useLikeManager(challengeId);
+
+  const onClickHeart = (e: React.MouseEvent<SVGSVGElement>) => {
+    e.stopPropagation();
+    if (!isLogin) openLoginDialog();
+    else {
+      if (cart) unLike();
+      else like();
+    }
+  };
+
+  const onClickWrapper = () => {
+    navigate(`/challenge/${challengeId}`);
+  };
 
   return (
-    <Styled.LinkWrapper to={`/challenge/${challengeId}`}>
+    <Styled.LinkWrapper onClick={onClickWrapper}>
       <Styled.DateAndHeart>
         <Styled.Date>{getEnglishDate(createdDate)}</Styled.Date>
-        <Heart isFill={cart} />
+        <Heart onClick={onClickHeart} isFill={cart} />
       </Styled.DateAndHeart>
       <Stack
         style={{

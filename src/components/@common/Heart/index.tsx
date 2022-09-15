@@ -1,11 +1,15 @@
 import { HeartFillIcon, HeartNotFillIcon } from "../vectors";
 
-export interface Props {
+export interface Props extends React.SVGProps<SVGSVGElement> {
   isFill?: boolean;
 }
 
-const Heart = ({ isFill = false }: Props) => {
-  return isFill ? <HeartFillIcon /> : <HeartNotFillIcon />;
+const Heart = ({ isFill = false, ...props }: Props) => {
+  return isFill ? (
+    <HeartFillIcon {...props} />
+  ) : (
+    <HeartNotFillIcon {...props} />
+  );
 };
 
 export default Heart;
