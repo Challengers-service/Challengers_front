@@ -54,3 +54,13 @@ export const getChallengeWithId = async (challengeId: number) => {
   );
   return response.data;
 };
+
+export const likeChallenge = async (challengeId: number) => {
+  const response = await apiClient.post(`/api/cart/${challengeId}`);
+  return response.data;
+};
+
+export const unlikeChallenge = async (challengeId: number) => {
+  const response = await apiClient.delete(`/api/cart/${challengeId}`);
+  return response.data;
+};
