@@ -1,4 +1,4 @@
-import { UseQueryOptions } from "@tanstack/react-query";
+import { UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
 
 export type UseQueryOptionsOf<T extends (...args: any) => any> =
   UseQueryOptions<
@@ -7,3 +7,6 @@ export type UseQueryOptionsOf<T extends (...args: any) => any> =
     Awaited<ReturnType<T>>,
     any[]
   >;
+
+export type UseMutationOptionsOf<T extends (...args: any) => any, E = any> =
+  UseMutationOptions<Awaited<ReturnType<T>>, E, Parameters<T>[0]>;

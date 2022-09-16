@@ -1,9 +1,9 @@
 import { pallet } from "constants/pallet";
 import { mediaQuery } from "lib/styles/media";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const LinkWrapper = styled(Link)`
+export const LinkWrapper = styled.div`
+  cursor: pointer;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -69,6 +69,7 @@ export const Tags = styled.div`
   gap: 6px;
   flex-wrap: wrap;
   margin-bottom: 41px;
+  flex: 1;
 `;
 
 export const Participants = styled.div`

@@ -1,13 +1,27 @@
-import { HeartFillIcon, HeartNotFillIcon } from "components/@common/vectors";
+import useLikeManager from "hooks/useLikeManager";
 import useChallengeDetail from "hooks/queries/challenge/useChallengeDetail";
+import useAuth from "hooks/useAuth";
+import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
 import * as Styled from "./ChallengeInfoBoxStyled";
+import Heart from "components/@common/Heart";
 
 export interface Props {
   challengeId: number;
 }
 
 const ChallengeInfoBox = ({ challengeId }: Props) => {
+  const { isLogin } = useAuth();
+  const openLoginDialog = useOpenLoginDialog();
   const { data: challenge } = useChallengeDetail(challengeId);
+  const { like, unLike } = useLikeManager(challengeId);
+
+  const onClickHeart = () => {
+    if (!isLogin) openLoginDialog();
+    else {
+      if (cart) unLike();
+      else like();
+    }
+  };
 
   if (!challenge) return null;
 
@@ -47,11 +61,7 @@ const ChallengeInfoBox = ({ challengeId }: Props) => {
 
   return (
     <Styled.Wrapper>
-      {cart ? (
-        <HeartFillIcon className="heart" />
-      ) : (
-        <HeartNotFillIcon className="heart" />
-      )}
+      <Heart className="heart" isFill={cart} onClick={onClickHeart} />
       <Styled.Stack>
         <Styled.SubText>📅 챌린지 기간</Styled.SubText>
         <Styled.Info>

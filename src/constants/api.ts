@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import auth from "lib/apis/auth";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "./token";
@@ -26,14 +27,15 @@ apiClient.interceptors.response.use(
         const originalRequest = error.config;
         const data = await auth.refreshedAccessToken();
         if (data) {
+          const queryClient = useQueryClient();
           const { accessToken, refreshToken } = data.data;
           localStorage.removeItem(ACCESS_TOKEN_KEY);
           localStorage.removeItem(REFRESH_TOKEN_KEY);
           localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
           localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
           originalRequest.headers["Authorization"] = accessToken;
-          console.log(originalRequest);
-          return await apiClient.request(originalRequest);
+          queryClient.invalidateQueries();
+          return apiClient.request(originalRequest);
         }
       } catch (error) {
         localStorage.removeItem(ACCESS_TOKEN_KEY);
