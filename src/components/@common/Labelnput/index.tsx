@@ -18,7 +18,7 @@ const Labelnput = forwardRef<HTMLInputElement, LabelInputProps>(
   ) => {
     return (
       <StyledLabelInput style={style}>
-        <Label labelText={labelText} isRequiredIcon />
+        <Label labelText={labelText} isRequiredIcon={isRequiredIcon} />
         <Input width={width} {...rest} ref={ref} />
       </StyledLabelInput>
     );

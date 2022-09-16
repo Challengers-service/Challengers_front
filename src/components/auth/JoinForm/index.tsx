@@ -1,13 +1,11 @@
 import Button from "components/@common/Button";
-import Text from "components/@common/Text";
 import Labelnput from "components/@common/Labelnput";
 import Auth from "lib/apis/auth";
 import { JoinParams } from "lib/apis/auth/types";
 import { useForm } from "react-hook-form";
 import { useInternalRouter } from "hooks/useInternalRouter";
-import { StyledJoinForm } from "./JoinFormStyled";
-
-export interface JoinFormProps {}
+import * as Styled from "./JoinFormStyled";
+import Text from "components/@common/Text";
 
 export default function JoinForm() {
   const router = useInternalRouter();
@@ -25,37 +23,27 @@ export default function JoinForm() {
       .catch(error => console.log(error.response.data));
   };
   return (
-    <StyledJoinForm onSubmit={handleSubmit(onSubmit)}>
-      <div className="joinFormInput">
+    <Styled.StyledJoinForm onSubmit={handleSubmit(onSubmit)}>
+      <Styled.TextGroup>
+        <Text typography="h1">Welcome!</Text>
+        <Text typography="subTitle">지금 가입하고 챌린지에 참여해 보세요!</Text>
+      </Styled.TextGroup>
+      <Styled.InputGroup>
         <Labelnput
           {...register("email", { required: "이메일을 입력해주세요" })}
-          labelText="email"
           type={"email"}
+          errorMessage={errors.email?.message}
+          labelText="아이디"
         />
-        <Text color="red" typography="h5">
-          {errors.email?.message}
-        </Text>
-      </div>
-      <div className="joinFormInput">
         <Labelnput
           {...register("name", { required: "이름을 입력해주세요" })}
-          labelText="name"
+          labelText="닉네임"
         />
-        <Text color="red" typography="h5">
-          {errors.name?.message}
-        </Text>
-      </div>
-      <div className="joinFormInput">
         <Labelnput
           {...register("password", { required: "비밀번호를 입력해주세요" })}
-          labelText="password"
           type={"password"}
+          labelText="비밀번호"
         />
-        <Text color="red" typography="h5">
-          {errors.password?.message}
-        </Text>
-      </div>
-      <div className="joinFormInput">
         <Labelnput
           {...register("passwordConfirm", {
             required: "비밀번호확인을 입력해주세요",
@@ -64,16 +52,13 @@ export default function JoinForm() {
                 ? "비밀번호가 일치하지 않습니다."
                 : true,
           })}
-          labelText="passwordConfirm"
           type={"password"}
+          labelText="비밀번호 확인"
         />
-        <Text color="red" typography="h5">
-          {errors.passwordConfirm?.message}
-        </Text>
-      </div>
+      </Styled.InputGroup>
       <Button type="submit" size="large" fullWidth={true}>
         Sign Up
       </Button>
-    </StyledJoinForm>
+    </Styled.StyledJoinForm>
   );
 }

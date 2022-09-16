@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import JoinForm, { JoinFormProps } from ".";
+import JoinForm from ".";
 
 export default {
   title: "Auth/JoinForm",
@@ -8,7 +8,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<JoinFormProps> = args => (
+const Template: Story<any> = args => (
   <>
     <div>
       <JoinForm {...args} />
