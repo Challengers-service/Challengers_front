@@ -12,6 +12,7 @@ import { useOpenLoginDialog } from "hooks/useOpenLoginDialog";
 import useLikeManager from "hooks/useLikeManager";
 import React from "react";
 import { useNavigate } from "react-router";
+import useChallengeJoin from "hooks/queries/challenge/useChallengeJoin";
 
 export interface Props {
   challenge: GetChallenge;
@@ -31,6 +32,7 @@ const ChallengeCard = ({ challenge }: Props) => {
   const navigate = useNavigate();
   const { isLogin } = useAuth();
   const openLoginDialog = useOpenLoginDialog();
+  const joinChallengeMutation = useChallengeJoin(challengeId);
   const { like, unLike } = useLikeManager(challengeId);
 
   const onClickHeart = (e: React.MouseEvent<SVGSVGElement>) => {
@@ -44,6 +46,15 @@ const ChallengeCard = ({ challenge }: Props) => {
 
   const onClickWrapper = () => {
     navigate(`/challenge/${challengeId}`);
+  };
+
+  const onClickJoinBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (!isLogin) openLoginDialog();
+    else {
+      if (hasJoined) return;
+      joinChallengeMutation.mutate(Number(challengeId));
+    }
   };
 
   return (
@@ -76,7 +87,12 @@ const ChallengeCard = ({ challenge }: Props) => {
           ))}
           <Avatar />
         </Styled.Participants>
-        <Button disabled={!hasJoined} type="button" mode="join">
+        <Button
+          onClick={onClickJoinBtn}
+          disabled={hasJoined}
+          type="button"
+          mode="join"
+        >
           Join
         </Button>
       </Stack>

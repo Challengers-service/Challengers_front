@@ -64,3 +64,8 @@ export const unlikeChallenge = async (challengeId: number) => {
   const response = await apiClient.delete(`/api/cart/${challengeId}`);
   return response.data;
 };
+
+export const joinChallenge = async (challengeId: number) => {
+  const response = await apiClient.post(`/api/challenge/join/${challengeId}`);
+  return response.data;
+};
