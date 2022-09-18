@@ -4,11 +4,26 @@ import LoginForm from "components/auth/LoginForm";
 import * as Styled from "./LoginPageStyled";
 import RocketPng from "assets/png/rocket.png";
 import Contor from "components/auth/Contor";
-import { useEffect, useState } from "react";
+import AuthFormLayout from "components/layouts/AuthFormLayout";
 
-const Login = () => {
+export default function LoginPage() {
   return (
-    <Styled.StyledLogin>
+    <AuthFormLayout
+      leftImage={
+        <img
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            maxWidth: "672px",
+            backgroundColor: "#F3F5FA",
+          }}
+          src={RocketPng}
+          alt="로켓"
+        />
+      }
+      bgColor="#f3f5fa"
+    >
       <LoginForm />
       <Styled.ExtraGroup>
         <Anchor text="계정이 없으신가요?" to="/join" />
@@ -18,40 +33,6 @@ const Login = () => {
           <Anchor text="아이디 ･ 비밀번호 찾기" to="/" />
         </Styled.Gap>
       </Styled.ExtraGroup>
-    </Styled.StyledLogin>
-  );
-};
-
-const RocketImg = () => {
-  return (
-    <Styled.RocketBG>
-      <img
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          maxWidth: "672px",
-          backgroundColor: "#F3F5FA",
-        }}
-        src={RocketPng}
-      />
-    </Styled.RocketBG>
-  );
-};
-
-const ENDPOINT = 1130;
-
-export default function LoginPage() {
-  const [windowInnerWith, setWindowInnerWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setWindowInnerWidth(window.innerWidth);
-    });
-  }, [windowInnerWith]);
-  return (
-    <Styled.StyledLoginPage>
-      {windowInnerWith >= ENDPOINT && <RocketImg />}
-      <Login />
-    </Styled.StyledLoginPage>
+    </AuthFormLayout>
   );
 }

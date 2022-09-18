@@ -43,6 +43,7 @@ export const Description = styled.div`
   font-weight: 400;
   line-height: 23px;
   color: ${pallet.baseColor.subText};
+  flex: 1;
 `;
 
 export const FlexEnd = styled.div`
