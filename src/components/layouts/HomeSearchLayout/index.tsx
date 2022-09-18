@@ -1,7 +1,7 @@
 import Select from "components/@common/Select";
 import Text from "components/@common/Text";
 import { ArrowIcon } from "components/@common/vectors";
-import SearchHeader from "components/home/SearchHeader";
+import SearchHeader from "components/@common/SearchHeader";
 import useInput from "hooks/useInput";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
