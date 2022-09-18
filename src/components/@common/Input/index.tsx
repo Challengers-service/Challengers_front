@@ -11,6 +11,8 @@ export interface InputProps
   className?: string;
   icon?: React.ReactNode;
   isIcon?: boolean;
+  isError?: boolean;
+  isFocusActiveStyle?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -23,6 +25,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       icon,
       isIcon,
+      isError = false,
+      isFocusActiveStyle = false,
       ...rest
     }: InputProps,
     ref
@@ -36,6 +40,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           width={width}
           ref={ref}
           isBorder={isBorder}
+          isError={isError}
+          isFocusActiveStyle={isFocusActiveStyle}
           {...rest}
         />
         {errorMessage ? <Message>{errorMessage}</Message> : null}

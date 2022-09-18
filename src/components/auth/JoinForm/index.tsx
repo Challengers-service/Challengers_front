@@ -13,15 +13,15 @@ export default function JoinForm() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm<JoinParams>({ mode: "onChange" });
 
   const onSubmit = (data: JoinParams) => {
-    console.log(data);
     Auth.join(data)
       .then(() => router.push("/login"))
       .catch(error => console.log(error.response.data));
   };
+
   return (
     <Styled.StyledJoinForm onSubmit={handleSubmit(onSubmit)}>
       <Styled.TextGroup>
@@ -32,17 +32,25 @@ export default function JoinForm() {
         <Labelnput
           {...register("email", { required: "이메일을 입력해주세요" })}
           type={"email"}
-          errorMessage={errors.email?.message}
           labelText="아이디"
+          errorMessage={errors.email?.message}
+          isError={Boolean(errors.email?.message)}
+          isFocusActiveStyle={true}
         />
         <Labelnput
           {...register("name", { required: "이름을 입력해주세요" })}
           labelText="닉네임"
+          errorMessage={errors.name?.message}
+          isError={Boolean(errors.name?.message)}
+          isFocusActiveStyle={true}
         />
         <Labelnput
           {...register("password", { required: "비밀번호를 입력해주세요" })}
           type={"password"}
           labelText="비밀번호"
+          errorMessage={errors.password?.message}
+          isError={Boolean(errors.password?.message)}
+          isFocusActiveStyle={true}
         />
         <Labelnput
           {...register("passwordConfirm", {
@@ -54,9 +62,17 @@ export default function JoinForm() {
           })}
           type={"password"}
           labelText="비밀번호 확인"
+          errorMessage={errors.passwordConfirm?.message}
+          isError={Boolean(errors.passwordConfirm?.message)}
+          isFocusActiveStyle={true}
         />
       </Styled.InputGroup>
-      <Button type="submit" size="large" fullWidth={true}>
+      <Button
+        type="submit"
+        size="large"
+        fullWidth={true}
+        disabled={!isDirty || !isValid}
+      >
         Sign Up
       </Button>
     </Styled.StyledJoinForm>

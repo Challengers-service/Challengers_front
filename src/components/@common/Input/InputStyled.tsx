@@ -38,6 +38,27 @@ const InputWithIconStyle = css<InputProps>`
     `}
 `;
 
+const errorInputStyle = css<InputProps>`
+  ${props =>
+    props.isError &&
+    css`
+      background: inherit;
+      border: 2px solid #fb4343;
+    `}
+`;
+
+const focusStyle = css<InputProps>`
+  ${props =>
+    props.isFocusActiveStyle &&
+    !props.isError &&
+    css`
+      &:focus {
+        background-color: inherit;
+        border: 2px solid ${pallet.mainColor};
+      }
+    `}
+`;
+
 export const StyledInput = styled.input<InputProps>`
   /* 공통 스타일 */
   height: 50px;
@@ -103,6 +124,8 @@ export const StyledInput = styled.input<InputProps>`
       ${border}
     `;
   }}
+  ${focusStyle}
+  ${errorInputStyle}
 `;
 
 export const Message = styled.div`

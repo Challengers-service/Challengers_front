@@ -20,6 +20,7 @@ export const Block = styled.div`
   max-width: 452px;
   width: 100%;
   margin: 0 auto;
+  padding: 20px 0;
 `;
 
 export const ImgWrapper = styled.div<{ bgColor: string }>`

@@ -3,26 +3,22 @@ import Text from "components/@common/Text";
 import Auth from "lib/apis/auth";
 import { LoginParams } from "lib/apis/auth/types";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import { isLoggedAtom, accessTokenAtom, refreshTokenAtom } from "stores/auth";
 import { InputGroup, StyledLoginForm } from "./LoginFormStyled";
 import Input from "components/@common/Input";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "constants/token";
+import { useQueryClient } from "@tanstack/react-query";
 
 export interface LoginFormProps {}
 
 export default function LoginForm() {
-  const setIsLogged = useSetRecoilState(isLoggedAtom);
-  const setAccessToken = useSetRecoilState(accessTokenAtom);
-  const setRefreshToken = useSetRecoilState(refreshTokenAtom);
-
+  const queryClient = useQueryClient();
   const router = useInternalRouter();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm<LoginParams>({ mode: "onChange" });
 
   const onSubmit = (data: LoginParams) => {
@@ -30,9 +26,7 @@ export default function LoginForm() {
       .then(response => {
         localStorage.setItem(ACCESS_TOKEN_KEY, response.data.accessToken);
         localStorage.setItem(REFRESH_TOKEN_KEY, response.data.refreshToken);
-        setIsLogged(true);
-        setAccessToken(response.data.accessToken);
-        setRefreshToken(response.data.refreshToken);
+        queryClient.invalidateQueries();
         router.push("/");
       })
       .catch(error => console.log(error.response.data));
@@ -47,15 +41,24 @@ export default function LoginForm() {
           type={"email"}
           placeholder={"이메일을 입력하세요."}
           errorMessage={errors.email?.message}
+          isError={Boolean(errors.email?.message)}
+          isFocusActiveStyle={true}
         />
         <Input
           {...register("password", { required: "비밀번호를 입력해주세요" })}
           type={"password"}
           placeholder={"비밀번호를 입력하세요."}
           errorMessage={errors.password?.message}
+          isError={Boolean(errors.password?.message)}
+          isFocusActiveStyle={true}
         />
       </InputGroup>
-      <Button type="submit" size="large" fullWidth={true}>
+      <Button
+        type="submit"
+        size="large"
+        fullWidth={true}
+        disabled={!isDirty || !isValid}
+      >
         Log In
       </Button>
     </StyledLoginForm>

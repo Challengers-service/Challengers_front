@@ -87,6 +87,6 @@ export const StyledButton = styled.button<ButtonProps>`
     props.disabled === true &&
     css`
       background: #d7d7d7;
-      border-radius: 10px;
+      /* border-radius: 10px; */
     `}
 `;
