@@ -81,6 +81,7 @@ const HomeSearchLayout = () => {
             </span>
           </Styled.Search>
           <Select
+            className="search_select"
             trigger={
               <Styled.Trigger className="trigger">
                 <span>{select}</span>

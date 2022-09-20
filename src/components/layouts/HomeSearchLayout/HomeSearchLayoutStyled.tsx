@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const SearchBox = styled.div`
   display: flex;
   margin-bottom: 30px;
-  .select_trigger[data-open="open"] {
+  .search_select[data-open="open"] {
     .trigger {
       border: none;
     }

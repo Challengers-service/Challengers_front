@@ -12,7 +12,7 @@ import {
   useState,
 } from "react";
 
-export type DropdownContextType = "default" | "button" | "home";
+export type DropdownContextType = "default" | "button" | "home" | "radio";
 
 interface DropdownContextValue {
   isOpen: boolean;
@@ -31,6 +31,7 @@ interface Props {
   onChange?: (newSelect: string) => void;
   type?: DropdownContextType;
   isAlwaysOpen?: boolean;
+  className?: string;
 }
 
 export function Dropdown({
@@ -40,6 +41,7 @@ export function Dropdown({
   initialValue = "선택",
   type = "default",
   isAlwaysOpen = false,
+  className,
 }: PropsWithChildren<Props>) {
   const [isOpen, setOpen] = useState(false);
   const [select, setSelect] = useState(initialValue);
@@ -95,6 +97,8 @@ export function Dropdown({
           position: "relative",
           width: "fit-content",
         }}
+        className={className}
+        data-open={isOpen ? "open" : "close"}
       >
         {children}
       </div>

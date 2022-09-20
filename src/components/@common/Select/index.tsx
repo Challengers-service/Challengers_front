@@ -9,6 +9,7 @@ export interface Props {
   options: string[];
   type?: DropdownContextType;
   isAlwaysOpen?: boolean;
+  className?: string;
 }
 
 const Select = ({
@@ -19,9 +20,11 @@ const Select = ({
   options,
   type,
   isAlwaysOpen,
+  className,
 }: Props) => {
   return (
     <Dropdown
+      className={className}
       value={value}
       type={type}
       isAlwaysOpen={isAlwaysOpen}
