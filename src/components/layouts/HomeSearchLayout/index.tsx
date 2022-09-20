@@ -1,7 +1,7 @@
 import Select from "components/@common/Select";
 import Text from "components/@common/Text";
 import { ArrowIcon } from "components/@common/vectors";
-import SearchHeader from "components/home/SearchHeader";
+import SearchHeader from "components/@common/SearchHeader";
 import useInput from "hooks/useInput";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
@@ -69,6 +69,7 @@ const HomeSearchLayout = () => {
           value={inputValue}
           onChange={onChange}
           onKeyUp={enterKey}
+          placeholder="Search Challenge"
         />
         <Text className="search-layout_title" typography="h1">
           Dashboard
@@ -81,6 +82,7 @@ const HomeSearchLayout = () => {
             </span>
           </Styled.Search>
           <Select
+            className="search_select"
             trigger={
               <Styled.Trigger className="trigger">
                 <span>{select}</span>

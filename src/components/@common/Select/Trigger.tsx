@@ -9,12 +9,7 @@ const Trigger = ({ children }: PropsWithChildren<Props>) => {
   const context = useDropdownContext();
   const { isOpen, handleOpen, handleClose } = context;
   return (
-    <TriggerStyled
-      className="select_trigger"
-      data-open={isOpen ? "open" : "close"}
-      isOpen={isOpen}
-      onClick={!isOpen ? handleOpen : handleClose}
-    >
+    <TriggerStyled isOpen={isOpen} onClick={!isOpen ? handleOpen : handleClose}>
       {children}
     </TriggerStyled>
   );

@@ -25,6 +25,18 @@ const Item = ({ value }: Props) => {
           {value}
         </Styled.ItemButton>
       )}
+      {type === "radio" && (
+        <Styled.RadioItem
+          isSelect={select === value}
+          onClick={() => handleSelect(value)}
+        >
+          <input id={value} type="radio" name="selector" />
+          <label htmlFor={value} className="radio_label">
+            {value}
+          </label>
+          <div className="checkbox_check"></div>
+        </Styled.RadioItem>
+      )}
     </>
   );
 };

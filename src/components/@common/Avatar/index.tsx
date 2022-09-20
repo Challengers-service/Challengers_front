@@ -1,21 +1,27 @@
 import { getRandomInt } from "lib/utils/getRandomInt";
 import * as Styled from "./AvatarStyled";
 
+export type AvatarMode = "default" | "header";
+
 export interface Props {
   url?: string;
   name?: string;
+  mode?: AvatarMode;
 }
 
 const bgColors = ["#607EAA", "#CFE8A9", "#EAE3D2", "#E7C2C2", "#FECD70"];
 
-const Avatar = ({ url, name }: Props) => {
+const Avatar = ({ url, name, mode = "default" }: Props) => {
   const isUrl = url !== undefined ? true : false;
-  const bgColor = isUrl
-    ? bgColors[getRandomInt(0, bgColors.length)]
-    : "#F2F2F2";
+  const bgColor =
+    isUrl && mode === "default"
+      ? bgColors[getRandomInt(0, bgColors.length)]
+      : mode === "default"
+      ? "#F2F2F2"
+      : "#ffffff";
   return (
     <Styled.Wrapper>
-      <Styled.Avatar isUrl={isUrl} bgColor={bgColor}>
+      <Styled.Avatar isUrl={isUrl} bgColor={bgColor} mode={mode}>
         {isUrl ? (
           <img src={url} alt="프로필 이미지" />
         ) : (

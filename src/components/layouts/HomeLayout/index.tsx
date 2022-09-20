@@ -1,8 +1,5 @@
-import Alarm from "components/@common/Alarm";
-import Input from "components/@common/Input";
-import Stack from "components/@common/Stack";
 import Text from "components/@common/Text";
-import { SearchIcon } from "components/@common/vectors";
+import SearchHeader from "components/@common/SearchHeader";
 import useInput from "hooks/useInput";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import React, { PropsWithChildren } from "react";
@@ -22,18 +19,13 @@ const HomeLayout = ({ children }: PropsWithChildren<Props>) => {
   return (
     <SidebarLayout>
       <Styled.Wrapper>
-        <Stack style={{ gap: "30px" }}>
-          <Input
-            value={value}
-            onChange={onChange}
-            onKeyUp={enterKey}
-            className="search_input"
-            placeholder="Search Challenge"
-            isIcon={true}
-            icon={<SearchIcon />}
-          />
-          <Alarm />
-        </Stack>
+        <SearchHeader
+          className="search_header"
+          value={value}
+          onChange={onChange}
+          onKeyUp={enterKey}
+          placeholder="Search Challenge"
+        />
         <Text typography="h1">Dashboard</Text>
         {children}
       </Styled.Wrapper>

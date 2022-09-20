@@ -9,6 +9,7 @@ import StepOnePage from "pages/Challenge/CreateChallenge/StepOnePage";
 import StepThreePage from "pages/Challenge/CreateChallenge/StepThreePage";
 import StepTwoPage from "pages/Challenge/CreateChallenge/StepTwoPage";
 import DetailChallengePage from "pages/Challenge/DetailChallengePage";
+import FeedPage from "pages/Feed/FeedPage";
 import HomeNewChallengePage from "pages/Home/HomeNewChallengePage";
 import HomePage from "pages/Home/HomePage";
 import HomeSearchPage from "pages/Home/HomeSearchPage";
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/challenge">
           <Route path=":challengeId" element={<DetailChallengePage />} />
+        </Route>
+        <Route path="/feed">
+          <Route path="" element={<FeedPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
