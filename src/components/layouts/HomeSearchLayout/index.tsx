@@ -69,6 +69,7 @@ const HomeSearchLayout = () => {
           value={inputValue}
           onChange={onChange}
           onKeyUp={enterKey}
+          placeholder="Search Challenge"
         />
         <Text className="search-layout_title" typography="h1">
           Dashboard

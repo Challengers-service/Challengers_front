@@ -9,17 +9,23 @@ export interface Props extends InputProps {
   className?: string;
 }
 
-const SearchHeader = ({ className, value, onChange, onKeyUp }: Props) => {
+const SearchHeader = ({
+  className,
+  value,
+  onChange,
+  onKeyUp,
+  ...props
+}: Props) => {
   const { me, isLogin } = useAuth();
   return (
     <Styled.Wrapper className={className}>
       <Input
         value={value}
-        onChange={onChange}
-        onKeyUp={onKeyUp}
         className="search_input"
-        placeholder="Search Challenge"
+        onKeyUp={onKeyUp}
+        onChange={onChange}
         isIcon={true}
+        {...props}
         icon={<SearchIcon />}
       />
       <Styled.ImgGroup>

@@ -24,6 +24,7 @@ const HomeLayout = ({ children }: PropsWithChildren<Props>) => {
           value={value}
           onChange={onChange}
           onKeyUp={enterKey}
+          placeholder="Search Challenge"
         />
         <Text typography="h1">Dashboard</Text>
         {children}
