@@ -5,6 +5,8 @@ import { ReactComponent as HeartNotFillIcon } from "assets/vectors/HeartNotFillI
 import { ReactComponent as HeartFillIcon } from "assets/vectors/HeartFillIcon.svg";
 import { ReactComponent as DefaultAvatar } from "assets/vectors/DefaultAvatar.svg";
 import { ReactComponent as CloseIcon } from "assets/vectors/CloseIcon.svg";
+import { ReactComponent as PasswordSee } from "assets/vectors/PasswordSee.svg";
+import { ReactComponent as PasswordNotSee } from "assets/vectors/PasswordNotSee.svg";
 
 export {
   SearchIcon,
@@ -14,4 +16,6 @@ export {
   HeartFillIcon,
   DefaultAvatar,
   CloseIcon,
+  PasswordSee,
+  PasswordNotSee,
 };

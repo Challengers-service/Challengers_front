@@ -1,6 +1,5 @@
-import { forwardRef, useCallback } from "react";
+import { forwardRef } from "react";
 import { Message, StyledInput, Wrapper } from "./InputStyled";
-import { ReactComponent as ArrowIcon } from "assets/vectors/ArrowIcon.svg";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -32,24 +31,23 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <Wrapper style={rest.style} width={width}>
-        <StyledInput
-          isIcon={isIcon}
-          className={className}
-          data-placeholder={dataPlaceHolder}
-          width={width}
-          ref={ref}
-          isBorder={isBorder}
-          isError={isError}
-          isFocusActiveStyle={isFocusActiveStyle}
-          {...rest}
-        />
-        {errorMessage ? <Message>{errorMessage}</Message> : null}
-        {rest.type === "date" && (
-          <ArrowIcon className="date_icon" fill="#666666" />
-        )}
-        {icon && <div className="input_icon">{icon}</div>}
-      </Wrapper>
+      <>
+        <Wrapper style={rest.style} width={width} isError={isError}>
+          <StyledInput
+            isIcon={isIcon}
+            className={className}
+            data-placeholder={dataPlaceHolder}
+            width={width}
+            ref={ref}
+            isBorder={isBorder}
+            isError={isError}
+            isFocusActiveStyle={isFocusActiveStyle}
+            {...rest}
+          />
+          {icon && <div className="input_icon">{icon}</div>}
+          {errorMessage ? <Message>{errorMessage}</Message> : null}
+        </Wrapper>
+      </>
     );
   }
 );

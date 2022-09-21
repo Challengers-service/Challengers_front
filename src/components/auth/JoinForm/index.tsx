@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import * as Styled from "./JoinFormStyled";
 import Text from "components/@common/Text";
+import usePasswordType from "hooks/usePasswordType";
 
 export default function JoinForm() {
   const router = useInternalRouter();
@@ -15,6 +16,9 @@ export default function JoinForm() {
     watch,
     formState: { errors, isDirty, isValid },
   } = useForm<JoinParams>({ mode: "onChange" });
+  const { passwordType, icon } = usePasswordType();
+  const { passwordType: passwordCheckType, icon: passwordCheckIcon } =
+    usePasswordType();
 
   const onSubmit = (data: JoinParams) => {
     Auth.join(data)
@@ -48,7 +52,8 @@ export default function JoinForm() {
         />
         <Labelnput
           {...register("password", { required: "비밀번호를 입력해 주세요." })}
-          type={"password"}
+          type={passwordType}
+          icon={icon}
           labelText="비밀번호"
           errorMessage={errors.password?.message}
           isError={Boolean(errors.password?.message)}
@@ -63,7 +68,8 @@ export default function JoinForm() {
                 ? "비밀번호 확인이 틀렸습니다. 다시 입력해 주세요."
                 : true,
           })}
-          type={"password"}
+          type={passwordCheckType}
+          icon={passwordCheckIcon}
           labelText="비밀번호 확인"
           errorMessage={errors.passwordConfirm?.message}
           isError={Boolean(errors.passwordConfirm?.message)}

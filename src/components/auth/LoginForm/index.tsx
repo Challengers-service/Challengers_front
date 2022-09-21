@@ -8,13 +8,14 @@ import Input from "components/@common/Input";
 import { useInternalRouter } from "hooks/useInternalRouter";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "constants/token";
 import { useQueryClient } from "@tanstack/react-query";
+import usePasswordType from "hooks/usePasswordType";
 
 export interface LoginFormProps {}
 
 export default function LoginForm() {
   const queryClient = useQueryClient();
   const router = useInternalRouter();
-
+  const { passwordType, icon } = usePasswordType();
   const {
     register,
     handleSubmit,
@@ -46,11 +47,12 @@ export default function LoginForm() {
         />
         <Input
           {...register("password", { required: "비밀번호를 입력해 주세요." })}
-          type={"password"}
+          type={passwordType}
           placeholder={"비밀번호를 입력하세요."}
           errorMessage={errors.password?.message}
           isError={Boolean(errors.password?.message)}
           isFocusActiveStyle={true}
+          icon={icon}
         />
       </InputGroup>
       <Button

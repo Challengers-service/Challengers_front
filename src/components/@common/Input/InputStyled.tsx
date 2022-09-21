@@ -13,8 +13,17 @@ export const Wrapper = styled.div<InputProps>`
   .input_icon {
     position: absolute;
     top: 50%;
-    left: 30px;
-    transform: translate(0, -50%);
+    right: 30px;
+    ${props =>
+      props.isError &&
+      css`
+        transform: translate(0, -90%);
+      `}
+    ${props =>
+      props.isError === false &&
+      css`
+        transform: translate(0, -40%);
+      `}
   }
   ${props => {
     return css`
