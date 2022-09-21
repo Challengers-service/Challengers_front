@@ -30,34 +30,37 @@ export default function JoinForm() {
       </Styled.TextGroup>
       <Styled.InputGroup>
         <Labelnput
-          {...register("email", { required: "이메일을 입력해주세요" })}
+          {...register("email", { required: "이메일을 입력해 주세요." })}
           type={"email"}
           labelText="아이디"
           errorMessage={errors.email?.message}
           isError={Boolean(errors.email?.message)}
           isFocusActiveStyle={true}
+          placeholder="아이디를 입력하세요."
         />
         <Labelnput
-          {...register("name", { required: "이름을 입력해주세요" })}
+          {...register("name", { required: "이름을 입력해 주세요." })}
           labelText="닉네임"
           errorMessage={errors.name?.message}
           isError={Boolean(errors.name?.message)}
           isFocusActiveStyle={true}
+          placeholder="닉네임을 입력하세요."
         />
         <Labelnput
-          {...register("password", { required: "비밀번호를 입력해주세요" })}
+          {...register("password", { required: "비밀번호를 입력해 주세요." })}
           type={"password"}
           labelText="비밀번호"
           errorMessage={errors.password?.message}
           isError={Boolean(errors.password?.message)}
           isFocusActiveStyle={true}
+          placeholder="비밀번호를 입력하세요."
         />
         <Labelnput
           {...register("passwordConfirm", {
-            required: "비밀번호확인을 입력해주세요",
+            required: "비밀번호 확인을 입력해 주세요.",
             validate: value =>
               value !== watch("password")
-                ? "비밀번호가 일치하지 않습니다."
+                ? "비밀번호 확인이 틀렸습니다. 다시 입력해 주세요."
                 : true,
           })}
           type={"password"}
@@ -65,6 +68,7 @@ export default function JoinForm() {
           errorMessage={errors.passwordConfirm?.message}
           isError={Boolean(errors.passwordConfirm?.message)}
           isFocusActiveStyle={true}
+          placeholder="비밀번호 확인을 입력해 주세요."
         />
       </Styled.InputGroup>
       <Button

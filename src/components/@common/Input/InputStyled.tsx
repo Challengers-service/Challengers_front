@@ -53,8 +53,8 @@ const focusStyle = css<InputProps>`
     !props.isError &&
     css`
       &:focus {
-        background-color: inherit;
         border: 2px solid ${pallet.mainColor};
+        background: inherit;
       }
     `}
 `;
@@ -124,8 +124,8 @@ export const StyledInput = styled.input<InputProps>`
       ${border}
     `;
   }}
-  ${focusStyle}
   ${errorInputStyle}
+  ${focusStyle}
 `;
 
 export const Message = styled.div`

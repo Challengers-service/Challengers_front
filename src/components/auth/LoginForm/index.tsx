@@ -37,7 +37,7 @@ export default function LoginForm() {
       <Text typography="h1">Login</Text>
       <InputGroup>
         <Input
-          {...register("email", { required: "이메일을 입력해주세요" })}
+          {...register("email", { required: "이메일을 입력해 주세요." })}
           type={"email"}
           placeholder={"이메일을 입력하세요."}
           errorMessage={errors.email?.message}
@@ -45,7 +45,7 @@ export default function LoginForm() {
           isFocusActiveStyle={true}
         />
         <Input
-          {...register("password", { required: "비밀번호를 입력해주세요" })}
+          {...register("password", { required: "비밀번호를 입력해 주세요." })}
           type={"password"}
           placeholder={"비밀번호를 입력하세요."}
           errorMessage={errors.password?.message}

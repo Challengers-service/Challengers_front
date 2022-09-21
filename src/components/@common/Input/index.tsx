@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 import { Message, StyledInput, Wrapper } from "./InputStyled";
 import { ReactComponent as ArrowIcon } from "assets/vectors/ArrowIcon.svg";
 
